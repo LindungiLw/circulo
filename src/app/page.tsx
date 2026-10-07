@@ -167,11 +167,6 @@ export default function LandingPage() {
           
           {/* RIGHT: Text Content & Carousel */}
           <div className="pl-0 lg:pl-16 z-20 flex flex-col justify-center h-full">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-transparent text-[#1a3626] font-semibold text-xs mb-8 border border-[#5c8770]/30 self-start">
-              <img src="/logo.png" alt="icon" className="w-4 h-4 object-contain" /> 
-              B2B Eco-Merch Aggregator & Impact Supply Chain
-            </div>
-            
             <h1 className="text-5xl md:text-[64px] font-extrabold text-[#1a3626] leading-[1.1] mb-6 tracking-tight">
               Ubah Limbah<br />Menjadi <span className="text-[#5c8770]">Eco-Merch</span><br />B2B Premium<span className="text-[#f3c44c]">.</span>
             </h1>
@@ -181,10 +176,10 @@ export default function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link href="/dashboard" className="bg-[#1a3626] text-white px-8 py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
+              <Link href="/dashboard" className="bg-[#1a3626] text-white px-8 py-3.5 rounded-none font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
                 Mulai Kolaborasi <ArrowRight size={18} />
               </Link>
-              <button className="bg-transparent border border-[#1a3626] text-[#1a3626] px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-[#1a3626]/5 transition-colors">
+              <button className="bg-transparent border border-[#1a3626] text-[#1a3626] px-8 py-3.5 rounded-none font-semibold text-sm hover:bg-[#1a3626]/5 transition-colors">
                 Lihat Katalog
               </button>
             </div>
