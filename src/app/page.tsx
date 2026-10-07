@@ -34,8 +34,9 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section className="w-full py-20 px-8 bg-gradient-to-b from-primary/5 to-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 text-yellow-800 font-semibold text-sm mb-6 border border-secondary/30">
+          <div className="bg-white p-8 md:p-12 shape-recycled-alt shadow-soft border-2 border-primary/20 border-dashed relative z-10">
+            <div className="absolute inset-0 bg-primary/5 blur-2xl rounded-full transform scale-110 -z-10"></div>
+            <div className="inline-flex items-center gap-2 px-4 py-2 shape-recycled bg-secondary/20 text-yellow-800 font-semibold text-sm mb-6 border border-secondary/30">
               <Leaf size={16} /> Mendukung SDG 8: Decent Work & Economic Growth
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
@@ -45,10 +46,10 @@ export default function LandingPage() {
               Circulo adalah agregator rantai pasok berkelanjutan pertama yang menjembatani korporat dengan pengrajin daur ulang lokal, lengkap dengan laporan dampak ESG.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/dashboard" className="bg-primary text-white px-8 py-3.5 rounded-full font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#152e1e] transition-transform hover:scale-105 shadow-soft">
+              <Link href="/dashboard" className="bg-primary text-white px-8 py-3.5 shape-recycled font-semibold text-lg flex items-center justify-center gap-2 hover:bg-[#152e1e] transition-transform hover:scale-105 shadow-soft">
                 Mulai Kolaborasi
               </Link>
-              <button className="bg-white border-2 border-slate-200 text-slate-700 px-8 py-3.5 rounded-full font-semibold text-lg hover:border-primary hover:text-primary transition-colors">
+              <button className="bg-white border-2 border-slate-200 text-slate-700 px-8 py-3.5 shape-recycled-alt font-semibold text-lg hover:border-primary hover:text-primary transition-colors">
                 Lihat Katalog
               </button>
             </div>
