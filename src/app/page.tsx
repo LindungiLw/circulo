@@ -56,22 +56,22 @@ export default function LandingPage() {
           
           <div className="relative">
             <div className="absolute inset-0 bg-secondary/20 blur-3xl rounded-full transform -skew-y-12 scale-110 -z-10"></div>
-            <div className="bg-white p-8 rounded-3xl shadow-soft border border-slate-200 relative">
+            <div className="bg-white p-8 shape-recycled shadow-soft border-2 border-primary/20 relative">
               <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                 <ShieldCheck className="text-primary" /> Laporan Dampak (Live Preview)
               </h3>
               
               <div className="space-y-4">
-                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary"><TrendingUp size={24} /></div>
+                <div className="p-4 bg-slate-50 shape-recycled-alt border border-slate-200 border-dashed flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary/10 shape-recycled flex items-center justify-center text-primary"><TrendingUp size={24} /></div>
                   <div>
                     <p className="text-sm text-slate-500">Plastik Terdiversi</p>
                     <p className="text-lg font-bold text-slate-900">12,450 kg</p>
                   </div>
                 </div>
                 
-                <div className="p-4 bg-slate-50 rounded-2xl border border-slate-100 flex items-center gap-4">
-                  <div className="w-12 h-12 bg-secondary/20 rounded-xl flex items-center justify-center text-yellow-700"><Users size={24} /></div>
+                <div className="p-4 bg-slate-50 shape-recycled-alt border border-slate-200 border-dashed flex items-center gap-4">
+                  <div className="w-12 h-12 bg-secondary/20 shape-recycled flex items-center justify-center text-yellow-700"><Users size={24} /></div>
                   <div>
                     <p className="text-sm text-slate-500">Pengrajin Berdaya</p>
                     <p className="text-lg font-bold text-slate-900">120+ Orang (UMKM)</p>
@@ -79,7 +79,7 @@ export default function LandingPage() {
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-primary text-white rounded-2xl text-sm font-medium flex items-center justify-between">
+              <div className="mt-6 p-4 bg-primary text-white shape-recycled text-sm font-medium flex items-center justify-between">
                 <span>Siap untuk Sustainability Report (ESG)</span>
                 <CheckCircle2 size={20} className="text-secondary" />
               </div>
@@ -95,24 +95,24 @@ export default function LandingPage() {
           <p className="text-slate-500 max-w-2xl mx-auto mb-16">Kami tidak hanya memproduksi merchandise, tapi mengelola ekosistem yang terintegrasi dari bank sampah hingga ke tangan Anda.</p>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 text-left hover:shadow-soft transition-shadow">
-              <div className="w-14 h-14 bg-primary text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+            <div className="p-8 shape-recycled bg-slate-50 border-2 border-primary/20 border-dashed text-left hover:shadow-soft transition-shadow">
+              <div className="w-14 h-14 bg-primary text-white shape-recycled-alt flex items-center justify-center mb-6 shadow-md transform -rotate-3">
                 <Leaf size={28} />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Recycled & Berkualitas</h3>
               <p className="text-slate-600 leading-relaxed">Mengalihkan sampah plastik dari TPA menjadi produk fungsional dengan kontrol kualitas setara pabrik.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 text-left hover:shadow-soft transition-shadow">
-              <div className="w-14 h-14 bg-secondary text-primary rounded-2xl flex items-center justify-center mb-6 shadow-md">
+            <div className="p-8 shape-recycled-alt bg-slate-50 border-2 border-secondary/30 border-dashed text-left hover:shadow-soft transition-shadow">
+              <div className="w-14 h-14 bg-secondary text-primary shape-recycled flex items-center justify-center mb-6 shadow-md transform rotate-3">
                 <Users size={28} />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Pemberdayaan Sosial</h3>
               <p className="text-slate-600 leading-relaxed">Memberikan akses pasar B2B berskala besar dengan kepastian upah yang adil bagi pengrajin lokal marjinal.</p>
             </div>
 
-            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 text-left hover:shadow-soft transition-shadow">
-              <div className="w-14 h-14 bg-slate-900 text-white rounded-2xl flex items-center justify-center mb-6 shadow-md">
+            <div className="p-8 shape-recycled bg-slate-50 border-2 border-primary/20 border-dashed text-left hover:shadow-soft transition-shadow">
+              <div className="w-14 h-14 bg-slate-900 text-white shape-recycled-alt flex items-center justify-center mb-6 shadow-md transform -rotate-2">
                 <ShieldCheck size={28} />
               </div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">Audit-Ready ESG Report</h3>

@@ -120,9 +120,9 @@ export default function Dashboard() {
             { title: 'Jam Kerja Pengrajin', value: '480 Jam', inc: '+20% (SDG 8)', icon: Users },
             { title: 'Total Eco-Merch', value: '5,000 Unit', inc: '3 Batch Pesanan', icon: Boxes },
           ].map((metric, i) => (
-            <div key={i} className="bg-white border border-slate-200 rounded-[16px] p-6 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
+            <div key={i} className="bg-white border-2 border-slate-200 border-dashed shape-recycled p-6 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+                <div className="w-12 h-12 shape-recycled-alt bg-primary/10 text-primary flex items-center justify-center transform rotate-2">
                   <metric.icon size={24} />
                 </div>
               </div>
@@ -137,50 +137,50 @@ export default function Dashboard() {
 
         {/* Charts & Orders */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-[16px] p-6 shadow-soft">
+          <div className="lg:col-span-2 bg-white border-2 border-slate-200 border-dashed shape-recycled-alt p-6 shadow-soft">
             <h2 className="text-lg font-semibold text-slate-900 mb-6">Grafik Dampak Lingkungan (YTD)</h2>
             <Line options={chartOptions} data={chartData} height={100} />
           </div>
 
-          <div className="bg-white border border-slate-200 rounded-[16px] p-6 shadow-soft">
+          <div className="bg-white border-2 border-slate-200 border-dashed shape-recycled p-6 shadow-soft">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-lg font-semibold text-slate-900">Status Pesanan</h2>
               <a href="#" className="text-sm text-primary font-semibold hover:underline">Lihat Semua</a>
             </div>
             
             <div className="flex flex-col gap-4">
-              <div className="flex justify-between items-center p-4 border border-slate-200 rounded-xl">
+              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled">
                 <div>
                   <h4 className="text-sm font-semibold text-slate-900 mb-1">Lanyard Daur Ulang</h4>
                   <p className="text-xs text-slate-500">2,000 unit • 12 Nov 2026</p>
                 </div>
-                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-secondary/20 text-yellow-800">Produksi</span>
+                <span className="px-3 py-1.5 shape-recycled-alt text-xs font-bold bg-secondary/20 text-yellow-800">Produksi</span>
               </div>
-              <div className="flex justify-between items-center p-4 border border-slate-200 rounded-xl">
+              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled-alt">
                 <div>
                   <h4 className="text-sm font-semibold text-slate-900 mb-1">Seminar Kit Delegate</h4>
                   <p className="text-xs text-slate-500">500 unit • 20 Okt 2026</p>
                 </div>
-                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">Inspeksi QC</span>
+                <span className="px-3 py-1.5 shape-recycled text-xs font-bold bg-blue-100 text-blue-800">Inspeksi QC</span>
               </div>
-              <div className="flex justify-between items-center p-4 border border-slate-200 rounded-xl">
+              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled">
                 <div>
                   <h4 className="text-sm font-semibold text-slate-900 mb-1">Corporate Hampers</h4>
                   <p className="text-xs text-slate-500">100 unit • 1 Okt 2026</p>
                 </div>
-                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-primary/20 text-primary">Terkirim</span>
+                <span className="px-3 py-1.5 shape-recycled-alt text-xs font-bold bg-primary/20 text-primary">Terkirim</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Banner */}
-        <div className="mt-6 bg-gradient-to-br from-primary to-[#101f14] rounded-[16px] p-8 text-white flex flex-col md:flex-row justify-between items-center shadow-lg">
+        <div className="mt-6 bg-gradient-to-br from-primary to-[#101f14] shape-recycled-alt p-8 text-white flex flex-col md:flex-row justify-between items-center shadow-lg border-2 border-primary/50">
           <div className="mb-4 md:mb-0">
             <h2 className="text-xl font-bold mb-2">Sertifikat Dampak & Laporan ESG</h2>
             <p className="text-sm opacity-90 max-w-md">Unduh laporan kuantitatif yang divalidasi untuk Sustainability Report perusahaan Anda secara instan.</p>
           </div>
-          <button className="bg-secondary text-primary px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-md" onClick={() => alert('Mengunduh PDF ESG Report...')}>
+          <button className="bg-secondary text-primary px-6 py-3 shape-recycled font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-md" onClick={() => alert('Mengunduh PDF ESG Report...')}>
             <Download size={18} /> Unduh ESG Report
           </button>
         </div>

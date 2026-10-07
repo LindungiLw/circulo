@@ -9,12 +9,21 @@
 }
 
 @utility shadow-soft {
-  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.05), 0 8px 10px -6px rgba(5, 150, 105, 0.01);
+  box-shadow: 0 10px 25px -5px rgba(31, 61, 41, 0.05), 0 8px 10px -6px rgba(31, 61, 41, 0.02);
 }
 @utility shadow-soft-hover {
-  box-shadow: 0 15px 30px -5px rgba(5, 150, 105, 0.08);
+  box-shadow: 0 15px 30px -5px rgba(31, 61, 41, 0.1);
+}
+@utility shape-recycled {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+@utility shape-recycled-alt {
+  border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
 }
 
 body {
   font-family: 'Outfit', sans-serif;
+  background-image: radial-gradient(#1f3d29 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  background-color: #f8fafc;
 }
