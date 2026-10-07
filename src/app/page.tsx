@@ -36,9 +36,6 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="bg-white p-8 md:p-12 shape-recycled-alt shadow-soft border-2 border-primary/20 border-dashed relative z-10">
             <div className="absolute inset-0 bg-primary/5 blur-2xl rounded-full transform scale-110 -z-10"></div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 shape-recycled bg-secondary/20 text-yellow-800 font-semibold text-sm mb-6 border border-secondary/30">
-              <Leaf size={16} /> Mendukung SDG 8: Decent Work & Economic Growth
-            </div>
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
               Ubah Limbah Menjadi <span className="text-primary">Eco-Merch B2B</span> Premium.
             </h1>
