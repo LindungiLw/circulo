@@ -1,10 +1,25 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function LandingPage() {
+  const transitionImages = [
+    "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&q=80&w=800", // Eco products
+    "https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=800", // Crafting
+    "https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=800"  // Reusable packaging
+  ];
+  
+  const [currentImg, setCurrentImg] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImg((prev) => (prev + 1) % transitionImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f8f7f2] flex flex-col font-sans overflow-hidden relative">
       
@@ -132,14 +147,14 @@ export default function LandingPage() {
                    </div>
                    <h4 className="text-[10px] font-bold text-[#1a3626] mb-1">ESG Impact Ready</h4>
                    <p className="text-[9px] text-[#4a5f52] leading-tight pr-4">Laporan dampak tersedia untuk setiap transaksi</p>
-                   <ArrowRight size={12} className="text-[#5c8770] absolute bottom-4 right-4 group-hover:translate-x-1 transition-transform" />
+                   <ArrowRight size={12} className="text-[#5c8770] absolute bottom-3 right-3 group-hover:translate-x-1 transition-transform" />
                  </div>
                </div>
                
                {/* Small Bottom Image in Card */}
                <div className="w-full h-24 rounded-xl overflow-hidden relative mt-1 flex bg-[#f8f7f2]">
                  <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400" alt="Crafting" className="w-1/2 h-full object-cover" />
-                 <div className="w-1/2 p-4 flex flex-col justify-center">
+                 <div className="w-1/2 p-3 flex flex-col justify-center">
                     <p className="text-[9px] font-bold text-[#1a3626] leading-tight mb-2">Dari Sampah Lokal Menuju Produk Bernilai</p>
                     <div className="w-5 h-5 rounded-full border border-[#5c8770] flex items-center justify-center text-[#5c8770]">
                       <ArrowRight size={10} />
@@ -150,14 +165,14 @@ export default function LandingPage() {
              </div>
           </div>
           
-          {/* RIGHT: Text Content */}
-          <div className="pl-0 lg:pl-16 z-20">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e8efe9] text-[#5c8770] font-semibold text-xs mb-8 border border-[#5c8770]/20">
+          {/* RIGHT: Text Content & Carousel */}
+          <div className="pl-0 lg:pl-16 z-20 flex flex-col justify-center h-full">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-transparent text-[#1a3626] font-semibold text-xs mb-8 border border-[#5c8770]/30 self-start">
               <img src="/logo.png" alt="icon" className="w-4 h-4 object-contain" /> 
               B2B Eco-Merch Aggregator & Impact Supply Chain
             </div>
             
-            <h1 className="text-5xl md:text-[64px] font-bold text-[#1a3626] leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-5xl md:text-[64px] font-extrabold text-[#1a3626] leading-[1.1] mb-6 tracking-tight">
               Ubah Limbah<br />Menjadi <span className="text-[#5c8770]">Eco-Merch</span><br />B2B Premium<span className="text-[#f3c44c]">.</span>
             </h1>
             
@@ -165,7 +180,7 @@ export default function LandingPage() {
               Satu solusi untuk sourcing eco-merch berkualitas, custom sesuai kebutuhan, pengiriman yang andal, dan dampak yang terukur.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/dashboard" className="bg-[#1a3626] text-white px-8 py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
                 Mulai Kolaborasi <ArrowRight size={18} />
               </Link>
@@ -175,22 +190,42 @@ export default function LandingPage() {
             </div>
 
             {/* Feature lists bottom */}
-            <div className="flex flex-wrap gap-8 items-center border-t border-[#1a3626]/10 pt-8">
+            <div className="flex flex-wrap gap-10 items-center border-t border-[#1a3626]/10 pt-8 mb-10">
               <div className="flex items-center gap-3">
-                <div className="text-[#5c8770]"><ShieldCheck size={24} strokeWidth={1.5} /></div>
+                <div className="text-[#5c8770]"><ShieldCheck size={28} strokeWidth={1.5} /></div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#1a3626]">Produk Eco-Merch</h4>
-                  <p className="text-xs text-[#5c8770]">Dari material daur ulang</p>
+                  <h4 className="text-[15px] font-bold text-[#1a3626]">Produk Eco-Merch</h4>
+                  <p className="text-[13px] text-[#5c8770]">Dari material daur ulang</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="text-[#5c8770]"><Users size={24} strokeWidth={1.5} /></div>
+                <div className="text-[#5c8770]"><Users size={28} strokeWidth={1.5} /></div>
                 <div>
-                  <h4 className="text-sm font-bold text-[#1a3626]">Dukung Pengrajin Lokal</h4>
-                  <p className="text-xs text-[#5c8770]">Pemberdayaan ekonomi</p>
+                  <h4 className="text-[15px] font-bold text-[#1a3626]">Dukung Pengrajin Lokal</h4>
+                  <p className="text-[13px] text-[#5c8770]">Pemberdayaan ekonomi</p>
                 </div>
               </div>
             </div>
+
+            {/* Auto-Transitioning Photo Carousel */}
+            <div className="w-full max-w-[480px] h-[200px] relative rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+              {transitionImages.map((src, index) => (
+                <img 
+                  key={index}
+                  src={src} 
+                  alt="Gallery" 
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImg ? 'opacity-100' : 'opacity-0'}`}
+                />
+              ))}
+              {/* Overlay Gradient for Carousel */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+              <div className="absolute bottom-4 left-4 text-white z-10">
+                <p className="text-sm font-bold flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span> Portofolio Circulo
+                </p>
+              </div>
+            </div>
+
           </div>
           
         </div>
