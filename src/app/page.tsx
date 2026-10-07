@@ -9,12 +9,10 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#f8f7f2] flex flex-col font-sans overflow-hidden relative">
       
       {/* Decorative Background Elements */}
-      {/* Top right arcs */}
-      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] border-[40px] border-[#f3c44c] rounded-full opacity-30 pointer-events-none"></div>
-      <div className="absolute -top-[300px] -right-20 w-[700px] h-[700px] border-[60px] border-[#5c8770] rounded-full opacity-20 pointer-events-none"></div>
-      
-      {/* Bottom left arcs */}
-      <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] border-[40px] border-[#f3c44c] rounded-full opacity-40 pointer-events-none z-0"></div>
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-[20%] -left-[10%] w-[800px] h-[800px] border-[1px] border-[#1a3626]/10 rounded-full"></div>
+        <div className="absolute -top-[10%] -left-[5%] w-[600px] h-[600px] border-[1px] border-[#1a3626]/10 rounded-full"></div>
+      </div>
       
       {/* Navigation */}
       <nav className="w-full px-8 py-6 z-50 relative">
@@ -41,10 +39,119 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="w-full pt-10 pb-20 px-8 relative z-10">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Text Content */}
-          <div className="pr-0 md:pr-10">
+          {/* LEFT: Visual Composition (Circular Graphic + Overlapping Card) */}
+          <div className="relative w-full h-[600px] flex items-center justify-center lg:justify-start">
+             
+             {/* The Donut Chart SVG Ring around the image */}
+             <div className="absolute left-[-20px] w-[560px] h-[560px] z-0">
+               <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+                 <circle cx="50" cy="50" r="48" fill="none" stroke="#f3c44c" strokeWidth="4" strokeDasharray="60 301.59" className="opacity-90" />
+                 <circle cx="50" cy="50" r="48" fill="none" stroke="#1a3626" strokeWidth="8" strokeDasharray="100 301.59" strokeDashoffset="-65" className="opacity-90" />
+                 <circle cx="50" cy="50" r="48" fill="none" stroke="#5c8770" strokeWidth="2" strokeDasharray="40 301.59" strokeDashoffset="-170" className="opacity-90" />
+               </svg>
+             </div>
+
+             {/* The Large Circular Image */}
+             <div className="absolute left-[10px] w-[500px] h-[500px] rounded-full border-[12px] border-white shadow-2xl overflow-hidden z-10">
+               <img src="https://images.unsplash.com/photo-1605600659908-0ef719419d41?auto=format&fit=crop&q=80&w=800" alt="Eco Merchandise" className="w-full h-full object-cover" />
+               {/* Dark overlay for contrast */}
+               <div className="absolute inset-0 bg-black/5"></div>
+             </div>
+
+             {/* Curved Text SVG */}
+             <div className="absolute left-[-25px] w-[570px] h-[570px] z-20 pointer-events-none">
+                <svg viewBox="0 0 200 200" className="w-full h-full">
+                  <path id="curve" d="M 100 180 A 80 80 0 0 1 20 100" fill="transparent" />
+                  <text className="text-[6px] font-bold fill-[#5c8770] tracking-[0.3em] uppercase">
+                    <textPath href="#curve" startOffset="15%">
+                      From Waste to Value
+                    </textPath>
+                  </text>
+                </svg>
+                {/* Yellow decorative dots */}
+                <div className="absolute bottom-[80px] left-[135px] w-2.5 h-2.5 rounded-full bg-[#f3c44c]"></div>
+                <div className="absolute bottom-[230px] left-[20px] w-2 h-2 rounded-full bg-[#f3c44c]"></div>
+             </div>
+
+             {/* Live Impact Card (Overlapping on the right) */}
+             <div className="absolute right-0 lg:-right-16 top-1/2 -translate-y-1/2 bg-white rounded-3xl p-5 shadow-[0_20px_50px_rgba(26,54,38,0.1)] border border-gray-100 z-30 w-[380px]">
+               {/* Card Header */}
+               <div className="flex items-center gap-2 text-[#1a3626] font-bold mb-4">
+                 <div className="w-2 h-2 rounded-full bg-[#5c8770]"></div>
+                 Live Impact
+               </div>
+
+               {/* Metrics Grid inside card */}
+               <div className="grid grid-cols-2 gap-3 mb-3">
+                 
+                 {/* Card 1 */}
+                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-2">
+                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Recycle size={16} />
+                     </div>
+                   </div>
+                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Plastik Terdiversi</h4>
+                   <p className="text-lg font-bold text-[#1a3626] mb-1">12,450 <span className="text-[10px] font-semibold">kg</span></p>
+                   <p className="text-[9px] text-gray-500 mb-1">≈ 562 botol plastik</p>
+                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 12%</p>
+                 </div>
+
+                 {/* Card 2 */}
+                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-2">
+                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Users size={16} />
+                     </div>
+                   </div>
+                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Local Makers</h4>
+                   <p className="text-lg font-bold text-[#1a3626] mb-1">120+</p>
+                   <p className="text-[9px] text-gray-500 mb-1">pengrajin lokal</p>
+                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 8%</p>
+                 </div>
+
+                 {/* Card 3 */}
+                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-2">
+                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Box size={16} />
+                     </div>
+                   </div>
+                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Pesanan Korporat</h4>
+                   <p className="text-lg font-bold text-[#1a3626] mb-1">85</p>
+                   <p className="text-[9px] text-gray-500 mb-1">pesanan perusahaan</p>
+                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 15%</p>
+                 </div>
+
+                 {/* Card 4 - Green Highlight */}
+                 <div className="bg-[#e8efe9] border border-[#5c8770]/20 rounded-2xl p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+                   <div className="w-8 h-8 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-2">
+                     <Sprout size={16} />
+                   </div>
+                   <h4 className="text-[10px] font-bold text-[#1a3626] mb-1">ESG Impact Ready</h4>
+                   <p className="text-[9px] text-[#4a5f52] leading-tight pr-4">Laporan dampak tersedia untuk setiap transaksi</p>
+                   <ArrowRight size={12} className="text-[#5c8770] absolute bottom-4 right-4 group-hover:translate-x-1 transition-transform" />
+                 </div>
+               </div>
+               
+               {/* Small Bottom Image in Card */}
+               <div className="w-full h-24 rounded-xl overflow-hidden relative mt-1 flex bg-[#f8f7f2]">
+                 <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400" alt="Crafting" className="w-1/2 h-full object-cover" />
+                 <div className="w-1/2 p-4 flex flex-col justify-center">
+                    <p className="text-[9px] font-bold text-[#1a3626] leading-tight mb-2">Dari Sampah Lokal Menuju Produk Bernilai</p>
+                    <div className="w-5 h-5 rounded-full border border-[#5c8770] flex items-center justify-center text-[#5c8770]">
+                      <ArrowRight size={10} />
+                    </div>
+                 </div>
+               </div>
+
+             </div>
+          </div>
+          
+          {/* RIGHT: Text Content */}
+          <div className="pl-0 lg:pl-16 z-20">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#e8efe9] text-[#5c8770] font-semibold text-xs mb-8 border border-[#5c8770]/20">
               <img src="/logo.png" alt="icon" className="w-4 h-4 object-contain" /> 
               B2B Eco-Merch Aggregator & Impact Supply Chain
@@ -83,113 +190,9 @@ export default function LandingPage() {
                   <p className="text-xs text-[#5c8770]">Pemberdayaan ekonomi</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="text-[#5c8770]"><LineChart size={24} strokeWidth={1.5} /></div>
-                <div>
-                  <h4 className="text-sm font-bold text-[#1a3626]">Laporan ESG Terukur</h4>
-                  <p className="text-xs text-[#5c8770]">Data nyata, dampak nyata</p>
-                </div>
-              </div>
             </div>
           </div>
           
-          {/* Right Live Impact Card */}
-          <div className="relative mt-10 lg:mt-0">
-             
-             {/* Main Card */}
-             <div className="bg-white rounded-3xl p-6 shadow-2xl shadow-[#1a3626]/10 border border-gray-100 relative">
-               
-               {/* Card Header */}
-               <div className="flex justify-between items-center mb-6">
-                 <div className="flex items-center gap-2 text-[#1a3626] font-bold">
-                   <div className="w-2 h-2 rounded-full bg-[#5c8770]"></div>
-                   Live Impact
-                 </div>
-                 <div className="flex items-center gap-1 text-[11px] text-gray-400 font-medium">
-                   <LineChart size={12} /> Update real-time
-                 </div>
-               </div>
-
-               {/* Metrics Grid inside card */}
-               <div className="grid grid-cols-2 gap-4 mb-4">
-                 
-                 {/* Card 1 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-10 h-10 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Recycle size={18} />
-                     </div>
-                     <span className="text-[10px] text-gray-300">°</span>
-                   </div>
-                   <h4 className="text-[11px] font-semibold text-[#1a3626] mb-1">Plastic Diverted</h4>
-                   <p className="text-xl font-bold text-[#1a3626] mb-1">12,450 <span className="text-xs font-semibold">KG</span></p>
-                   <p className="text-[10px] text-gray-500 mb-1">≈ 562 botol plastik</p>
-                   <p className="text-[10px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 12%</p>
-                 </div>
-
-                 {/* Card 2 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-10 h-10 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Users size={18} />
-                     </div>
-                     <span className="text-[10px] text-gray-300">°</span>
-                   </div>
-                   <h4 className="text-[11px] font-semibold text-[#1a3626] mb-1">Local Makers</h4>
-                   <p className="text-xl font-bold text-[#1a3626] mb-1">120+</p>
-                   <p className="text-[10px] text-gray-500 mb-1">pengrajin lokal</p>
-                   <p className="text-[10px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 8%</p>
-                 </div>
-
-                 {/* Card 3 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-10 h-10 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Box size={18} />
-                     </div>
-                   </div>
-                   <h4 className="text-[11px] font-semibold text-[#1a3626] mb-1">Corporate Orders</h4>
-                   <p className="text-xl font-bold text-[#1a3626] mb-1">85</p>
-                   <p className="text-[10px] text-gray-500 mb-1">pesanan perusahaan</p>
-                   <p className="text-[10px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 15%</p>
-                 </div>
-
-                 {/* Card 4 - Green Highlight */}
-                 <div className="bg-[#e8efe9] border border-[#5c8770]/20 rounded-2xl p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group cursor-pointer">
-                   <div className="w-10 h-10 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-2">
-                     <Sprout size={18} />
-                   </div>
-                   <h4 className="text-[11px] font-bold text-[#1a3626] mb-1">ESG Impact Ready</h4>
-                   <p className="text-[10px] text-[#4a5f52] leading-tight pr-4">Laporan dampak tersedia untuk setiap transaksi</p>
-                   <ArrowRight size={14} className="text-[#5c8770] absolute bottom-4 right-4 group-hover:translate-x-1 transition-transform" />
-                 </div>
-               </div>
-
-               {/* Bottom Image Banner inside the card */}
-               <div className="w-full h-44 rounded-2xl overflow-hidden relative mt-2">
-                 {/* Fallback image from Unsplash representing eco-merch */}
-                 <img src="https://images.unsplash.com/photo-1605600659908-0ef719419d41?auto=format&fit=crop&q=80&w=800" alt="Eco Merchandise" className="w-full h-full object-cover" />
-                 
-                 {/* Dark overlay for better text readability */}
-                 <div className="absolute inset-0 bg-[#1a3626]/20"></div>
-
-                 {/* Floating CTA over image */}
-                 <div className="absolute top-4 right-4 bg-white/95 backdrop-blur rounded-xl p-3 shadow-lg w-36">
-                   <p className="text-[10px] font-bold text-[#1a3626] leading-tight mb-3">Dari Sampah Lokal Menuju Produk Bernilai</p>
-                   <div className="w-6 h-6 rounded-full border border-[#f3c44c] flex items-center justify-center text-[#f3c44c]">
-                     <ArrowRight size={12} />
-                   </div>
-                 </div>
-                 
-                 {/* Watermark Logo */}
-                 <div className="absolute bottom-4 left-4 flex flex-col items-center opacity-80">
-                   <img src="/logo.png" alt="Circulo" className="w-8 h-8 mb-1 drop-shadow-md" />
-                   <span className="text-white font-bold text-xs drop-shadow-md">Circulo</span>
-                 </div>
-               </div>
-
-             </div>
-          </div>
         </div>
       </section>
 
