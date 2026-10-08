@@ -34,7 +34,7 @@ export default function LandingPage() {
       </div>
       
       {/* Navigation */}
-      <nav className="w-full px-8 py-6 z-50 relative">
+      <nav className="w-full px-8 py-4 z-50 sticky top-0 bg-[#f8f7f2]/80 backdrop-blur-md border-b border-[#1a3626]/5 shadow-sm">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 text-2xl font-bold text-[#1a3626]">
             <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
