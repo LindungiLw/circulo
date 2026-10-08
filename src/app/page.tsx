@@ -282,8 +282,8 @@ export default function LandingPage() {
            {/* Material Transformation Grid */}
            <div className="grid md:grid-cols-3 gap-8">
              {/* Material 1 */}
-             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
-               <div className="w-14 h-14 bg-[#e8efe9] rounded-2xl flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+             <div className="bg-[#f8f7f2] rounded-none p-8 border border-[#1a3626]/10 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
                  <Recycle size={28} />
                </div>
                <h4 className="text-xl font-bold text-[#1a3626] mb-3">Plastik PET & HDPE</h4>
@@ -295,8 +295,8 @@ export default function LandingPage() {
              </div>
 
              {/* Material 2 */}
-             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
-               <div className="w-14 h-14 bg-[#fdf5df] rounded-2xl flex items-center justify-center text-[#f3c44c] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+             <div className="bg-[#f8f7f2] rounded-none p-8 border border-[#1a3626]/10 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#f3c44c] mb-6 group-hover:scale-110 transition-transform shadow-sm">
                  <Box size={28} />
                </div>
                <h4 className="text-xl font-bold text-[#1a3626] mb-3">Kain Perca & Tekstil</h4>
@@ -308,8 +308,8 @@ export default function LandingPage() {
              </div>
 
              {/* Material 3 */}
-             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
-               <div className="w-14 h-14 bg-[#e8efe9] rounded-2xl flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+             <div className="bg-[#f8f7f2] rounded-none p-8 border border-[#1a3626]/10 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
                  <Sprout size={28} />
                </div>
                <h4 className="text-xl font-bold text-[#1a3626] mb-3">Kertas & Biomassa</h4>
