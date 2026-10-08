@@ -48,7 +48,7 @@ export default function LandingPage() {
       </div>
       
       {/* Navigation */}
-      <nav className={`w-full px-8 z-50 sticky top-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2]/90 backdrop-blur-md border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
+      <nav className={`w-full px-8 z-50 sticky top-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2] border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 text-2xl font-bold text-[#1a3626]">
             <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
