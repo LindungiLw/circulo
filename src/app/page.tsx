@@ -35,7 +35,7 @@ export default function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f8f7f2] flex flex-col font-sans overflow-hidden relative">
+    <div className="min-h-screen bg-[#f8f7f2] flex flex-col font-sans overflow-x-hidden relative">
       
       {/* Decorative Background Elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
@@ -48,7 +48,7 @@ export default function LandingPage() {
       </div>
       
       {/* Navigation */}
-      <nav className={`w-full px-8 z-50 sticky top-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2] border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
+      <nav className={`w-full px-8 z-50 fixed top-0 left-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2] border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 text-2xl font-bold text-[#1a3626]">
             <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
@@ -71,7 +71,7 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="w-full pt-10 pb-20 px-8 relative z-10">
+      <section className="w-full pt-32 pb-20 px-8 relative z-10">
         <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           
           {/* LEFT: Visual Composition (Circular Graphic + Overlapping Card) */}
