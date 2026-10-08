@@ -240,6 +240,90 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Impact & Materials Section */}
+      <section className="w-full py-24 bg-white relative z-10">
+        <div className="max-w-7xl mx-auto px-8">
+           {/* Section Header */}
+           <div className="text-center max-w-2xl mx-auto mb-20">
+             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] mb-6 tracking-tight">Menciptakan Nilai Baru<br/>dari Limbah</h2>
+             <p className="text-[#4a5f52] text-lg">
+               Circulo tidak hanya menyediakan merchandise, tetapi juga mengelola rantai pasok berdampak yang memberdayakan komunitas dan menyelamatkan lingkungan.
+             </p>
+           </div>
+           
+           {/* Big Stats */}
+           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-24">
+             {/* Stat 1 */}
+             <div className="text-center">
+               <h3 className="text-5xl font-extrabold text-[#5c8770] mb-2">12.4<span className="text-2xl">Ton</span></h3>
+               <p className="text-[#1a3626] font-bold">Limbah Terdiversi</p>
+               <p className="text-xs text-gray-500 mt-1">Dari TPA dan Lautan</p>
+             </div>
+             {/* Stat 2 */}
+             <div className="text-center">
+               <h3 className="text-5xl font-extrabold text-[#f3c44c] mb-2">120+</h3>
+               <p className="text-[#1a3626] font-bold">Pengrajin Lokal</p>
+               <p className="text-xs text-gray-500 mt-1">Diberdayakan secara ekonomi</p>
+             </div>
+             {/* Stat 3 */}
+             <div className="text-center">
+               <h3 className="text-5xl font-extrabold text-[#5c8770] mb-2">85+</h3>
+               <p className="text-[#1a3626] font-bold">Mitra Korporat</p>
+               <p className="text-xs text-gray-500 mt-1">Beralih ke eco-merch</p>
+             </div>
+             {/* Stat 4 */}
+             <div className="text-center">
+               <h3 className="text-5xl font-extrabold text-[#f3c44c] mb-2">100%</h3>
+               <p className="text-[#1a3626] font-bold">Terlacak</p>
+               <p className="text-xs text-gray-500 mt-1">Laporan ESG Transparan</p>
+             </div>
+           </div>
+
+           {/* Material Transformation Grid */}
+           <div className="grid md:grid-cols-3 gap-8">
+             {/* Material 1 */}
+             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#e8efe9] rounded-2xl flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+                 <Recycle size={28} />
+               </div>
+               <h4 className="text-xl font-bold text-[#1a3626] mb-3">Plastik PET & HDPE</h4>
+               <p className="text-sm text-[#4a5f52] mb-6 leading-relaxed">Limbah botol dan kemasan plastik sekali pakai disortir dan diproses menjadi benang untuk kain daur ulang (rPET).</p>
+               <div className="pt-6 border-t border-[#1a3626]/10">
+                 <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk</p>
+                 <p className="font-semibold text-[#1a3626]">Totebag, Pouch, & Lanyard</p>
+               </div>
+             </div>
+
+             {/* Material 2 */}
+             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#fdf5df] rounded-2xl flex items-center justify-center text-[#f3c44c] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+                 <Box size={28} />
+               </div>
+               <h4 className="text-xl font-bold text-[#1a3626] mb-3">Kain Perca & Tekstil</h4>
+               <p className="text-sm text-[#4a5f52] mb-6 leading-relaxed">Sisa potongan industri garmen lokal disortir berdasarkan warna dan dirajut kembali tanpa pewarna kimia tambahan.</p>
+               <div className="pt-6 border-t border-[#1a3626]/10">
+                 <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk</p>
+                 <p className="font-semibold text-[#1a3626]">Kaos Acara, Topi, & Selimut</p>
+               </div>
+             </div>
+
+             {/* Material 3 */}
+             <div className="bg-[#f8f7f2] rounded-3xl p-8 border border-[#1a3626]/5 hover:shadow-xl transition-all group">
+               <div className="w-14 h-14 bg-[#e8efe9] rounded-2xl flex items-center justify-center text-[#5c8770] mb-6 group-hover:scale-110 transition-transform shadow-sm">
+                 <Sprout size={28} />
+               </div>
+               <h4 className="text-xl font-bold text-[#1a3626] mb-3">Kertas & Biomassa</h4>
+               <p className="text-sm text-[#4a5f52] mb-6 leading-relaxed">Limbah kertas kantor dan serat alam (pelepah pinang, sabut kelapa) dihancurkan dan dicetak menjadi bahan padat.</p>
+               <div className="pt-6 border-t border-[#1a3626]/10">
+                 <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk</p>
+                 <p className="font-semibold text-[#1a3626]">Agenda, Packaging, & Nametag</p>
+               </div>
+             </div>
+           </div>
+           
+        </div>
+      </section>
+
     </div>
   );
 }
