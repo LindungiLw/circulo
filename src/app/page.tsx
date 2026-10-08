@@ -80,18 +80,19 @@ export default function LandingPage() {
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute left-[-35px] w-[590px] h-[590px] z-20 pointer-events-none">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <path id="curve" d="M 100 190 A 90 90 0 0 1 10 100" fill="transparent" />
-                  <text className="text-[8px] font-extrabold fill-[#5c8770] tracking-[0.4em] uppercase">
+             <div className="absolute left-[-20px] w-[560px] h-[560px] z-20 pointer-events-none">
+                <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                  {/* Clockwise circle starting from bottom center, sitting outside the donut chart */}
+                  <path id="curve" d="M 50 105 A 55 55 0 1 1 49.9 105" fill="transparent" />
+                  <text className="text-[4px] font-bold fill-[#5c8770] tracking-[0.3em] uppercase">
                     <textPath href="#curve" startOffset="10%">
                       From Waste to Value
                     </textPath>
                   </text>
+                  {/* Yellow decorative dots placed perfectly along the radius */}
+                  <circle cx="22" cy="92" r="1.2" fill="#f3c44c" />
+                  <circle cx="1" cy="53" r="1.2" fill="#f3c44c" />
                 </svg>
-                {/* Yellow decorative dots */}
-                <div className="absolute bottom-[75px] left-[140px] w-3 h-3 rounded-full bg-[#f3c44c]"></div>
-                <div className="absolute bottom-[260px] left-[25px] w-3 h-3 rounded-full bg-[#f3c44c]"></div>
              </div>
 
              {/* Live Impact Card (Overlapping on the right) */}
