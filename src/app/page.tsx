@@ -49,7 +49,7 @@ export default function LandingPage() {
             <Link href="/dashboard" className="hidden md:block text-[#1a3626] font-semibold text-sm hover:opacity-70">
               Masuk Klien
             </Link>
-            <Link href="/dashboard" className="bg-[#f3c44c] text-[#1a3626] px-6 py-2.5 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#e3b43c] transition-colors shadow-sm">
+            <Link href="/dashboard" className="bg-[#f3c44c] text-[#1a3626] px-6 py-2.5 rounded-none font-bold text-sm flex items-center gap-2 hover:bg-[#e3b43c] transition-colors shadow-sm">
               Coba Dashboard <ArrowRight size={16} />
             </Link>
           </div>
