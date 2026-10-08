@@ -80,27 +80,22 @@ export default function LandingPage() {
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute left-[-25px] w-[570px] h-[570px] z-20 pointer-events-none">
+             <div className="absolute left-[-35px] w-[590px] h-[590px] z-20 pointer-events-none">
                 <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <path id="curve" d="M 100 180 A 80 80 0 0 1 20 100" fill="transparent" />
-                  <text className="text-[6px] font-bold fill-[#5c8770] tracking-[0.3em] uppercase">
-                    <textPath href="#curve" startOffset="15%">
+                  <path id="curve" d="M 100 190 A 90 90 0 0 1 10 100" fill="transparent" />
+                  <text className="text-[8px] font-extrabold fill-[#5c8770] tracking-[0.4em] uppercase">
+                    <textPath href="#curve" startOffset="10%">
                       From Waste to Value
                     </textPath>
                   </text>
                 </svg>
                 {/* Yellow decorative dots */}
-                <div className="absolute bottom-[80px] left-[135px] w-2.5 h-2.5 rounded-full bg-[#f3c44c]"></div>
-                <div className="absolute bottom-[230px] left-[20px] w-2 h-2 rounded-full bg-[#f3c44c]"></div>
+                <div className="absolute bottom-[75px] left-[140px] w-3 h-3 rounded-full bg-[#f3c44c]"></div>
+                <div className="absolute bottom-[260px] left-[25px] w-3 h-3 rounded-full bg-[#f3c44c]"></div>
              </div>
 
              {/* Live Impact Card (Overlapping on the right) */}
              <div className="absolute right-0 lg:-right-16 top-1/2 -translate-y-1/2 bg-white rounded-3xl p-5 shadow-[0_20px_50px_rgba(26,54,38,0.1)] border border-gray-100 z-30 w-[380px]">
-               {/* Card Header */}
-               <div className="flex items-center gap-2 text-[#1a3626] font-bold mb-4">
-                 <div className="w-2 h-2 rounded-full bg-[#5c8770]"></div>
-                 Live Impact
-               </div>
 
                {/* Metrics Grid inside card */}
                <div className="grid grid-cols-2 gap-3 mb-3">
