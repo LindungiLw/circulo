@@ -99,13 +99,13 @@ export default function LandingPage() {
                   {/* Clockwise circle starting from bottom center, sitting outside the donut chart */}
                   <path id="curve" d="M 50 105 A 55 55 0 1 1 49.9 105" fill="transparent" />
                   <text className="text-[4px] font-bold fill-[#5c8770] tracking-[0.3em] uppercase">
-                    <textPath href="#curve" startOffset="10%">
+                    <textPath href="#curve" startOffset="20%">
                       From Waste to Value
                     </textPath>
                   </text>
                   {/* Yellow decorative dots placed perfectly along the radius */}
-                  <circle cx="22" cy="92" r="1.2" fill="#f3c44c" />
-                  <circle cx="1" cy="53" r="1.2" fill="#f3c44c" />
+                  <circle cx="1" cy="74" r="1.2" fill="#f3c44c" />
+                  <circle cx="3" cy="23" r="1.2" fill="#f3c44c" />
                 </svg>
              </div>
 
