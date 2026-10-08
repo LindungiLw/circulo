@@ -12,12 +12,26 @@ export default function LandingPage() {
   ];
   
   const [currentImg, setCurrentImg] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % transitionImages.length);
     }, 4000);
     return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -34,7 +48,7 @@ export default function LandingPage() {
       </div>
       
       {/* Navigation */}
-      <nav className="w-full px-8 py-4 z-50 sticky top-0 bg-[#f8f7f2]/80 backdrop-blur-md border-b border-[#1a3626]/5 shadow-sm">
+      <nav className={`w-full px-8 z-50 sticky top-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2]/90 backdrop-blur-md border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-3 text-2xl font-bold text-[#1a3626]">
             <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
