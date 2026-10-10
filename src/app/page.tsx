@@ -339,7 +339,7 @@ export default function LandingPage() {
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-[#1a3626] z-10 rounded-none border border-[#1a3626]/10">Best Seller</div>
-                   <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800" alt="Tote Bag" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_tote_bag.jpg" alt="Tote Bag" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Tote Bag Daur Ulang</h4>
                  <p className="text-sm text-[#4a5f52]">Dari limbah botol PET (rPET)</p>
@@ -348,7 +348,7 @@ export default function LandingPage() {
                {/* Product 2 */}
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=800" alt="Notebook" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_notebook.jpg" alt="Notebook" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Notebook Recycled Paper</h4>
                  <p className="text-sm text-[#4a5f52]">Kertas daur ulang & cover serat alam</p>
@@ -357,7 +357,7 @@ export default function LandingPage() {
                {/* Product 3 */}
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Corporate Gift Set" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_gift_set.jpg" alt="Corporate Gift Set" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Corporate Gift Set</h4>
                  <p className="text-sm text-[#4a5f52]">Custom combo untuk onboarding/event</p>
@@ -366,7 +366,7 @@ export default function LandingPage() {
                {/* Product 4 */}
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="https://images.unsplash.com/photo-1587391807357-19d2861cda52?auto=format&fit=crop&q=80&w=800" alt="Lanyard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_lanyard.jpg" alt="Lanyard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Lanyard & ID Holder</h4>
                  <p className="text-sm text-[#4a5f52]">Tali rPET & Holder plastik daur ulang</p>
@@ -375,7 +375,7 @@ export default function LandingPage() {
                {/* Product 5 */}
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?auto=format&fit=crop&q=80&w=800" alt="Laptop Sleeve" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_laptop_sleeve.jpg" alt="Laptop Sleeve" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Laptop Sleeve Upcycled</h4>
                  <p className="text-sm text-[#4a5f52]">Dari sisa kain tekstil premium</p>
@@ -384,7 +384,7 @@ export default function LandingPage() {
                {/* Product 6 */}
                <div className="group cursor-pointer">
                  <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="https://images.unsplash.com/photo-1506544758652-5a498b31a38a?auto=format&fit=crop&q=80&w=800" alt="Desk Organizer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   <img src="/images/eco_desk_organizer.jpg" alt="Desk Organizer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                  </div>
                  <h4 className="text-lg font-bold text-[#1a3626] mb-1">Desk Organizer Recycled</h4>
                  <p className="text-sm text-[#4a5f52]">Komposit biomassa & limbah plastik</p>
