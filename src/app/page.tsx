@@ -320,6 +320,83 @@ export default function LandingPage() {
                </div>
              </div>
            </div>
+
+           {/* Product Catalog Section */}
+           <div className="mt-32">
+             <div className="flex justify-between items-end mb-12">
+               <div className="max-w-xl">
+                 <h2 className="text-4xl font-extrabold text-[#1a3626] mb-4">Katalog Eco-Merch Premium</h2>
+                 <p className="text-[#4a5f52]">Berbagai pilihan merchandise korporat yang dapat dikustomisasi, terbuat 100% dari limbah yang telah di-upcycle dan di-recycle.</p>
+               </div>
+               <Link href="/katalog" className="hidden md:flex items-center gap-2 text-[#5c8770] font-bold hover:text-[#1a3626] transition-colors">
+                 Lihat Semua Katalog <ArrowRight size={20} />
+               </Link>
+             </div>
+
+             {/* Grid 6 Products */}
+             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+               {/* Product 1 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-[#1a3626] z-10 rounded-none border border-[#1a3626]/10">Best Seller</div>
+                   <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800" alt="Tote Bag" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Tote Bag Daur Ulang</h4>
+                 <p className="text-sm text-[#4a5f52]">Dari limbah botol PET (rPET)</p>
+               </div>
+
+               {/* Product 2 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=800" alt="Notebook" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Notebook Recycled Paper</h4>
+                 <p className="text-sm text-[#4a5f52]">Kertas daur ulang & cover serat alam</p>
+               </div>
+
+               {/* Product 3 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800" alt="Corporate Gift Set" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Corporate Gift Set</h4>
+                 <p className="text-sm text-[#4a5f52]">Custom combo untuk onboarding/event</p>
+               </div>
+
+               {/* Product 4 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <img src="https://images.unsplash.com/photo-1587391807357-19d2861cda52?auto=format&fit=crop&q=80&w=800" alt="Lanyard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Lanyard & ID Holder</h4>
+                 <p className="text-sm text-[#4a5f52]">Tali rPET & Holder plastik daur ulang</p>
+               </div>
+
+               {/* Product 5 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <img src="https://images.unsplash.com/photo-1628151015968-3a4429e9ef04?auto=format&fit=crop&q=80&w=800" alt="Laptop Sleeve" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Laptop Sleeve Upcycled</h4>
+                 <p className="text-sm text-[#4a5f52]">Dari sisa kain tekstil premium</p>
+               </div>
+
+               {/* Product 6 */}
+               <div className="group cursor-pointer">
+                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
+                   <img src="https://images.unsplash.com/photo-1506544758652-5a498b31a38a?auto=format&fit=crop&q=80&w=800" alt="Desk Organizer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 </div>
+                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Desk Organizer Recycled</h4>
+                 <p className="text-sm text-[#4a5f52]">Komposit biomassa & limbah plastik</p>
+               </div>
+             </div>
+             
+             <div className="mt-8 flex justify-center md:hidden">
+               <Link href="/katalog" className="bg-[#1a3626] text-white px-8 py-3 rounded-none font-bold text-sm w-full text-center hover:bg-[#2a4a37] transition-colors">
+                 Lihat Semua Katalog
+               </Link>
+             </div>
+           </div>
            
         </div>
       </section>
