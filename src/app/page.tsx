@@ -94,18 +94,18 @@ export default function LandingPage() {
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute left-[-20px] w-[560px] h-[560px] z-20 pointer-events-none">
-                <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
-                  {/* Clockwise circle starting from bottom center, sitting outside the donut chart */}
-                  <path id="curve" d="M 50 105 A 55 55 0 1 1 49.9 105" fill="transparent" />
-                  <text className="text-[4px] font-bold fill-[#5c8770] tracking-[0.3em] uppercase">
-                    <textPath href="#curve" startOffset="20%">
+             <div className="absolute left-[-20px] w-[560px] h-[560px] z-20 pointer-events-none overflow-hidden">
+                <svg viewBox="0 0 100 100" className="w-full h-full">
+                  {/* Clockwise upper semicircle arc along top */}
+                  <path id="curve" d="M 8 50 A 42 42 0 0 1 92 50" fill="transparent" />
+                  <text className="text-[3.8px] font-bold fill-[#5c8770] tracking-[0.25em] uppercase" textAnchor="middle">
+                    <textPath href="#curve" startOffset="50%">
                       From Waste to Value
                     </textPath>
                   </text>
-                  {/* Yellow decorative dots placed perfectly along the radius */}
-                  <circle cx="1" cy="74" r="1.2" fill="#f3c44c" />
-                  <circle cx="3" cy="23" r="1.2" fill="#f3c44c" />
+                  {/* Yellow decorative dots on top curve */}
+                  <circle cx="24" cy="22" r="1.2" fill="#f3c44c" />
+                  <circle cx="76" cy="22" r="1.2" fill="#f3c44c" />
                 </svg>
              </div>
 
@@ -241,269 +241,162 @@ export default function LandingPage() {
       </section>
 
       {/* Impact & Materials Section */}
-      {/* Impact & Materials Section - Continuous Organic Design from Hero */}
       <section className="w-full py-24 relative z-10 overflow-hidden">
-        {/* Decorative Background Rings & Arcs continuing from Hero */}
+        {/* Decorative Background Rings & Arcs */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-          <div className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] border-[100px] border-[#d8e3dc]/50 rounded-full"></div>
-          <div className="absolute top-[35%] -right-[15%] w-[900px] h-[900px] border-[90px] border-[#f4e8c1]/60 rounded-full"></div>
-          <div className="absolute bottom-[5%] left-[20%] w-[600px] h-[600px] border-[1px] border-[#1a3626]/10 rounded-full"></div>
+          <div className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] border-[100px] border-[#d8e3dc]/40 rounded-full"></div>
+          <div className="absolute top-[35%] -right-[15%] w-[900px] h-[900px] border-[90px] border-[#f4e8c1]/50 rounded-full"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-gray-100 shadow-sm text-xs font-semibold text-[#1a3626] mb-4">
-              <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-              Dampak Terukur & Rantai Pasok Berkelanjutan
-            </div>
+          <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
-              Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span><span className="text-[#f3c44c]">.</span>
+              Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
             </h2>
-            <p className="text-base md:text-lg text-[#4a5f52] leading-relaxed">
-              Circulo tidak hanya menyediakan merchandise, tetapi juga mengelola rantai pasok berdampak yang memberdayakan komunitas pengrajin dan menyelamatkan lingkungan.
+            <p className="text-base text-[#4a5f52] leading-relaxed">
+              Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan.
             </p>
           </div>
 
-          {/* 4 Stats Cards - Matching Hero's Live Impact Card System */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {/* 4 Stats Cards - Clean, Square & Minimal */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {/* Stat 1 */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                    <Recycle size={22} />
-                  </div>
-                  <span className="text-xs text-[#5c8770] font-bold flex items-center gap-1 bg-[#e8efe9] px-2.5 py-1 rounded-full">
-                    <ArrowUpRight size={12} strokeWidth={3} /> 12%
-                  </span>
-                </div>
-                <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
-                  12.4<span className="text-xl font-bold text-[#5c8770]">Ton</span>
-                </p>
-                <h4 className="text-sm font-bold text-[#1a3626] mb-1">Limbah Terdiversi</h4>
-                <p className="text-xs text-gray-500">Diselamatkan dari TPA & pesisir lautan</p>
+            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
+                <Recycle size={22} />
               </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-400">
-                <span>≈ 562.000 botol plastik terkelola</span>
-              </div>
+              <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
+                12.4<span className="text-xl font-bold text-[#5c8770]">Ton</span>
+              </p>
+              <h4 className="text-sm font-bold text-[#1a3626]">Limbah Terdiversi</h4>
+              <p className="text-xs text-gray-500 mt-1">Dari TPA dan ekosistem lautan</p>
             </div>
 
             {/* Stat 2 */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 bg-[#fdf5df] rounded-full flex items-center justify-center text-[#1a3626]">
-                    <Users size={22} />
-                  </div>
-                  <span className="text-xs text-[#1a3626] font-bold flex items-center gap-1 bg-[#fdf5df] px-2.5 py-1 rounded-full">
-                    <ArrowUpRight size={12} strokeWidth={3} className="text-[#f3c44c]" /> 8%
-                  </span>
-                </div>
-                <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
-                  120<span className="text-2xl font-bold text-[#f3c44c]">+</span>
-                </p>
-                <h4 className="text-sm font-bold text-[#1a3626] mb-1">Pengrajin Lokal</h4>
-                <p className="text-xs text-gray-500">Diberdayakan secara ekonomi</p>
+            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] mb-4">
+                <Users size={22} />
               </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-400">
-                <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-                <span>Standar upah layak (fair-wage)</span>
-              </div>
+              <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
+                120<span className="text-2xl font-bold text-[#f3c44c]">+</span>
+              </p>
+              <h4 className="text-sm font-bold text-[#1a3626]">Pengrajin Lokal</h4>
+              <p className="text-xs text-gray-500 mt-1">Diberdayakan secara ekonomi</p>
             </div>
 
             {/* Stat 3 */}
-            <div className="bg-white border border-gray-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                    <Box size={22} />
-                  </div>
-                  <span className="text-xs text-[#5c8770] font-bold flex items-center gap-1 bg-[#e8efe9] px-2.5 py-1 rounded-full">
-                    <ArrowUpRight size={12} strokeWidth={3} /> 15%
-                  </span>
-                </div>
-                <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
-                  85<span className="text-2xl font-bold text-[#5c8770]">+</span>
-                </p>
-                <h4 className="text-sm font-bold text-[#1a3626] mb-1">Mitra Korporat</h4>
-                <p className="text-xs text-gray-500">Beralih ke pengadaan eco-merch</p>
+            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
+                <Box size={22} />
               </div>
-              <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-gray-400">
-                <span>Perusahaan nasional & multinasional</span>
-              </div>
+              <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
+                85<span className="text-2xl font-bold text-[#5c8770]">+</span>
+              </p>
+              <h4 className="text-sm font-bold text-[#1a3626]">Mitra Korporat</h4>
+              <p className="text-xs text-gray-500 mt-1">Beralih ke eco-merchandise</p>
             </div>
 
-            {/* Stat 4 - Signature Green Highlight Card from Hero */}
-            <div className="bg-[#e8efe9] border border-[#5c8770]/30 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <div className="w-12 h-12 bg-[#5c8770] rounded-full flex items-center justify-center text-white">
-                    <Sprout size={22} />
-                  </div>
-                  <span className="text-xs text-[#1a3626] font-bold bg-white px-2.5 py-1 rounded-full shadow-xs flex items-center gap-1">
-                    <ShieldCheck size={12} className="text-[#5c8770]" /> Audit Ready
-                  </span>
-                </div>
-                <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
-                  100<span className="text-2xl font-bold text-[#5c8770]">%</span>
-                </p>
-                <h4 className="text-sm font-bold text-[#1a3626] mb-1">Terlacak & Transparan</h4>
-                <p className="text-xs text-[#4a5f52]">Laporan ESG komprehensif untuk setiap batch pemesanan</p>
+            {/* Stat 4 */}
+            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#5c8770] mb-4">
+                <Sprout size={22} />
               </div>
-              <div className="mt-4 pt-3 border-t border-[#5c8770]/20 flex items-center justify-between text-[11px] font-semibold text-[#1a3626]">
-                <span>Validasi jejak karbon & QR</span>
-                <ArrowRight size={14} className="text-[#5c8770] group-hover:translate-x-1 transition-transform" />
-              </div>
+              <p className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] tracking-tight mb-1">
+                100<span className="text-2xl font-bold text-[#5c8770]">%</span>
+              </p>
+              <h4 className="text-sm font-bold text-[#1a3626]">Terlacak & Transparan</h4>
+              <p className="text-xs text-gray-500 mt-1">Laporan ESG komprehensif</p>
             </div>
           </div>
 
-          {/* 3 Material Transformation Cards - Crafted with Photos & Soft Geometry */}
+          {/* 3 Material Transformation Cards - Square & Concise */}
           <div className="mb-4">
-            <div className="text-center max-w-xl mx-auto mb-12">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1a3626] mb-2">3 Alur Pengolahan Material</h3>
-              <p className="text-sm text-[#4a5f52]">Bagaimana limbah residu diolah secara bertanggung jawab menjadi produk bernilai tinggi.</p>
-            </div>
-
             <div className="grid md:grid-cols-3 gap-8">
               {/* Material 1: Plastik PET & HDPE */}
-              <div className="bg-white border border-gray-100 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626] group-hover:scale-110 transition-transform">
-                      <Recycle size={24} />
-                    </div>
-                    <span className="px-3 py-1 bg-[#e8efe9] text-xs font-bold text-[#1a3626] rounded-full">
-                      Daur Ulang Plastik
-                    </span>
+                  <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
+                    <Recycle size={24} />
                   </div>
-
                   <h4 className="text-xl font-bold text-[#1a3626] mb-2">Plastik PET & HDPE</h4>
-                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-5">
-                    Limbah botol dan kemasan plastik sekali pakai disortir teliti, dicacah menjadi flakes murni, dan diekstrusi menjadi serat benang kain berkekuatan tinggi (rPET).
+                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
+                    Limbah botol dan kemasan plastik disortir lalu diproses menjadi benang kain daur ulang (rPET).
                   </p>
 
-                  {/* Photo Visual Preview */}
-                  <div className="w-full h-40 rounded-2xl overflow-hidden relative mb-5 bg-gray-100 shadow-inner">
+                  <div className="w-full h-44 rounded-none overflow-hidden relative mb-4 bg-gray-100 border border-gray-100">
                     <img 
                       src="https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&q=80&w=600" 
                       alt="Plastik PET Daur Ulang" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <p className="text-xs font-bold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-                        Botol Pasca-Konsumsi → Benang rPET
-                      </p>
+                    <div className="absolute bottom-2.5 left-2.5 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-[#1a3626] border border-[#1a3626]/10 rounded-none shadow-xs">
+                      rPET Yarn & Pellets
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-5 border-t border-gray-100">
-                  <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk:</p>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Totebag</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Pouch</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Lanyard</span>
-                  </div>
-                  <p className="text-xs text-[#5c8770] font-semibold flex items-center gap-1">
-                    <ArrowUpRight size={13} strokeWidth={3} /> Reduksi hingga 70% emisi karbon
-                  </p>
+                <div className="pt-4 border-t border-[#1a3626]/10">
+                  <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Menjadi Produk</p>
+                  <p className="font-semibold text-sm text-[#1a3626]">Totebag, Pouch, & Lanyard</p>
                 </div>
               </div>
 
               {/* Material 2: Kain Perca & Tekstil */}
-              <div className="bg-white border border-gray-100 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 bg-[#fdf5df] rounded-full flex items-center justify-center text-[#1a3626] group-hover:scale-110 transition-transform">
-                      <Box size={24} />
-                    </div>
-                    <span className="px-3 py-1 bg-[#fdf5df] text-xs font-bold text-[#1a3626] rounded-full">
-                      Upcycle Tekstil
-                    </span>
+                  <div className="w-12 h-12 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
+                    <Box size={24} />
                   </div>
-
                   <h4 className="text-xl font-bold text-[#1a3626] mb-2">Kain Perca & Tekstil</h4>
-                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-5">
-                    Sisa potongan industri garmen lokal disortir berdasarkan warna asli dan dirajut kembali oleh mitra pengrajin tanpa penggunaan bahan kimia pewarna tambahan.
+                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
+                    Sisa potongan industri garmen lokal disortir warna dan dirajut kembali tanpa pewarna kimia tambahan.
                   </p>
 
-                  {/* Photo Visual Preview */}
-                  <div className="w-full h-40 rounded-2xl overflow-hidden relative mb-5 bg-gray-100 shadow-inner">
+                  <div className="w-full h-44 rounded-none overflow-hidden relative mb-4 bg-gray-100 border border-gray-100">
                     <img 
                       src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600" 
                       alt="Kain Perca Tekstil" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <p className="text-xs font-bold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-                        Perca Industri → Tenun Tanpa Pewarna
-                      </p>
+                    <div className="absolute bottom-2.5 left-2.5 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-[#1a3626] border border-[#1a3626]/10 rounded-none shadow-xs">
+                      Upcycled Fabric
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-5 border-t border-gray-100">
-                  <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk:</p>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Kaos Acara</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Topi Upcycled</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Selimut</span>
-                  </div>
-                  <p className="text-xs text-[#5c8770] font-semibold flex items-center gap-1">
-                    <ArrowUpRight size={13} strokeWidth={3} /> Hemat 2.400L air bersih / kg
-                  </p>
+                <div className="pt-4 border-t border-[#1a3626]/10">
+                  <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Menjadi Produk</p>
+                  <p className="font-semibold text-sm text-[#1a3626]">Kaos Acara, Topi, & Selimut</p>
                 </div>
               </div>
 
               {/* Material 3: Kertas & Biomassa */}
-              <div className="bg-white border border-gray-100 rounded-3xl p-6 sm:p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626] group-hover:scale-110 transition-transform">
-                      <Sprout size={24} />
-                    </div>
-                    <span className="px-3 py-1 bg-[#e8efe9] text-xs font-bold text-[#1a3626] rounded-full">
-                      Serat & Biomassa
-                    </span>
+                  <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
+                    <Sprout size={24} />
                   </div>
-
                   <h4 className="text-xl font-bold text-[#1a3626] mb-2">Kertas & Biomassa</h4>
-                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-5">
-                    Limbah kertas kantor dan serat alam (pelepah pinang, sabut kelapa) dihancurkan dan dicetak menjadi bahan komposit padat yang ramah lingkungan dan kokoh.
+                  <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
+                    Limbah kertas kantor dan serat alam (pelepah pinang, sabut kelapa) dicetak menjadi bahan komposit padat.
                   </p>
 
-                  {/* Photo Visual Preview */}
-                  <div className="w-full h-40 rounded-2xl overflow-hidden relative mb-5 bg-gray-100 shadow-inner">
+                  <div className="w-full h-44 rounded-none overflow-hidden relative mb-4 bg-gray-100 border border-gray-100">
                     <img 
                       src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?auto=format&fit=crop&q=80&w=600" 
                       alt="Kertas dan Biomassa" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    <div className="absolute bottom-3 left-3 right-3 text-white">
-                      <p className="text-xs font-bold flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-                        Kertas Kantor + Serat Alam → Komposit Padat
-                      </p>
+                    <div className="absolute bottom-2.5 left-2.5 bg-white/95 px-2.5 py-1 text-[11px] font-bold text-[#1a3626] border border-[#1a3626]/10 rounded-none shadow-xs">
+                      Natural Fiber Pulp
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-5 border-t border-gray-100">
-                  <p className="text-xs font-bold text-gray-400 mb-2 uppercase tracking-wider">Menjadi Produk:</p>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Agenda</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Packaging</span>
-                    <span className="px-3 py-1 bg-[#f8f7f2] rounded-full text-xs font-semibold text-[#1a3626]">Nametag</span>
-                  </div>
-                  <p className="text-xs text-[#5c8770] font-semibold flex items-center gap-1">
-                    <ArrowUpRight size={13} strokeWidth={3} /> 100% Biodegradable & Ramah Alami
-                  </p>
+                <div className="pt-4 border-t border-[#1a3626]/10">
+                  <p className="text-xs font-bold text-gray-400 mb-1 uppercase tracking-wider">Menjadi Produk</p>
+                  <p className="font-semibold text-sm text-[#1a3626]">Agenda, Packaging, & Nametag</p>
                 </div>
               </div>
             </div>
