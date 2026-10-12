@@ -56,35 +56,36 @@ export default function LoginPage() {
         <div className="absolute -bottom-[20%] -right-[10%] w-[750px] h-[750px] border-[90px] border-[#f4e8c1]/40 rounded-full"></div>
       </div>
 
-      {/* Minimal Header */}
-      <header className="w-full px-6 sm:px-12 py-5 relative z-10 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2.5 group">
-          <img src="/logo.png" alt="Circulo Logo" className="w-7 h-7 object-contain transition-transform group-hover:rotate-12 duration-300" />
-          <span className="text-xl font-black text-[#1a3626] tracking-tight">Circulo</span>
-          <span className="text-[10px] font-mono uppercase bg-[#1a3626]/5 text-[#1a3626] px-2 py-0.5 border border-[#1a3626]/10 ml-1.5 font-bold">
-            Portal B2B
-          </span>
-        </Link>
 
-        <Link 
-          href="/" 
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors"
-        >
-          <ArrowLeft size={15} /> Kembali ke Beranda
-        </Link>
-      </header>
 
       {/* Main Content: Clean Focused Card */}
       <main className="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
         <div className="w-full max-w-[440px] bg-white border-2 border-[#1a3626] p-8 sm:p-10 shadow-xl">
           
+          {/* Brand & Back Navigation inside card */}
+          <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#1a3626]/10">
+            <Link href="/" className="flex items-center gap-2 group">
+              <img src="/logo.png" alt="Circulo Logo" className="w-7 h-7 object-contain transition-transform group-hover:rotate-12 duration-300" />
+              <span className="text-lg font-black text-[#1a3626] tracking-tight">Circulo</span>
+              <span className="text-[9px] font-mono uppercase bg-[#1a3626]/5 text-[#1a3626] px-1.5 py-0.5 border border-[#1a3626]/10 font-bold">
+                B2B
+              </span>
+            </Link>
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-1 text-[11px] font-bold text-gray-500 hover:text-[#1a3626] transition-colors"
+            >
+              <ArrowLeft size={13} /> Beranda
+            </Link>
+          </div>
+
           {/* Card Header */}
           <div className="mb-6 text-center">
             <h1 className="text-2xl font-black text-[#1a3626] tracking-tight mb-1.5">
               Masuk Portal Klien
             </h1>
             <p className="text-xs text-gray-500">
-              Akses sistem pengadaan & pelaporan dampak ESG
+              Akses modul pengadaan & pelaporan dampak ESG
             </p>
           </div>
 
