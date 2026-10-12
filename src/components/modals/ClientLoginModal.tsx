@@ -88,7 +88,14 @@ export default function ClientLoginModal({ isOpen, onClose }: ClientLoginModalPr
           Masuk ke Dashboard Klien <ArrowRight size={14} />
         </Link>
 
-        <div className="mt-4 text-center">
+        <div className="mt-4 text-center space-y-1.5">
+          <Link 
+            href="/login" 
+            onClick={onClose} 
+            className="block text-xs font-bold text-[#1a3626] hover:text-[#5c8770] hover:underline"
+          >
+            Buka Halaman Login Penuh Portal Klien →
+          </Link>
           <p className="text-[11px] text-gray-500">
             Belum menjadi mitra Circulo?{' '}
             <a href="#katalog" onClick={onClose} className="text-[#5c8770] font-bold hover:underline">

@@ -124,14 +124,13 @@ export default function Navbar() {
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-4">
-            <button
-              type="button"
-              onClick={() => setIsLoginOpen(true)}
+            <Link
+              href="/login"
               className="text-[#1a3626] font-bold text-xs sm:text-sm hover:text-[#5c8770] transition-colors px-2 py-1 flex items-center gap-1.5"
             >
               <Building2 size={16} />
               Masuk Klien
-            </button>
+            </Link>
 
             <Link 
               href="/dashboard" 

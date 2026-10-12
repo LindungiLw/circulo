@@ -103,15 +103,13 @@ export default function MobileMenu({
 
         {/* Footer Actions */}
         <div className="pt-6 border-t border-[#1a3626]/10 space-y-3">
-          <button
-            onClick={() => {
-              onClose();
-              onOpenLogin();
-            }}
+          <Link
+            href="/login"
+            onClick={onClose}
             className="w-full py-3 bg-transparent border border-[#1a3626] text-[#1a3626] font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#1a3626]/5 transition-colors"
           >
             <Building2 size={16} /> Masuk Akun Klien
-          </button>
+          </Link>
           
           <Link
             href="/dashboard"
