@@ -9,17 +9,9 @@ import {
   Lock, 
   Mail, 
   Eye, 
-  EyeOff, 
-  ShieldCheck, 
-  CheckCircle2
+  EyeOff
 } from 'lucide-react';
-import { 
-  CirculoAuditIcon, 
-  CirculoCustomCraftIcon, 
-  CirculoMakersIcon, 
-  CirculoPassIcon, 
-  CirculoLoopIcon 
-} from '@/components/icons/CirculoIcons';
+import { CirculoPassIcon } from '@/components/icons/CirculoIcons';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -39,10 +31,9 @@ export default function LoginPage() {
     setErrorMessage('');
     setIsLoading(true);
 
-    // Simulate authentication transition to dashboard
     setTimeout(() => {
       router.push('/dashboard');
-    }, 800);
+    }, 700);
   };
 
   const handleQuickDemoLogin = () => {
@@ -53,173 +44,76 @@ export default function LoginPage() {
 
     setTimeout(() => {
       router.push('/dashboard');
-    }, 600);
+    }, 500);
   };
 
   return (
     <div className="min-h-screen bg-[#f8f7f2] flex flex-col justify-between font-sans relative overflow-hidden">
       
-      {/* Decorative Background Arcs */}
+      {/* Decorative Organic Circular Arcs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-[15%] -left-[10%] w-[700px] h-[700px] border-[100px] border-[#d8e3dc]/40 rounded-full"></div>
-        <div className="absolute -bottom-[20%] -right-[10%] w-[800px] h-[800px] border-[100px] border-[#f4e8c1]/40 rounded-full"></div>
+        <div className="absolute -top-[15%] -left-[10%] w-[650px] h-[650px] border-[90px] border-[#d8e3dc]/40 rounded-full"></div>
+        <div className="absolute -bottom-[20%] -right-[10%] w-[750px] h-[750px] border-[90px] border-[#f4e8c1]/40 rounded-full"></div>
       </div>
 
-      {/* Top Navbar Header */}
-      <header className="w-full px-6 sm:px-12 py-6 relative z-10 flex justify-between items-center border-b border-[#1a3626]/10 bg-white/70 backdrop-blur-md">
-        <Link href="/" className="flex items-center gap-3 group">
-          <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain transition-transform group-hover:rotate-12 duration-300" />
-          <span className="text-2xl font-black text-[#1a3626] tracking-tight">Circulo</span>
-          <span className="hidden sm:inline-block text-[11px] font-mono uppercase bg-[#1a3626]/5 text-[#1a3626] px-2 py-0.5 border border-[#1a3626]/10 ml-2">
-            Client Portal
+      {/* Minimal Header */}
+      <header className="w-full px-6 sm:px-12 py-5 relative z-10 flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <img src="/logo.png" alt="Circulo Logo" className="w-7 h-7 object-contain transition-transform group-hover:rotate-12 duration-300" />
+          <span className="text-xl font-black text-[#1a3626] tracking-tight">Circulo</span>
+          <span className="text-[10px] font-mono uppercase bg-[#1a3626]/5 text-[#1a3626] px-2 py-0.5 border border-[#1a3626]/10 ml-1.5 font-bold">
+            Portal B2B
           </span>
         </Link>
 
         <Link 
           href="/" 
-          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors"
         >
-          <ArrowLeft size={16} /> Kembali ke Beranda
+          <ArrowLeft size={15} /> Kembali ke Beranda
         </Link>
       </header>
 
-      {/* Main Content: Split Editorial Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-8 py-10 sm:py-16 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-        
-        {/* Left Side: Editorial Benefits & Impact Ledger */}
-        <div className="lg:col-span-6 bg-[#1a3626] text-white p-8 sm:p-12 relative overflow-hidden shadow-xl flex flex-col justify-between min-h-[560px]">
-          {/* Subtle Ring Decoration */}
-          <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full border-[40px] border-white/5 pointer-events-none"></div>
-
-          <div>
-            {/* Architectural Category Tag - Distinct, Solid & Authentic, No AI Pulsing Pill */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="px-2.5 py-1 bg-[#f3c44c] text-[#1a3626] text-[10px] font-black uppercase tracking-widest">
-                PORTAL KORPORAT
-              </span>
-              <span className="text-[11px] font-mono text-white/70 tracking-widest uppercase">
-                CIR // SISTEM PENGADAAN & AUDIT ESG
-              </span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight leading-tight mb-4">
-              Kelola Eco-Merchandise & Pantau Jejak Dampak ESG.
-            </h1>
-
-            <p className="text-white/80 text-sm leading-relaxed mb-8">
-              Satu portal terpadu untuk tim *Procurement* dan *Sustainability* korporat dalam memesan merchandise ramah lingkungan dan mengunduh laporan audit dampak terverifikasi.
-            </p>
-
-            {/* Bespoke Perks Ledger with Custom Crafted Circulo Icons */}
-            <div className="space-y-5 mb-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
-                  <CirculoAuditIcon size={20} />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">01.</span>
-                    <h4 className="text-xs font-bold text-white tracking-wide">Audit & Sertifikasi ESG Per Batch</h4>
-                  </div>
-                  <p className="text-[11px] text-white/70 leading-relaxed">
-                    Unduh metrik kg limbah terkelola, reduksi emisi CO₂, dan nomor seri batch terverifikasi untuk laporan tahunan.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
-                  <CirculoCustomCraftIcon size={20} />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">02.</span>
-                    <h4 className="text-xs font-bold text-white tracking-wide">Kustomisasi Branding & Mockup Real-time</h4>
-                  </div>
-                  <p className="text-[11px] text-white/70 leading-relaxed">
-                    Unggah aset identitas korporat dan sesuaikan formulasi material daur ulang sesuai panduan desain merek.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
-                  <CirculoMakersIcon size={20} />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">03.</span>
-                    <h4 className="text-xs font-bold text-white tracking-wide">Transparansi Rantai Pasok Pengrajin</h4>
-                  </div>
-                  <p className="text-[11px] text-white/70 leading-relaxed">
-                    Akses ledger dampak ekonomi langsung kepada 120+ maker lokal berstandar kompensasi adil (*fair wage*).
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Social Proof Footer */}
-          <div className="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-white/70">
-            <span>Dipercaya 85+ Korporat Mitra</span>
-            <span className="font-bold text-[#f3c44c]">100% Traceable ESG</span>
-          </div>
-        </div>
-
-        {/* Right Side: Corporate Login Form */}
-        <div className="lg:col-span-6 bg-white border-2 border-[#1a3626] p-8 sm:p-10 shadow-xl relative">
+      {/* Main Content: Clean Focused Card */}
+      <main className="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
+        <div className="w-full max-w-[440px] bg-white border-2 border-[#1a3626] p-8 sm:p-10 shadow-xl">
           
-          <div className="mb-6">
-            <h2 className="text-2xl sm:text-3xl font-black text-[#1a3626] tracking-tight mb-2">
-              Masuk Akun Perusahaan
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-600">
-              Akses portal klien Circulo untuk mengelola katalog pesanan korporat.
+          {/* Card Header */}
+          <div className="mb-6 text-center">
+            <h1 className="text-2xl font-black text-[#1a3626] tracking-tight mb-1.5">
+              Masuk Portal Klien
+            </h1>
+            <p className="text-xs text-gray-500">
+              Akses sistem pengadaan & pelaporan dampak ESG
             </p>
           </div>
 
-          {/* Quick Demo Access Box (For BMC Competition Judges) */}
-          <div className="bg-[#f8f7f2] border-2 border-[#1a3626] p-4 mb-6 relative">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2 text-xs font-black text-[#1a3626] uppercase tracking-wide">
-                <CirculoPassIcon size={18} className="text-[#1a3626]" />
-                <span>AKSES PENGUJIAN EVALUATOR BMC</span>
-              </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#1a3626] text-[#f3c44c] font-bold">
-                BYPASS MODE
-              </span>
-            </div>
-            <p className="text-[11px] text-gray-600 mb-3 leading-snug">
-              Kredensial instan bagi dewan juri untuk menguji seluruh modul pemesanan dan pelaporan dampak tanpa registrasi.
-            </p>
+          {/* Quick Demo Access Button (No text walls, just 1 clean action button) */}
+          <div className="mb-6">
             <button
               type="button"
               onClick={handleQuickDemoLogin}
               disabled={isLoading}
-              className="w-full py-2.5 bg-white hover:bg-[#e8efe9] text-[#1a3626] border border-[#1a3626] text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
+              className="w-full py-2.5 px-3 bg-[#e8efe9] hover:bg-[#d8e6da] text-[#1a3626] border border-[#5c8770] text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
-              {isLoading ? 'Mengautentikasi Klien Demo...' : (
-                <>
-                  <CirculoLoopIcon size={16} className="text-[#5c8770]" />
-                  Masuk Instan: PT Lestari Hijau Nusantara
-                </>
-              )}
+              <CirculoPassIcon size={16} className="text-[#1a3626]" />
+              {isLoading ? 'Mengautentikasi Demo...' : 'Masuk Demo Juri (PT Lestari Hijau)'}
             </button>
           </div>
 
-          {/* Divider */}
+          {/* Clean Divider */}
           <div className="relative my-6 text-center">
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-gray-200"></div>
             </div>
-            <span className="relative bg-white px-3 text-[11px] font-mono text-gray-500 uppercase">
-              atau gunakan kredensial akun
+            <span className="relative bg-white px-3 text-[10px] font-mono text-gray-400 uppercase tracking-wider">
+              atau email akun
             </span>
           </div>
 
           {/* Error Message */}
           {errorMessage && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
+            <div className="mb-4 p-2.5 bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
               {errorMessage}
             </div>
           )}
@@ -237,9 +131,9 @@ export default function LoginPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="nama@perusahaan.co.id"
                   required
-                  className="w-full pl-10 pr-4 py-2.5 bg-white border border-[#1a3626]/20 text-xs text-[#1a3626] font-medium placeholder-gray-400 focus:outline-none focus:border-[#1a3626] focus:ring-1 focus:ring-[#1a3626]"
+                  className="w-full pl-9 pr-3 py-2.5 bg-white border border-[#1a3626]/20 text-xs text-[#1a3626] font-medium placeholder-gray-400 focus:outline-none focus:border-[#1a3626] focus:ring-1 focus:ring-[#1a3626]"
                 />
-                <Mail size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               </div>
             </div>
 
@@ -249,7 +143,7 @@ export default function LoginPage() {
                   Kata Sandi
                 </label>
                 <a href="#" className="text-[11px] font-semibold text-[#5c8770] hover:underline">
-                  Lupa kata sandi?
+                  Lupa sandi?
                 </a>
               </div>
               <div className="relative">
@@ -259,22 +153,22 @@ export default function LoginPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Masukkan kata sandi"
                   required
-                  className="w-full pl-10 pr-10 py-2.5 bg-white border border-[#1a3626]/20 text-xs text-[#1a3626] font-medium placeholder-gray-400 focus:outline-none focus:border-[#1a3626] focus:ring-1 focus:ring-[#1a3626]"
+                  className="w-full pl-9 pr-9 py-2.5 bg-white border border-[#1a3626]/20 text-xs text-[#1a3626] font-medium placeholder-gray-400 focus:outline-none focus:border-[#1a3626] focus:ring-1 focus:ring-[#1a3626]"
                 />
-                <Lock size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
                   aria-label={showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi'}
                 >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+                  {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
                 </button>
               </div>
             </div>
 
             <div className="flex items-center justify-between text-xs pt-1">
-              <label className="flex items-center gap-2 cursor-pointer text-gray-700">
+              <label className="flex items-center gap-2 cursor-pointer text-gray-600">
                 <input
                   type="checkbox"
                   checked={rememberMe}
@@ -291,35 +185,31 @@ export default function LoginPage() {
               className="w-full py-3 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-md mt-6 cursor-pointer"
             >
               {isLoading ? (
-                'Memverifikasi Akun...'
+                'Memverifikasi...'
               ) : (
                 <>
-                  Masuk ke Portal Klien <ArrowRight size={15} />
+                  Masuk ke Portal <ArrowRight size={14} />
                 </>
               )}
             </button>
           </form>
 
-          {/* Registration Assistance */}
-          <div className="mt-8 pt-6 border-t border-gray-100 text-center">
-            <p className="text-xs text-gray-600">
-              Perusahaan Anda belum terdaftar sebagai mitra pengadaan?
+          {/* Clean Helper Footer */}
+          <div className="mt-6 pt-5 border-t border-gray-100 text-center">
+            <p className="text-xs text-gray-500">
+              Belum terdaftar sebagai mitra?{' '}
+              <Link href="/#katalog" className="font-bold text-[#5c8770] hover:text-[#1a3626]">
+                Ajukan Kemitraan
+              </Link>
             </p>
-            <Link 
-              href="/#katalog" 
-              className="inline-flex items-center gap-1 text-xs font-bold text-[#5c8770] hover:text-[#1a3626] mt-1"
-            >
-              Ajukan Kemitraan Korporat <ArrowRight size={13} />
-            </Link>
           </div>
 
         </div>
-
       </main>
 
-      {/* Footer Minimal */}
-      <footer className="w-full py-6 px-8 border-t border-[#1a3626]/10 text-center text-xs text-gray-500 relative z-10 bg-white/50">
-        <p>© 2026 Circulo Indonesia. Platform Agregator Eco-Merchandise & Rantai Pasok Berkelanjutan.</p>
+      {/* Minimal Bottom Bar */}
+      <footer className="w-full py-4 px-6 text-center text-[11px] text-gray-400 relative z-10">
+        © 2026 Circulo Indonesia
       </footer>
 
     </div>
