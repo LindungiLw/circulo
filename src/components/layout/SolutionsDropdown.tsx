@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Package, Recycle, Users, FileCheck, ArrowRight, Sparkles } from 'lucide-react';
+import { Package, Recycle, Users, FileCheck, ArrowRight } from 'lucide-react';
 import { SOLUTIONS_DATA } from '@/data/navigation';
 import Link from 'next/link';
 
@@ -29,8 +29,8 @@ export default function SolutionsDropdown({ isOpen, onClose }: SolutionsDropdown
       onMouseLeave={onClose}
     >
       <div className="flex items-center justify-between pb-3 border-b border-[#1a3626]/10 mb-4">
-        <span className="text-[11px] font-mono tracking-wider uppercase text-[#5c8770] font-bold flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
+        <span className="text-[11px] font-mono tracking-wider uppercase text-[#1a3626] font-bold flex items-center gap-2">
+          <span className="w-1.5 h-3 bg-[#5c8770]"></span>
           EKOSISTEM SOLUSI B2B CIRCULO
         </span>
         <span className="text-[10px] text-gray-500 font-mono">

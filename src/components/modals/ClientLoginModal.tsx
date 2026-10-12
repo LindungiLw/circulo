@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { X, Lock, Building2, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { X, Lock, ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { CirculoPassIcon } from '@/components/icons/CirculoIcons';
 import Link from 'next/link';
 
 interface ClientLoginModalProps {
@@ -24,11 +25,12 @@ export default function ClientLoginModal({ isOpen, onClose }: ClientLoginModalPr
         {/* Header */}
         <div className="flex items-start justify-between pb-4 border-b border-[#1a3626]/10 mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#e8efe9] border border-[#5c8770]/30 flex items-center justify-center text-[#1a3626]">
-              <Building2 size={20} />
+            <div className="w-10 h-10 bg-[#e8efe9] border border-[#1a3626]/20 flex items-center justify-center text-[#1a3626]">
+              <CirculoPassIcon size={20} />
             </div>
             <div>
-              <div className="text-[10px] font-mono tracking-wider uppercase text-[#5c8770] font-bold">
+              <div className="text-[10px] font-mono tracking-wider uppercase text-[#1a3626] font-bold flex items-center gap-1.5">
+                <span className="w-1.5 h-3 bg-[#5c8770]"></span>
                 PORTAL KLIEN B2B
               </div>
               <h3 className="text-xl font-black text-[#1a3626]">Masuk Akun Perusahaan</h3>

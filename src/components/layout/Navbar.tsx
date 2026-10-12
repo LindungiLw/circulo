@@ -7,8 +7,7 @@ import {
   ArrowRight, 
   Menu, 
   Calculator, 
-  Building2,
-  Sparkles
+  Building2
 } from 'lucide-react';
 import SolutionsDropdown from './SolutionsDropdown';
 import MobileMenu from './MobileMenu';

@@ -8,16 +8,18 @@ import {
   ArrowRight, 
   Lock, 
   Mail, 
-  Building2, 
   Eye, 
   EyeOff, 
   ShieldCheck, 
-  Sparkles, 
-  FileCheck2, 
-  Recycle, 
-  Users,
   CheckCircle2
 } from 'lucide-react';
+import { 
+  CirculoAuditIcon, 
+  CirculoCustomCraftIcon, 
+  CirculoMakersIcon, 
+  CirculoPassIcon, 
+  CirculoLoopIcon 
+} from '@/components/icons/CirculoIcons';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -90,9 +92,14 @@ export default function LoginPage() {
           <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full border-[40px] border-white/5 pointer-events-none"></div>
 
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-xs font-mono tracking-wider uppercase text-[#f3c44c] mb-6 border border-white/10">
-              <span className="w-2 h-2 rounded-full bg-[#f3c44c] animate-pulse"></span>
-              PORTAL PENGADAAN & ESG ENTERPRISE
+            {/* Architectural Category Tag - Distinct, Solid & Authentic, No AI Pulsing Pill */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="px-2.5 py-1 bg-[#f3c44c] text-[#1a3626] text-[10px] font-black uppercase tracking-widest">
+                PORTAL KORPORAT
+              </span>
+              <span className="text-[11px] font-mono text-white/70 tracking-widest uppercase">
+                CIR // SISTEM PENGADAAN & AUDIT ESG
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-black tracking-tight leading-tight mb-4">
@@ -103,35 +110,50 @@ export default function LoginPage() {
               Satu portal terpadu untuk tim *Procurement* dan *Sustainability* korporat dalam memesan merchandise ramah lingkungan dan mengunduh laporan audit dampak terverifikasi.
             </p>
 
-            {/* 3 Perks Checklist */}
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#5c8770]/30 border border-[#5c8770]/50 flex items-center justify-center shrink-0 mt-0.5">
-                  <FileCheck2 size={14} className="text-[#f3c44c]" />
+            {/* Bespoke Perks Ledger with Custom Crafted Circulo Icons */}
+            <div className="space-y-5 mb-8">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
+                  <CirculoAuditIcon size={20} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Laporan Audit ESG Per Batch</h4>
-                  <p className="text-[11px] text-white/70">Unduh metrik kg limbah terkelola & reduksi emisi CO₂ untuk laporan tahunan.</p>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">01.</span>
+                    <h4 className="text-xs font-bold text-white tracking-wide">Audit & Sertifikasi ESG Per Batch</h4>
+                  </div>
+                  <p className="text-[11px] text-white/70 leading-relaxed">
+                    Unduh metrik kg limbah terkelola, reduksi emisi CO₂, dan nomor seri batch terverifikasi untuk laporan tahunan.
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#5c8770]/30 border border-[#5c8770]/50 flex items-center justify-center shrink-0 mt-0.5">
-                  <Recycle size={14} className="text-[#f3c44c]" />
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
+                  <CirculoCustomCraftIcon size={20} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Kustomisasi Branding & Mockup Real-time</h4>
-                  <p className="text-[11px] text-white/70">Unggah logo korporat dan sesuaikan warna produk daur ulang dengan panduan desain.</p>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">02.</span>
+                    <h4 className="text-xs font-bold text-white tracking-wide">Kustomisasi Branding & Mockup Real-time</h4>
+                  </div>
+                  <p className="text-[11px] text-white/70 leading-relaxed">
+                    Unggah aset identitas korporat dan sesuaikan formulasi material daur ulang sesuai panduan desain merek.
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3">
-                <div className="w-6 h-6 bg-[#5c8770]/30 border border-[#5c8770]/50 flex items-center justify-center shrink-0 mt-0.5">
-                  <Users size={14} className="text-[#f3c44c]" />
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 border border-[#f3c44c]/30 bg-white/5 flex items-center justify-center shrink-0 text-[#f3c44c]">
+                  <CirculoMakersIcon size={20} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Transparansi Komunitas Pengrajin</h4>
-                  <p className="text-[11px] text-white/70">Lacak langsung dampak ekonomi pada 120+ maker lokal berstandar fair-wage.</p>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <span className="text-[10px] font-mono text-[#f3c44c] font-bold">03.</span>
+                    <h4 className="text-xs font-bold text-white tracking-wide">Transparansi Rantai Pasok Pengrajin</h4>
+                  </div>
+                  <p className="text-[11px] text-white/70 leading-relaxed">
+                    Akses ledger dampak ekonomi langsung kepada 120+ maker lokal berstandar kompensasi adil (*fair wage*).
+                  </p>
                 </div>
               </div>
             </div>
@@ -157,24 +179,29 @@ export default function LoginPage() {
           </div>
 
           {/* Quick Demo Access Box (For BMC Competition Judges) */}
-          <div className="bg-[#f8f7f2] border-2 border-[#5c8770] p-4 mb-6 relative">
-            <div className="flex items-center gap-2 mb-1.5 text-xs font-bold text-[#1a3626]">
-              <Sparkles size={16} className="text-[#f3c44c]" />
-              <span>Akses Demo Juri / Evaluator BMC</span>
+          <div className="bg-[#f8f7f2] border-2 border-[#1a3626] p-4 mb-6 relative">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2 text-xs font-black text-[#1a3626] uppercase tracking-wide">
+                <CirculoPassIcon size={18} className="text-[#1a3626]" />
+                <span>AKSES PENGUJIAN EVALUATOR BMC</span>
+              </div>
+              <span className="text-[10px] font-mono px-2 py-0.5 bg-[#1a3626] text-[#f3c44c] font-bold">
+                BYPASS MODE
+              </span>
             </div>
             <p className="text-[11px] text-gray-600 mb-3 leading-snug">
-              Ingin langsung menguji dashboard tanpa registrasi? Klik tombol di bawah untuk masuk otomatis sebagai klien demo.
+              Kredensial instan bagi dewan juri untuk menguji seluruh modul pemesanan dan pelaporan dampak tanpa registrasi.
             </p>
             <button
               type="button"
               onClick={handleQuickDemoLogin}
               disabled={isLoading}
-              className="w-full py-2.5 bg-[#e8efe9] hover:bg-[#d5e4d7] text-[#1a3626] border border-[#5c8770] text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              className="w-full py-2.5 bg-white hover:bg-[#e8efe9] text-[#1a3626] border border-[#1a3626] text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-xs"
             >
-              {isLoading ? 'Sedang Memproses Akses Demo...' : (
+              {isLoading ? 'Mengautentikasi Klien Demo...' : (
                 <>
-                  <Building2 size={15} className="text-[#5c8770]" />
-                  Masuk Instan sebagai PT Lestari Hijau (Akun Demo)
+                  <CirculoLoopIcon size={16} className="text-[#5c8770]" />
+                  Masuk Instan: PT Lestari Hijau Nusantara
                 </>
               )}
             </button>

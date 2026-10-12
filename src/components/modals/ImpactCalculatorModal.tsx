@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { X, Calculator, ArrowRight, Sparkles, Check, Download } from 'lucide-react';
+import { X, Calculator, ArrowRight, Check, Download } from 'lucide-react';
 import { PRODUCT_IMPACT_RATES } from '@/data/navigation';
 import Link from 'next/link';
 
@@ -36,9 +36,9 @@ export default function ImpactCalculatorModal({ isOpen, onClose }: ImpactCalcula
               <Calculator size={20} />
             </div>
             <div>
-              <div className="inline-flex items-center gap-1.5 text-[10px] font-mono tracking-wider uppercase text-[#5c8770] font-bold">
-                <span className="w-2 h-2 rounded-full bg-[#f3c44c]"></span>
-                ESG SIMULATOR B2B
+              <div className="flex items-center gap-2 text-[10px] font-mono tracking-wider uppercase text-[#1a3626] font-bold">
+                <span className="w-1.5 h-3 bg-[#5c8770]"></span>
+                SIMULATOR DAMPAK ESG B2B
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-[#1a3626]">Kalkulator Dampak Lingkungan</h3>
             </div>
