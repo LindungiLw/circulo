@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers } from 'lucide-react';
 import Link from 'next/link';
+import Navbar from '@/components/layout/Navbar';
 
 export default function LandingPage() {
   const transitionImages = [
@@ -12,26 +13,12 @@ export default function LandingPage() {
   ];
   
   const [currentImg, setCurrentImg] = useState(0);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % transitionImages.length);
     }, 4000);
     return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -47,31 +34,11 @@ export default function LandingPage() {
         <div className="absolute top-[15%] -right-[20%] w-[1100px] h-[1100px] border-[100px] border-[#f4e8c1] rounded-full opacity-80"></div>
       </div>
       
-      {/* Navigation */}
-      <nav className={`w-full px-8 z-50 fixed top-0 left-0 transition-all duration-300 ease-in-out ${isScrolled ? 'py-4 bg-[#f8f7f2] border-b border-[#1a3626]/5 shadow-sm' : 'py-6 bg-transparent border-b border-transparent'}`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-3 text-2xl font-bold text-[#1a3626]">
-            <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
-            <span>Circulo</span>
-          </div>
-          <div className="hidden md:flex items-center gap-8 text-[#1a3626] font-medium text-sm">
-            <a href="#solusi" className="flex items-center gap-1 hover:opacity-70 transition-opacity">Solusi B2B <ChevronDown size={16} /></a>
-            <a href="#dampak" className="hover:opacity-70 transition-opacity">Dampak ESG</a>
-            <a href="#katalog" className="hover:opacity-70 transition-opacity">Katalog</a>
-          </div>
-          <div className="flex items-center gap-6">
-            <Link href="/dashboard" className="hidden md:block text-[#1a3626] font-semibold text-sm hover:opacity-70">
-              Masuk Klien
-            </Link>
-            <Link href="/dashboard" className="bg-[#f3c44c] text-[#1a3626] px-6 py-2.5 rounded-none font-bold text-sm flex items-center gap-2 hover:bg-[#e3b43c] transition-colors shadow-sm">
-              Coba Dashboard <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </nav>
+      {/* Modular Interactive Navbar */}
+      <Navbar />
 
-      {/* Hero Section */}
-      <section className="w-full pt-32 pb-20 px-8 relative z-10">
+      {/* Hero Section / Solusi B2B */}
+      <section id="solusi" className="w-full pt-32 pb-20 px-8 relative z-10 scroll-mt-10">
         <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
           
           {/* LEFT: Visual Composition (Circular Graphic + Overlapping Card) */}
@@ -241,7 +208,7 @@ export default function LandingPage() {
       </section>
 
       {/* Impact & Materials Section */}
-      <section className="w-full py-24 relative z-10 overflow-hidden">
+      <section id="dampak" className="w-full py-24 relative z-10 overflow-hidden scroll-mt-16">
         {/* Decorative Background Rings & Arcs */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
           <div className="absolute -top-[10%] -left-[10%] w-[800px] h-[800px] border-[100px] border-[#d8e3dc]/40 rounded-full"></div>
@@ -403,7 +370,7 @@ export default function LandingPage() {
           </div>
 
            {/* Product Catalog Section */}
-           <div className="mt-28 pt-20 border-t border-[#1a3626]/15">
+           <div id="katalog" className="mt-28 pt-20 border-t border-[#1a3626]/15 scroll-mt-20">
              <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
                <div className="max-w-xl">
                  <p className="text-xs font-mono uppercase tracking-widest text-[#4a5f52] mb-1">KOLEKSI PENGADAAN B2B</p>

@@ -21,9 +21,14 @@
   border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Outfit', sans-serif;
   background-image: radial-gradient(#1f3d29 0.5px, transparent 0.5px);
   background-size: 24px 24px;
   background-color: #f8fafc;
 }
+
