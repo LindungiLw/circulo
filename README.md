@@ -25,7 +25,7 @@ Antarmuka (UI) dirancang dengan konsep **"Soft, Organic & Recycled"**:
 - **Bentuk (Shapes):** Menggunakan lengkungan organik dan *border* asimetris yang menyerupai sobekan kertas daur ulang.
 - **Komposisi:** Menampilkan grafik melingkar (*circular/donut chart*) berlapis yang melambangkan siklus *Circular Economy*.
 
-## 💻 Cara Menjalankan Project
+## Cara Menjalankan Project
 
 Pertama, instal semua dependensi:
 
