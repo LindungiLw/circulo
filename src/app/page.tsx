@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
+import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 
 export default function LandingPage() {
   const transitionImages = [
@@ -13,6 +14,11 @@ export default function LandingPage() {
   ];
   
   const [currentImg, setCurrentImg] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<string>('Semua');
+
+  const filteredProducts = activeCategory === 'Semua' 
+    ? PRODUCTS_DATA 
+    : PRODUCTS_DATA.filter((p) => p.category === activeCategory);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -371,78 +377,115 @@ export default function LandingPage() {
 
            {/* Product Catalog Section */}
            <div id="katalog" className="mt-28 pt-20 border-t border-[#1a3626]/15 scroll-mt-20">
-             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
                <div className="max-w-xl">
                  <p className="text-xs font-mono uppercase tracking-widest text-[#4a5f52] mb-1">KOLEKSI PENGADAAN B2B</p>
                  <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] mb-3">Katalog Eco-Merch Siap Kustom</h2>
-                 <p className="text-[#4a5f52] text-sm sm:text-base">Berbagai pilihan merchandise korporat yang dapat dikustomisasi logo & warna, terbuat 100% dari residu limbah terverifikasi.</p>
+                 <p className="text-[#4a5f52] text-sm sm:text-base">Pilihan merchandise korporat yang dapat dikustomisasi logo & warna, terbuat 100% dari residu limbah terverifikasi.</p>
                </div>
-               <Link href="/katalog" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#2d5a3e] font-bold hover:text-[#1a3626] transition-colors pb-1 border-b-2 border-[#2d5a3e]">
-                 Lihat Semua Katalog <ArrowRight size={15} />
-               </Link>
+               <div className="flex items-center gap-3">
+                 <span className="text-xs font-mono text-[#5c8770] font-bold">
+                   {filteredProducts.length} dari {PRODUCTS_DATA.length} Produk Tersedia
+                 </span>
+               </div>
              </div>
 
-             {/* Grid 6 Products */}
-             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {/* Product 1 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-bold text-[#1a3626] z-10 rounded-none border border-[#1a3626]/10">Best Seller</div>
-                   <img src="/images/eco_tote_bag.jpg" alt="Tote Bag" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                 </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Tote Bag Daur Ulang</h4>
-                 <p className="text-sm text-[#4a5f52]">Dari limbah botol PET (rPET)</p>
-               </div>
+             {/* Category Filter Tabs */}
+             <div className="flex flex-wrap gap-2 mb-10 pb-2 border-b border-[#1a3626]/10">
+               {PRODUCT_CATEGORIES.map((cat) => {
+                 const isActive = activeCategory === cat;
+                 const count = cat === 'Semua' 
+                   ? PRODUCTS_DATA.length 
+                   : PRODUCTS_DATA.filter(p => p.category === cat).length;
+                 return (
+                   <button
+                     key={cat}
+                     type="button"
+                     onClick={() => setActiveCategory(cat)}
+                     className={`px-4 py-2 text-xs font-bold transition-all cursor-pointer rounded-none border ${
+                       isActive
+                         ? 'bg-[#1a3626] text-white border-[#1a3626] shadow-xs'
+                         : 'bg-white text-[#1a3626] border-[#1a3626]/20 hover:border-[#1a3626] hover:bg-[#e8efe9]/50'
+                     }`}
+                   >
+                     {cat} <span className={`ml-1 text-[10px] font-mono ${isActive ? 'text-[#f3c44c]' : 'text-gray-400'}`}>({count})</span>
+                   </button>
+                 );
+               })}
+             </div>
 
-               {/* Product 2 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="/images/eco_notebook.jpg" alt="Notebook" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                 </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Notebook Recycled Paper</h4>
-                 <p className="text-sm text-[#4a5f52]">Kertas daur ulang & cover serat alam</p>
-               </div>
+             {/* Dynamic Product Grid */}
+             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+               {filteredProducts.map((product) => (
+                 <div 
+                   key={product.id} 
+                   className="bg-white border border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-5 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between"
+                 >
+                   <div>
+                     {/* Product Image Frame */}
+                     <div className="w-full aspect-[4/3] bg-[#f8f7f2] mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10 flex items-center justify-center p-4">
+                       {product.badge && (
+                         <div className="absolute top-3 left-3 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-wider font-bold px-2.5 py-0.5 z-10 border border-[#f3c44c]/30 rounded-none">
+                           {product.badge}
+                         </div>
+                       )}
+                       <span className="absolute top-3 right-3 text-[10px] font-mono text-gray-500 font-semibold bg-white/80 px-2 py-0.5 border border-gray-200">
+                         Min. {product.minOrder}
+                       </span>
+                       <img 
+                         src={product.image} 
+                         alt={product.name} 
+                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
+                       />
+                     </div>
 
-               {/* Product 3 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="/images/eco_gift_set.jpg" alt="Corporate Gift Set" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                 </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Eco Corporate Gift Set</h4>
-                 <p className="text-sm text-[#4a5f52]">Custom combo untuk onboarding/event</p>
-               </div>
+                     {/* Meta & Titles */}
+                     <div className="flex items-center gap-2 mb-1">
+                       <span className="text-[10px] font-mono text-[#5c8770] font-bold uppercase tracking-wider">
+                         {product.category}
+                       </span>
+                       <span className="text-gray-300">•</span>
+                       <span className="text-[10px] font-mono text-gray-500">
+                         {product.material.split('&')[0]}
+                       </span>
+                     </div>
 
-               {/* Product 4 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="/images/eco_lanyard.jpg" alt="Lanyard" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                 </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Lanyard & ID Holder</h4>
-                 <p className="text-sm text-[#4a5f52]">Tali rPET & Holder plastik daur ulang</p>
-               </div>
+                     <h4 className="text-lg font-extrabold text-[#1a3626] mb-1 group-hover:text-[#5c8770] transition-colors">
+                       {product.name}
+                     </h4>
+                     <p className="text-xs text-[#4a5f52] mb-3 leading-relaxed">
+                       {product.description}
+                     </p>
+                   </div>
 
-               {/* Product 5 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="/images/eco_laptop_sleeve.jpg" alt="Laptop Sleeve" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                   {/* Bottom Impact & Action Footer */}
+                   <div className="pt-3 border-t border-[#1a3626]/10 flex items-center justify-between mt-2">
+                     <div>
+                       <span className="text-[10px] font-mono uppercase text-gray-400 block">Jejak Dampak ESG</span>
+                       <span className="text-xs font-bold text-[#1a3626]">{product.impactMetric}</span>
+                     </div>
+                     <Link 
+                       href="/dashboard"
+                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-[#5c8770] group/btn px-2.5 py-1.5 bg-[#f8f7f2] border border-[#1a3626]/10 hover:border-[#1a3626] transition-all"
+                     >
+                       Kustomisasi <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                     </Link>
+                   </div>
                  </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Laptop Sleeve Upcycled</h4>
-                 <p className="text-sm text-[#4a5f52]">Dari sisa kain tekstil premium</p>
-               </div>
-
-               {/* Product 6 */}
-               <div className="group cursor-pointer">
-                 <div className="w-full aspect-[4/3] bg-gray-100 mb-4 overflow-hidden rounded-none relative">
-                   <img src="/images/eco_desk_organizer.jpg" alt="Desk Organizer" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                 </div>
-                 <h4 className="text-lg font-bold text-[#1a3626] mb-1">Desk Organizer Recycled</h4>
-                 <p className="text-sm text-[#4a5f52]">Komposit biomassa & limbah plastik</p>
-               </div>
+               ))}
              </div>
              
-             <div className="mt-8 flex justify-center md:hidden">
-               <Link href="/katalog" className="bg-[#1a3626] text-white px-8 py-3 rounded-none font-bold text-sm w-full text-center hover:bg-[#2a4a37] transition-colors">
-                 Lihat Semua Katalog
+             {/* Bottom Quote Banner */}
+             <div className="mt-12 p-6 sm:p-8 bg-[#1a3626] text-white flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-[#1a3626]">
+               <div>
+                 <h4 className="text-lg font-bold mb-1">Butuh Katalog PDF Lengkap atau Pesanan Khusus?</h4>
+                 <p className="text-xs text-white/70">Tim konsultan keberlanjutan kami siap membantu penyesuaian warna Pantone & sertifikasi audit ESG perusahaan Anda.</p>
+               </div>
+               <Link 
+                 href="/dashboard" 
+                 className="shrink-0 bg-[#f3c44c] hover:bg-[#e3b43c] text-[#1a3626] font-extrabold text-xs px-6 py-3 transition-colors flex items-center gap-2"
+               >
+                 Ajukan Penawaran Korporat <ArrowRight size={15} />
                </Link>
              </div>
            </div>
