@@ -478,16 +478,7 @@ export default function LandingPage() {
                ))}
              </div>
              
-             {/* Tombol Lihat Semua Koleksi */}
-             <div className="mt-10 text-center">
-               <Link 
-                 href="/katalog" 
-                 className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-white hover:bg-[#1a3626] text-[#1a3626] hover:text-white border-2 border-[#1a3626] text-xs font-black uppercase tracking-wider transition-all shadow-xs group cursor-pointer"
-               >
-                 Lihat Semua Koleksi ({PRODUCTS_DATA.length} Produk Lengkap)
-                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
-               </Link>
-             </div>
+
 
              {/* Bottom Quote Banner */}
              <div className="mt-12 p-6 sm:p-8 bg-[#1a3626] text-white flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-[#1a3626]">
