@@ -197,28 +197,28 @@ export default function Dashboard() {
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Top Header */}
-        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 px-6 sm:px-8 py-4 flex items-center justify-between">
+        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between">
           
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
             <button
               onClick={() => setMobileSidebarOpen(true)}
-              className="lg:hidden p-2 text-[#1a3626] hover:bg-gray-100 transition-colors cursor-pointer"
+              className="lg:hidden p-1.5 text-[#1a3626] hover:bg-gray-100 transition-colors cursor-pointer shrink-0"
             >
               <Menu size={22} />
             </button>
 
-            <div>
-              <div className="flex items-center gap-2 text-[11px] text-gray-500 font-mono">
-                <span>Portal Klien</span>
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 text-[10px] sm:text-[11px] text-gray-500 font-mono">
+                <span>Portal</span>
                 <span>/</span>
-                <span className="text-[#1a3626] font-bold capitalize">{activeTab}</span>
+                <span className="text-[#1a3626] font-bold capitalize truncate">{activeTab}</span>
               </div>
-              <h1 className="text-xl sm:text-2xl font-black text-[#1a3626] tracking-tight">
+              <h1 className="text-base sm:text-2xl font-black text-[#1a3626] tracking-tight truncate">
                 {activeTab === 'dashboard' && 'Impact Dashboard'}
-                {activeTab === 'katalog' && 'Katalog Produk Siap Kustom'}
-                {activeTab === 'pesanan' && 'Manajemen & Lacak Pesanan'}
-                {activeTab === 'esg' && 'Audit & Sertifikasi ESG'}
-                {activeTab === 'pengaturan' && 'Pengaturan Akun Perusahaan'}
+                {activeTab === 'katalog' && 'Katalog Produk'}
+                {activeTab === 'pesanan' && 'Pesanan Saya'}
+                {activeTab === 'esg' && 'Laporan ESG'}
+                {activeTab === 'pengaturan' && 'Pengaturan Akun'}
               </h1>
             </div>
           </div>
@@ -296,7 +296,7 @@ export default function Dashboard() {
         </header>
 
         {/* Tab Content Render */}
-        <main className="flex-1 p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto w-full">
           {activeTab === 'dashboard' && (
             <DashboardOverview onNavigateTab={handleSelectTab} />
           )}

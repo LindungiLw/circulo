@@ -60,7 +60,7 @@ export default function LoginPage() {
 
       {/* Main Content: Clean Focused Card */}
       <main className="flex-1 flex items-center justify-center px-4 py-8 relative z-10">
-        <div className="w-full max-w-[440px] bg-white border-2 border-[#1a3626] p-8 sm:p-10 shadow-xl">
+        <div className="w-full max-w-[440px] bg-white border-2 border-[#1a3626] p-5 sm:p-10 shadow-xl">
           
           {/* Brand & Back Navigation inside card */}
           <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#1a3626]/10">

@@ -47,14 +47,14 @@ export default function LandingPage() {
       <Navbar />
 
       {/* Hero Section / Solusi B2B */}
-      <section id="solusi" className="w-full pt-32 pb-20 px-8 relative z-10 scroll-mt-10">
-        <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section id="solusi" className="w-full pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6 lg:px-8 relative z-10 scroll-mt-10 overflow-hidden">
+        <div className="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* LEFT: Visual Composition (Circular Graphic + Overlapping Card) */}
-          <div className="relative w-full h-[600px] flex items-center justify-center lg:justify-start">
+          <div className="relative w-full max-w-[500px] mx-auto lg:mx-0 h-[460px] sm:h-[520px] lg:h-[600px] flex items-center justify-center lg:justify-start">
              
              {/* The Donut Chart SVG Ring around the image */}
-             <div className="absolute left-[-20px] w-[560px] h-[560px] z-0">
+             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-0 pointer-events-none">
                <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
                  <circle cx="50" cy="50" r="48" fill="none" stroke="#f3c44c" strokeWidth="4" strokeDasharray="60 301.59" className="opacity-90" />
                  <circle cx="50" cy="50" r="48" fill="none" stroke="#1a3626" strokeWidth="8" strokeDasharray="100 301.59" strokeDashoffset="-65" className="opacity-90" />
@@ -63,91 +63,88 @@ export default function LandingPage() {
              </div>
 
              {/* The Large Circular Image */}
-             <div className="absolute left-[10px] w-[500px] h-[500px] rounded-full border-[12px] border-white shadow-2xl overflow-hidden z-10">
+             <div className="w-[280px] h-[280px] sm:w-[380px] sm:h-[380px] lg:w-[500px] lg:h-[500px] rounded-full border-8 lg:border-[12px] border-white shadow-2xl overflow-hidden z-10 lg:absolute lg:left-2.5">
                <img src="https://images.unsplash.com/photo-1605600659908-0ef719419d41?auto=format&fit=crop&q=80&w=800" alt="Eco Merchandise" className="w-full h-full object-cover" />
-               {/* Dark overlay for contrast */}
                <div className="absolute inset-0 bg-black/5"></div>
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute left-[-20px] w-[560px] h-[560px] z-20 pointer-events-none overflow-hidden">
+             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-20 pointer-events-none overflow-hidden">
                 <svg viewBox="0 0 100 100" className="w-full h-full">
-                  {/* Clockwise upper semicircle arc along top */}
                   <path id="curve" d="M 8 50 A 42 42 0 0 1 92 50" fill="transparent" />
                   <text className="text-[3.8px] font-bold fill-[#5c8770] tracking-[0.25em] uppercase" textAnchor="middle">
                     <textPath href="#curve" startOffset="50%">
                       From Waste to Value
                     </textPath>
                   </text>
-                  {/* Yellow decorative dots on top curve */}
                   <circle cx="24" cy="22" r="1.2" fill="#f3c44c" />
                   <circle cx="76" cy="22" r="1.2" fill="#f3c44c" />
                 </svg>
              </div>
 
-             {/* Live Impact Card (Overlapping on the right) */}
-             <div className="absolute right-0 lg:-right-16 top-1/2 -translate-y-1/2 bg-white rounded-3xl p-5 shadow-[0_20px_50px_rgba(26,54,38,0.1)] border border-gray-100 z-30 w-[380px]">
+             {/* Live Impact Card (Overlapping on the right on desktop, at bottom on mobile) */}
+             <div className="absolute bottom-0 lg:top-1/2 lg:-translate-y-1/2 right-auto lg:-right-16 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(26,54,38,0.12)] border border-gray-100 z-30 w-[92%] sm:w-[350px] lg:w-[380px]">
 
                {/* Metrics Grid inside card */}
-               <div className="grid grid-cols-2 gap-3 mb-3">
+               <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
                  
                  {/* Card 1 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Recycle size={16} />
+                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-1.5 sm:mb-2">
+                     <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Recycle size={15} />
                      </div>
                    </div>
-                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Plastik Terdiversi</h4>
-                   <p className="text-lg font-bold text-[#1a3626] mb-1">12,450 <span className="text-[10px] font-semibold">kg</span></p>
-                   <p className="text-[9px] text-gray-500 mb-1">≈ 562 botol plastik</p>
-                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 12%</p>
+                   <h4 className="text-[9px] sm:text-[10px] font-semibold text-[#1a3626] mb-0.5">Plastik Terdiversi</h4>
+                   <p className="text-base sm:text-lg font-bold text-[#1a3626] mb-0.5">12,450 <span className="text-[9px] sm:text-[10px] font-semibold">kg</span></p>
+                   <p className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5">≈ 562 botol plastik</p>
+                   <p className="text-[8px] sm:text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 12%</p>
                  </div>
 
                  {/* Card 2 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Users size={16} />
+                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-1.5 sm:mb-2">
+                     <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Users size={15} />
                      </div>
                    </div>
-                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Local Makers</h4>
-                   <p className="text-lg font-bold text-[#1a3626] mb-1">120+</p>
-                   <p className="text-[9px] text-gray-500 mb-1">pengrajin lokal</p>
-                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 8%</p>
+                   <h4 className="text-[9px] sm:text-[10px] font-semibold text-[#1a3626] mb-0.5">Local Makers</h4>
+                   <p className="text-base sm:text-lg font-bold text-[#1a3626] mb-0.5">120+</p>
+                   <p className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5">pengrajin lokal</p>
+                   <p className="text-[8px] sm:text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 8%</p>
                  </div>
 
                  {/* Card 3 */}
-                 <div className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow">
-                   <div className="flex justify-between items-start mb-2">
-                     <div className="w-8 h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
-                       <Box size={16} />
+                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                   <div className="flex justify-between items-start mb-1.5 sm:mb-2">
+                     <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
+                       <Box size={15} />
                      </div>
                    </div>
-                   <h4 className="text-[10px] font-semibold text-[#1a3626] mb-1">Pesanan Korporat</h4>
-                   <p className="text-lg font-bold text-[#1a3626] mb-1">85</p>
-                   <p className="text-[9px] text-gray-500 mb-1">pesanan perusahaan</p>
-                   <p className="text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 15%</p>
+                   <h4 className="text-[9px] sm:text-[10px] font-semibold text-[#1a3626] mb-0.5">Pesanan Korporat</h4>
+                   <p className="text-base sm:text-lg font-bold text-[#1a3626] mb-0.5">85</p>
+                   <p className="text-[8px] sm:text-[9px] text-gray-500 mb-0.5">pesanan perusahaan</p>
+                   <p className="text-[8px] sm:text-[9px] text-[#5c8770] font-bold flex items-center gap-1"><ArrowUpRight size={10} strokeWidth={3}/> 15%</p>
                  </div>
 
                  {/* Card 4 - Green Highlight */}
-                 <div className="bg-[#e8efe9] border border-[#5c8770]/20 rounded-2xl p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group cursor-pointer">
-                   <div className="w-8 h-8 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-2">
-                     <Sprout size={16} />
+                 <div className="bg-[#e8efe9] border border-[#5c8770]/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+                   <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-1.5 sm:mb-2">
+                     <Sprout size={15} />
                    </div>
-                   <h4 className="text-[10px] font-bold text-[#1a3626] mb-1">ESG Impact Ready</h4>
-                   <p className="text-[9px] text-[#4a5f52] leading-tight pr-4">Laporan dampak tersedia untuk setiap transaksi</p>
-                   <ArrowRight size={12} className="text-[#5c8770] absolute bottom-3 right-3 group-hover:translate-x-1 transition-transform" />
+                   <h4 className="text-[9px] sm:text-[10px] font-bold text-[#1a3626] mb-0.5">ESG Impact Ready</h4>
+                   <p className="text-[8px] sm:text-[9px] text-[#4a5f52] leading-tight pr-4">Laporan dampak tersedia</p>
+                   <ArrowRight size={11} className="text-[#5c8770] absolute bottom-2.5 right-2.5 group-hover:translate-x-1 transition-transform" />
                  </div>
                </div>
                
                {/* Small Bottom Image in Card */}
-               <div className="w-full h-24 rounded-xl overflow-hidden relative mt-1 flex bg-[#f8f7f2]">
+               <div className="w-full h-20 sm:h-24 rounded-lg sm:rounded-xl overflow-hidden relative mt-1 flex bg-[#f8f7f2]">
                  <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400" alt="Crafting" className="w-1/2 h-full object-cover" />
-                 <div className="w-1/2 p-3 flex flex-col justify-center">
-                    <p className="text-[9px] font-bold text-[#1a3626] leading-tight mb-2">Dari Sampah Lokal Menuju Produk Bernilai</p>
-                    <div className="w-5 h-5 rounded-full border border-[#5c8770] flex items-center justify-center text-[#5c8770]">
-                      <ArrowRight size={10} />
+                 <div className="w-1/2 p-2.5 sm:p-3 flex flex-col justify-center">
+                    <p className="text-[8px] sm:text-[9px] font-bold text-[#1a3626] leading-tight mb-1.5">Dari Sampah Lokal Menuju Produk Bernilai</p>
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full border border-[#5c8770] flex items-center justify-center text-[#5c8770]">
+                      <ArrowRight size={9} />
                     </div>
                  </div>
                </div>
@@ -157,21 +154,21 @@ export default function LandingPage() {
           
           {/* RIGHT: Text Content & Carousel */}
           <div className="pl-0 lg:pl-16 z-20 flex flex-col justify-center h-full">
-            <h1 className="text-5xl md:text-[64px] font-extrabold text-[#1a3626] leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[60px] font-extrabold text-[#1a3626] leading-[1.15] mb-5 tracking-tight">
               Ubah Limbah<br />Menjadi <span className="text-[#5c8770]">Eco-Merch</span><br />B2B Premium<span className="text-[#f3c44c]">.</span>
             </h1>
             
-            <p className="text-lg text-[#4a5f52] mb-10 max-w-[480px] leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-[#4a5f52] mb-8 max-w-[480px] leading-relaxed">
               Satu solusi untuk sourcing eco-merch berkualitas, custom sesuai kebutuhan, pengiriman yang andal, dan dampak yang terukur.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <Link href="/dashboard" className="bg-[#1a3626] text-white px-8 py-3.5 rounded-none font-semibold text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
-                Mulai Kolaborasi <ArrowRight size={18} />
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
+              <Link href="/dashboard" className="w-full sm:w-auto bg-[#1a3626] text-white px-7 py-3.5 rounded-none font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
+                Mulai Kolaborasi <ArrowRight size={16} />
               </Link>
-              <button className="bg-transparent border border-[#1a3626] text-[#1a3626] px-8 py-3.5 rounded-none font-semibold text-sm hover:bg-[#1a3626]/5 transition-colors">
+              <Link href="/katalog" className="w-full sm:w-auto bg-transparent border border-[#1a3626] text-[#1a3626] px-7 py-3.5 rounded-none font-semibold text-xs sm:text-sm hover:bg-[#1a3626]/5 transition-colors flex items-center justify-center">
                 Lihat Katalog
-              </button>
+              </Link>
             </div>
 
             {/* Feature lists bottom */}
