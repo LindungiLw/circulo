@@ -248,16 +248,20 @@ export default function Dashboard() {
                     </span>
                   </div>
 
-                  <div className="space-y-3 text-xs">
-                    <div className="p-2 bg-[#f8f7f2] border border-gray-200">
-                      <p className="font-bold text-[#1a3626]">PO-CIR-2026-064 Lolos Inspeksi QC</p>
-                      <p className="text-[11px] text-gray-500 mt-0.5">Batch 500 unit Seminar Kit Delegate siap dikirim ke Cikarang.</p>
-                      <span className="text-[10px] text-gray-400 block mt-1">2 jam yang lalu</span>
+                  <div className="space-y-2 text-xs">
+                    <div className="p-2.5 bg-[#f8f7f2] border border-gray-200">
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-[#1a3626]">PO-064 Lolos QC</span>
+                        <span className="text-[10px] text-gray-400">2 jam lalu</span>
+                      </div>
+                      <p className="text-[11px] text-gray-500 mt-0.5">500 unit Seminar Kit siap dikirim.</p>
                     </div>
-                    <div className="p-2 bg-[#f8f7f2] border border-gray-200">
-                      <p className="font-bold text-[#1a3626]">Sertifikat Emisi Q3 Telah Diterbitkan</p>
-                      <p className="text-[11px] text-gray-500 mt-0.5">Sertifikat No: ESG-CIR-2026-8812 dapat diunduh pada tab ESG.</p>
-                      <span className="text-[10px] text-gray-400 block mt-1">1 hari yang lalu</span>
+                    <div className="p-2.5 bg-[#f8f7f2] border border-gray-200">
+                      <div className="flex justify-between items-center">
+                        <span className="font-bold text-[#1a3626]">Sertifikat Emisi Q3 Terbit</span>
+                        <span className="text-[10px] text-gray-400">1 hari lalu</span>
+                      </div>
+                      <p className="text-[11px] text-gray-500 mt-0.5">Sertifikat No: ESG-CIR-2026-8812 siap diunduh.</p>
                     </div>
                   </div>
                 </div>
