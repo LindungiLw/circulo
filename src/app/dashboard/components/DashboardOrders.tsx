@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CheckCircle2, 
   FileText, 
@@ -8,24 +8,9 @@ import {
   X,
   Clock
 } from 'lucide-react';
+import { getOrders, OrderItem } from '@/services/orderService';
 
-interface OrderItem {
-  id: string;
-  productName: string;
-  qty: string;
-  poDate: string;
-  estDelivery: string;
-  status: 'Dalam Produksi' | 'Inspeksi QC' | 'Terkirim';
-  progress: number;
-  craftPartner: string;
-  invoiceAmount: string;
-  steps: {
-    title: string;
-    date: string;
-    done: boolean;
-    current?: boolean;
-  }[];
-}
+
 
 const ORDERS_LIST: OrderItem[] = [
   {
@@ -103,10 +88,19 @@ const ORDERS_LIST: OrderItem[] = [
 ];
 
 export default function DashboardOrders() {
+  const [orders, setOrders] = useState<OrderItem[]>(ORDERS_LIST);
   const [filterStatus, setFilterStatus] = useState<string>('Semua');
   const [selectedOrder, setSelectedOrder] = useState<OrderItem | null>(null);
 
-  const filteredOrders = ORDERS_LIST.filter((o) => {
+  useEffect(() => {
+    getOrders().then((data) => {
+      if (data && data.length > 0) {
+        setOrders(data);
+      }
+    });
+  }, []);
+
+  const filteredOrders = orders.filter((o) => {
     if (filterStatus === 'Semua') return true;
     return o.status === filterStatus;
   });

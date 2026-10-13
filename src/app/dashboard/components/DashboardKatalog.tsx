@@ -10,6 +10,7 @@ import {
   Leaf
 } from 'lucide-react';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES, Product } from '@/data/products';
+import { submitQuotationRequest } from '@/services/quotationService';
 
 export default function DashboardKatalog() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,13 +39,31 @@ export default function DashboardKatalog() {
     setRequestSubmitted(false);
   };
 
-  const handleSubmitQuotation = (e: React.FormEvent) => {
+  const handleSubmitQuotation = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedProduct) return;
     setRequestSubmitted(true);
-    setTimeout(() => {
+
+    try {
+      const res = await submitQuotationRequest({
+        productId: selectedProduct.id,
+        productName: selectedProduct.name,
+        category: selectedProduct.category,
+        quantity: quotationQty,
+        brandingOption,
+        estimatedCO2Reduction: parseFloat((quotationQty * 0.45).toFixed(1)),
+        companyName: 'PT Danareksa (Persero)',
+        contactEmail: 'procurement@danareksa.co.id',
+      });
+
       handleCloseModal();
-      alert(`Permintaan penawaran untuk ${selectedProduct?.name} (${quotationQty} pcs) berhasil dikirim.`);
-    }, 1200);
+      const storageLocation = res.source === 'firebase' ? 'Cloud Firestore Firebase' : 'Database Lokal';
+      alert(`Permintaan penawaran untuk ${selectedProduct.name} (${quotationQty} unit) berhasil disimpan ke ${storageLocation} (ID: ${res.id}). Tim Circulo akan segera menghubungi Anda.`);
+    } catch (err) {
+      console.error(err);
+      handleCloseModal();
+      alert(`Permintaan penawaran telah diajukan.`);
+    }
   };
 
   return (

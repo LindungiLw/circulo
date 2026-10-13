@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Building2, 
   UserCheck, 
@@ -8,8 +8,16 @@ import {
   Shield, 
   Save, 
   Check, 
-  Plus
+  Plus,
+  Database,
+  Cloud,
+  CheckCircle2,
+  AlertCircle,
+  RefreshCw
 } from 'lucide-react';
+import { isFirebaseConfigured } from '@/lib/firebase';
+import { getCompanyProfile, updateCompanyProfile, CompanyProfile } from '@/services/companyService';
+import { seedAllInitialData } from '@/services/seedService';
 
 export default function DashboardSettings() {
   const [companyName, setCompanyName] = useState('PT Danareksa (Persero)');
@@ -24,14 +32,59 @@ export default function DashboardSettings() {
   const [notifMonthly, setNotifMonthly] = useState(true);
 
   const [isSaved, setIsSaved] = useState(false);
+  const [isSeeding, setIsSeeding] = useState(false);
+  const [firebaseActive, setFirebaseActive] = useState(false);
 
-  const handleSave = (e: React.FormEvent) => {
+  useEffect(() => {
+    setFirebaseActive(isFirebaseConfigured());
+
+    // Load saved profile
+    getCompanyProfile().then((profile) => {
+      setCompanyName(profile.name);
+      setNpwp(profile.npwp);
+      setAddress(profile.address);
+      setPicName(profile.picName);
+      setPicEmail(profile.picEmail);
+      setPicPhone(profile.picPhone);
+      if (profile.notifications) {
+        setNotifWA(profile.notifications.waQC);
+        setNotifEmail(profile.notifications.emailInvoice);
+        setNotifMonthly(profile.notifications.monthlyESG);
+      }
+    });
+  }, []);
+
+  const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSaved(true);
+
+    const payload: CompanyProfile = {
+      name: companyName,
+      npwp,
+      address,
+      picName,
+      picEmail,
+      picPhone,
+      notifications: {
+        waQC: notifWA,
+        emailInvoice: notifEmail,
+        monthlyESG: notifMonthly,
+      },
+    };
+
+    const res = await updateCompanyProfile(payload);
     setTimeout(() => {
       setIsSaved(false);
-      alert('Pengaturan akun berhasil disimpan.');
-    }, 1000);
+      const target = res.source === 'firebase' ? 'Firebase Cloud Firestore' : 'Penyimpanan Lokal';
+      alert(`Pengaturan profil berhasil disimpan ke ${target}.`);
+    }, 800);
+  };
+
+  const handleSeedFirebase = async () => {
+    setIsSeeding(true);
+    const result = await seedAllInitialData();
+    setIsSeeding(false);
+    alert(result.message);
   };
 
   return (
@@ -40,8 +93,8 @@ export default function DashboardSettings() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-[#1a3626]">Pengaturan Akun</h2>
-          <p className="text-xs text-gray-500 mt-0.5">Kelola data profil perusahaan dan kontak pengadaan.</p>
+          <h2 className="text-xl font-bold text-[#1a3626]">Pengaturan Akun & Database</h2>
+          <p className="text-xs text-gray-500 mt-0.5">Kelola data profil perusahaan dan status integrasi Firebase.</p>
         </div>
 
         <button
@@ -53,6 +106,41 @@ export default function DashboardSettings() {
           {isSaved ? <Check size={13} /> : <Save size={13} />}
           {isSaved ? 'Tersimpan' : 'Simpan'}
         </button>
+      </div>
+
+      {/* Database Connection Status Card */}
+      <div className="bg-white border border-gray-200 p-5 shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex items-start gap-3">
+          <div className={`w-8 h-8 flex items-center justify-center shrink-0 ${firebaseActive ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+            <Database size={16} />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h4 className="text-xs font-bold text-[#1a3626]">Status Database Firebase Firestore</h4>
+              <span className={`text-[10px] font-mono px-2 py-0.2 font-bold ${firebaseActive ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-gray-100 text-gray-600 border border-gray-200'}`}>
+                {firebaseActive ? 'TERKONEKSI' : 'MODE FALLBACK / LOKAL'}
+              </span>
+            </div>
+            <p className="text-[11px] text-gray-500 mt-0.5">
+              {firebaseActive 
+                ? 'Website terhubung ke Cloud Firestore. Data tersinkronisasi otomatis.'
+                : 'Kunci Firebase belum diatur di .env.local. Sistem menggunakan data lokal yang aman tanpa risiko error.'
+              }
+            </p>
+          </div>
+        </div>
+
+        {firebaseActive && (
+          <button
+            type="button"
+            onClick={handleSeedFirebase}
+            disabled={isSeeding}
+            className="px-3.5 py-1.5 bg-[#f8f7f2] hover:bg-[#1a3626] text-[#1a3626] hover:text-white border border-gray-300 hover:border-[#1a3626] text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
+          >
+            <RefreshCw size={12} className={isSeeding ? 'animate-spin' : ''} />
+            {isSeeding ? 'Mengisi Data...' : 'Inisialisasi Data Firestore'}
+          </button>
+        )}
       </div>
 
       <form onSubmit={handleSave} className="space-y-5">
