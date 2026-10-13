@@ -1,191 +1,317 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
-  LayoutDashboard, PackageOpen, ClipboardList, FileSignature, Settings, 
-  Bell, Recycle, CloudFog, Users, Boxes, ArrowUp, Download 
+  LayoutDashboard, 
+  PackageOpen, 
+  ClipboardList, 
+  FileSignature, 
+  Settings, 
+  Bell, 
+  ArrowLeft,
+  LogOut,
+  Menu,
+  X,
+  ExternalLink,
+  ShieldCheck,
+  Check
 } from 'lucide-react';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import DashboardOverview from './components/DashboardOverview';
+import DashboardKatalog from './components/DashboardKatalog';
+import DashboardOrders from './components/DashboardOrders';
+import DashboardESG from './components/DashboardESG';
+import DashboardSettings from './components/DashboardSettings';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Filler,
-  Legend
-);
+type TabType = 'dashboard' | 'katalog' | 'pesanan' | 'esg' | 'pengaturan';
 
 export default function Dashboard() {
-  const chartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
-    datasets: [
-      {
-        fill: true,
-        label: 'Plastik Terdiversi (kg)',
-        data: [0, 50, 120, 250, 300, 450, 600, 850, 1050, 1250],
-        borderColor: '#1f3d29', // New primary color
-        backgroundColor: 'rgba(31, 61, 41, 0.1)',
-        tension: 0.4,
-      },
-    ],
+  const [activeTab, setActiveTab] = useState<TabType>('dashboard');
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
+
+  // Sync with URL hash on mount & hashchange
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') as TabType;
+      const validTabs: TabType[] = ['dashboard', 'katalog', 'pesanan', 'esg', 'pengaturan'];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const handleSelectTab = (tab: TabType) => {
+    setActiveTab(tab);
+    window.location.hash = tab;
+    setMobileSidebarOpen(false);
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
+  const navItems = [
+    {
+      id: 'dashboard' as TabType,
+      label: 'Impact Dashboard',
+      icon: LayoutDashboard,
+      badge: null,
     },
-    scales: {
-      y: { border: { display: false } },
-      x: { grid: { display: false }, border: { display: false } },
-    }
-  };
+    {
+      id: 'katalog' as TabType,
+      label: 'Katalog Produk',
+      icon: PackageOpen,
+      badge: '10 Item',
+    },
+    {
+      id: 'pesanan' as TabType,
+      label: 'Pesanan Saya',
+      icon: ClipboardList,
+      badge: '2 Aktif',
+      badgeColor: 'bg-[#f3c44c] text-[#1a3626]',
+    },
+    {
+      id: 'esg' as TabType,
+      label: 'Laporan ESG',
+      icon: FileSignature,
+      badge: 'Verified',
+      badgeColor: 'bg-[#5c8770] text-white',
+    },
+    {
+      id: 'pengaturan' as TabType,
+      label: 'Pengaturan',
+      icon: Settings,
+      badge: null,
+    },
+  ];
 
   return (
-    <div className="flex w-full min-h-screen">
+    <div className="flex w-full min-h-screen bg-[#f8f7f2] font-sans antialiased text-[#1a3626]">
+      
+      {/* Mobile Sidebar Overlay */}
+      {mobileSidebarOpen && (
+        <div 
+          onClick={() => setMobileSidebarOpen(false)}
+          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-[260px] bg-white border-r border-slate-200 p-8 h-screen sticky top-0 flex flex-col">
-        <div className="flex items-center gap-3 text-2xl font-bold text-primary mb-12">
-          <img src="/logo.png" alt="Circulo Logo" className="w-10 h-10 object-contain" />
-          <span>Circulo</span>
+      <aside 
+        className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-64 sm:w-72 bg-[#1a3626] text-white flex flex-col justify-between transition-transform duration-300 ease-in-out border-r border-[#1a3626] ${
+          mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        }`}
+      >
+        <div>
+          {/* Brand Logo & Close for Mobile */}
+          <div className="p-6 pb-8 border-b border-white/10 flex items-center justify-between">
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain" />
+              <div>
+                <span className="text-xl font-black text-white tracking-tight block leading-none">
+                  Circulo
+                </span>
+                <span className="text-[10px] font-mono text-[#f3c44c] uppercase tracking-wider font-bold">
+                  B2B Client Portal
+                </span>
+              </div>
+            </Link>
+
+            <button
+              onClick={() => setMobileSidebarOpen(false)}
+              className="lg:hidden text-white/70 hover:text-white cursor-pointer"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* Navigation Items */}
+          <div className="p-4 space-y-1.5">
+            <div className="px-3 py-2 text-[10px] font-mono uppercase tracking-widest text-white/50 font-bold">
+              Menu Utama Portal
+            </div>
+
+            {navItems.map((item) => {
+              const isActive = activeTab === item.id;
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleSelectTab(item.id)}
+                  type="button"
+                  className={`w-full flex items-center justify-between px-3.5 py-3 text-xs font-bold transition-all cursor-pointer rounded-none text-left ${
+                    isActive
+                      ? 'bg-white text-[#1a3626] shadow-sm font-extrabold'
+                      : 'text-white/75 hover:bg-white/10 hover:text-white'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon size={17} className={isActive ? 'text-[#1a3626]' : 'text-white/70'} />
+                    <span>{item.label}</span>
+                  </div>
+
+                  {item.badge && (
+                    <span 
+                      className={`text-[10px] font-mono px-2 py-0.5 font-bold ${
+                        item.badgeColor || (isActive ? 'bg-[#1a3626] text-white' : 'bg-white/20 text-white')
+                      }`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
-        
-        <ul className="flex flex-col gap-2">
-          <li>
-            <a href="#" className="flex items-center gap-4 px-4 py-3 rounded-2xl bg-primary/10 text-primary font-medium transition-colors">
-              <LayoutDashboard size={20} /> Impact Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center gap-4 px-4 py-3 rounded-2xl text-slate-500 hover:bg-primary/10 hover:text-primary font-medium transition-colors">
-              <PackageOpen size={20} /> Katalog Produk
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center gap-4 px-4 py-3 rounded-2xl text-slate-500 hover:bg-primary/10 hover:text-primary font-medium transition-colors">
-              <ClipboardList size={20} /> Pesanan Saya
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center gap-4 px-4 py-3 rounded-2xl text-slate-500 hover:bg-primary/10 hover:text-primary font-medium transition-colors">
-              <FileSignature size={20} /> Laporan ESG
-            </a>
-          </li>
-          <li>
-            <a href="#" className="flex items-center gap-4 px-4 py-3 rounded-2xl text-slate-500 hover:bg-primary/10 hover:text-primary font-medium transition-colors">
-              <Settings size={20} /> Pengaturan
-            </a>
-          </li>
-        </ul>
+
+        {/* Sidebar Footer */}
+        <div className="p-4 border-t border-white/10 space-y-3">
+          <div className="p-3 bg-white/5 border border-white/10 text-xs">
+            <span className="text-[10px] font-mono text-[#f3c44c] block uppercase font-bold mb-0.5">
+              Akun Klien Terverifikasi
+            </span>
+            <p className="font-bold text-white text-xs truncate">PT Danareksa (Persero)</p>
+            <p className="text-[11px] text-white/60 truncate">PIC: Arya Pratama</p>
+          </div>
+
+          <div className="flex flex-col gap-1 text-xs">
+            <Link
+              href="/"
+              className="flex items-center gap-2 px-3 py-2 text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              <ArrowLeft size={14} /> Kembali ke Web Utama
+            </Link>
+            <Link
+              href="/login"
+              className="flex items-center gap-2 px-3 py-2 text-red-300 hover:text-red-200 hover:bg-white/5 transition-colors"
+            >
+              <LogOut size={14} /> Keluar Portal
+            </Link>
+          </div>
+        </div>
       </aside>
 
-      {/* Main Content */}
-      <main className="flex-1 p-8 md:p-12">
-        <header className="flex justify-between items-center mb-10">
-          <div>
-            <h1 className="text-3xl font-semibold text-slate-900">Dashboard Keberlanjutan</h1>
-            <p className="text-slate-500 mt-1">Pantau metrik ESG dan status pesanan Eco-Merch Anda.</p>
-          </div>
-          <div className="flex items-center gap-6">
-            <Bell className="text-slate-500 cursor-pointer hover:text-primary transition-colors" size={22} />
-            <div className="flex items-center gap-4">
-              <img src="https://ui-avatars.com/api/?name=PT+XYZ&background=1f3d29&color=fff" alt="Avatar" className="rounded-full w-10 h-10 border-2 border-primary/20" />
-              <div>
-                <h4 className="text-sm font-semibold text-slate-900">PT Danareksa (Persero)</h4>
-                <p className="text-xs text-slate-500">Klien Korporat</p>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-w-0">
+        
+        {/* Top Header */}
+        <header className="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-gray-200 px-6 sm:px-8 py-4 flex items-center justify-between">
+          
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setMobileSidebarOpen(true)}
+              className="lg:hidden p-2 text-[#1a3626] hover:bg-gray-100 transition-colors cursor-pointer"
+            >
+              <Menu size={22} />
+            </button>
+
+            <div>
+              <div className="flex items-center gap-2 text-[11px] text-gray-500 font-mono">
+                <span>Portal Klien</span>
+                <span>/</span>
+                <span className="text-[#1a3626] font-bold capitalize">{activeTab}</span>
               </div>
+              <h1 className="text-xl sm:text-2xl font-black text-[#1a3626] tracking-tight">
+                {activeTab === 'dashboard' && 'Impact Dashboard'}
+                {activeTab === 'katalog' && 'Katalog Produk Siap Kustom'}
+                {activeTab === 'pesanan' && 'Manajemen & Lacak Pesanan'}
+                {activeTab === 'esg' && 'Audit & Sertifikasi ESG'}
+                {activeTab === 'pengaturan' && 'Pengaturan Akun Perusahaan'}
+              </h1>
             </div>
           </div>
+
+          {/* Right Header Actions */}
+          <div className="flex items-center gap-4">
+            
+            {/* Notification Bell */}
+            <div className="relative">
+              <button
+                onClick={() => setNotificationsOpen(!notificationsOpen)}
+                className="p-2 border border-gray-200 hover:border-[#1a3626] text-gray-600 hover:text-[#1a3626] transition-colors relative cursor-pointer"
+                title="Notifikasi"
+              >
+                <Bell size={18} />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-[#f3c44c] rounded-full" />
+              </button>
+
+              {notificationsOpen && (
+                <div className="absolute right-0 mt-2 w-80 bg-white border-2 border-[#1a3626] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-150">
+                  <div className="flex items-center justify-between pb-2 mb-3 border-b border-gray-200">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#1a3626]">
+                      Notifikasi Terbaru
+                    </h4>
+                    <span className="text-[10px] font-mono bg-[#f8f7f2] px-2 py-0.5 text-gray-600">
+                      2 Baru
+                    </span>
+                  </div>
+
+                  <div className="space-y-3 text-xs">
+                    <div className="p-2 bg-[#f8f7f2] border border-gray-200">
+                      <p className="font-bold text-[#1a3626]">PO-CIR-2026-064 Lolos Inspeksi QC</p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">Batch 500 unit Seminar Kit Delegate siap dikirim ke Cikarang.</p>
+                      <span className="text-[10px] text-gray-400 block mt-1">2 jam yang lalu</span>
+                    </div>
+                    <div className="p-2 bg-[#f8f7f2] border border-gray-200">
+                      <p className="font-bold text-[#1a3626]">Sertifikat Emisi Q3 Telah Diterbitkan</p>
+                      <p className="text-[11px] text-gray-500 mt-0.5">Sertifikat No: ESG-CIR-2026-8812 dapat diunduh pada tab ESG.</p>
+                      <span className="text-[10px] text-gray-400 block mt-1">1 hari yang lalu</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Profile Avatar Pill */}
+            <div className="hidden sm:flex items-center gap-3 pl-2 border-l border-gray-200">
+              <div className="w-9 h-9 bg-[#1a3626] text-white flex items-center justify-center font-bold text-xs">
+                DN
+              </div>
+              <div className="text-left">
+                <span className="text-xs font-bold text-[#1a3626] block leading-none">
+                  PT Danareksa (Persero)
+                </span>
+                <span className="text-[11px] text-gray-500">
+                  Arya Pratama (Lead)
+                </span>
+              </div>
+            </div>
+
+            {/* Back to Website Button */}
+            <Link
+              href="/"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#f8f7f2] hover:bg-[#1a3626] text-[#1a3626] hover:text-white border border-gray-300 hover:border-[#1a3626] text-xs font-bold transition-all"
+            >
+              Lihat Web <ExternalLink size={12} />
+            </Link>
+
+          </div>
+
         </header>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          {[
-            { title: 'Plastik Terdiversi', value: '1,250 kg', inc: '+15% bulan ini', icon: Recycle },
-            { title: 'Reduksi Jejak Karbon', value: '3,420 kg CO₂', inc: '+12% bulan ini', icon: CloudFog },
-            { title: 'Jam Kerja Pengrajin', value: '480 Jam', inc: '+20% (SDG 8)', icon: Users },
-            { title: 'Total Eco-Merch', value: '5,000 Unit', inc: '3 Batch Pesanan', icon: Boxes },
-          ].map((metric, i) => (
-            <div key={i} className="bg-white border-2 border-slate-200 border-dashed shape-recycled p-6 shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-1">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 shape-recycled-alt bg-primary/10 text-primary flex items-center justify-center transform rotate-2">
-                  <metric.icon size={24} />
-                </div>
-              </div>
-              <p className="text-sm text-slate-500 font-medium">{metric.title}</p>
-              <h3 className="text-2xl font-bold text-slate-900 mb-1">{metric.value}</h3>
-              <span className="text-xs font-bold text-primary flex items-center gap-1">
-                <ArrowUp size={14}/> {metric.inc}
-              </span>
-            </div>
-          ))}
-        </div>
+        {/* Tab Content Render */}
+        <main className="flex-1 p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full">
+          {activeTab === 'dashboard' && (
+            <DashboardOverview onNavigateTab={handleSelectTab} />
+          )}
+          {activeTab === 'katalog' && (
+            <DashboardKatalog />
+          )}
+          {activeTab === 'pesanan' && (
+            <DashboardOrders />
+          )}
+          {activeTab === 'esg' && (
+            <DashboardESG />
+          )}
+          {activeTab === 'pengaturan' && (
+            <DashboardSettings />
+          )}
+        </main>
 
-        {/* Charts & Orders */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white border-2 border-slate-200 border-dashed shape-recycled-alt p-6 shadow-soft">
-            <h2 className="text-lg font-semibold text-slate-900 mb-6">Grafik Dampak Lingkungan (YTD)</h2>
-            <Line options={chartOptions} data={chartData} height={100} />
-          </div>
+      </div>
 
-          <div className="bg-white border-2 border-slate-200 border-dashed shape-recycled p-6 shadow-soft">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-lg font-semibold text-slate-900">Status Pesanan</h2>
-              <a href="#" className="text-sm text-primary font-semibold hover:underline">Lihat Semua</a>
-            </div>
-            
-            <div className="flex flex-col gap-4">
-              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled">
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900 mb-1">Lanyard Daur Ulang</h4>
-                  <p className="text-xs text-slate-500">2,000 unit • 12 Nov 2026</p>
-                </div>
-                <span className="px-3 py-1.5 shape-recycled-alt text-xs font-bold bg-secondary/20 text-yellow-800">Produksi</span>
-              </div>
-              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled-alt">
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900 mb-1">Seminar Kit Delegate</h4>
-                  <p className="text-xs text-slate-500">500 unit • 20 Okt 2026</p>
-                </div>
-                <span className="px-3 py-1.5 shape-recycled text-xs font-bold bg-blue-100 text-blue-800">Inspeksi QC</span>
-              </div>
-              <div className="flex justify-between items-center p-4 border border-slate-200 shape-recycled">
-                <div>
-                  <h4 className="text-sm font-semibold text-slate-900 mb-1">Corporate Hampers</h4>
-                  <p className="text-xs text-slate-500">100 unit • 1 Okt 2026</p>
-                </div>
-                <span className="px-3 py-1.5 shape-recycled-alt text-xs font-bold bg-primary/20 text-primary">Terkirim</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Banner */}
-        <div className="mt-6 bg-gradient-to-br from-primary to-[#101f14] shape-recycled-alt p-8 text-white flex flex-col md:flex-row justify-between items-center shadow-lg border-2 border-primary/50">
-          <div className="mb-4 md:mb-0">
-            <h2 className="text-xl font-bold mb-2">Sertifikat Dampak & Laporan ESG</h2>
-            <p className="text-sm opacity-90 max-w-md">Unduh laporan kuantitatif yang divalidasi untuk Sustainability Report perusahaan Anda secara instan.</p>
-          </div>
-          <button className="bg-secondary text-primary px-6 py-3 shape-recycled font-bold flex items-center gap-2 hover:scale-105 transition-transform shadow-md" onClick={() => alert('Mengunduh PDF ESG Report...')}>
-            <Download size={18} /> Unduh ESG Report
-          </button>
-        </div>
-
-      </main>
     </div>
   );
 }
