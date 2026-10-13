@@ -103,7 +103,9 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-white/60">
               <li className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-[#5c8770] shrink-0 mt-0.5" />
-                <span>Kuningan, Jakarta Selatan, 12950</span>
+                <span className="leading-relaxed">
+                  Jl. Ganesha 2, Lot B1, Deltamas, Pasirranji, Central Cikarang, Bekasi Regency, West Java 17530
+                </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail size={16} className="text-[#5c8770] shrink-0" />
