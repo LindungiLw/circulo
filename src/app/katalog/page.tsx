@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 import { ArrowRight, Search, SlidersHorizontal, ArrowLeft, Recycle, FileCheck, CheckCircle2 } from 'lucide-react';
 
@@ -213,10 +214,8 @@ export default function KatalogPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="w-full py-6 px-8 border-t border-[#1a3626]/10 text-center text-xs text-gray-500 bg-white/50">
-        <p>© 2026 Circulo Indonesia. Platform Agregator Eco-Merchandise & Rantai Pasok Berkelanjutan.</p>
-      </footer>
+      {/* Corporate B2B Footer */}
+      <Footer />
 
     </div>
   );

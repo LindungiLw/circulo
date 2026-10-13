@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 
 export default function LandingPage() {
@@ -506,6 +507,9 @@ export default function LandingPage() {
            
         </div>
       </section>
+
+      {/* Corporate B2B Footer */}
+      <Footer />
 
     </div>
   );
