@@ -29,10 +29,6 @@ export default function ClientLoginModal({ isOpen, onClose }: ClientLoginModalPr
               <CirculoPassIcon size={20} />
             </div>
             <div>
-              <div className="text-[10px] font-mono tracking-wider uppercase text-[#1a3626] font-bold flex items-center gap-1.5">
-                <span className="w-1.5 h-3 bg-[#5c8770]"></span>
-                PORTAL KLIEN B2B
-              </div>
               <h3 className="text-xl font-black text-[#1a3626]">Masuk Akun Perusahaan</h3>
             </div>
           </div>

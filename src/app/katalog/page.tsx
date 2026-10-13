@@ -50,10 +50,7 @@ export default function KatalogPage() {
 
           {/* Catalog Header */}
           <div className="max-w-3xl mb-12">
-            <span className="px-2.5 py-1 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-widest font-bold">
-              KATALOG PENGADAAN B2B CIR // 2026
-            </span>
-            <h1 className="text-3xl sm:text-5xl font-black text-[#1a3626] tracking-tight leading-tight mt-3 mb-4">
+            <h1 className="text-3xl sm:text-5xl font-black text-[#1a3626] tracking-tight leading-tight mb-4">
               Eco-Merchandise Siap Kustom & Terverifikasi ESG
             </h1>
             <p className="text-sm sm:text-base text-[#4a5f52] leading-relaxed">

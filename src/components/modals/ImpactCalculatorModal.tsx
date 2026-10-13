@@ -36,10 +36,6 @@ export default function ImpactCalculatorModal({ isOpen, onClose }: ImpactCalcula
               <Calculator size={20} />
             </div>
             <div>
-              <div className="flex items-center gap-2 text-[10px] font-mono tracking-wider uppercase text-[#1a3626] font-bold">
-                <span className="w-1.5 h-3 bg-[#5c8770]"></span>
-                SIMULATOR DAMPAK ESG B2B
-              </div>
               <h3 className="text-xl sm:text-2xl font-black text-[#1a3626]">Kalkulator Dampak Lingkungan</h3>
             </div>
           </div>
