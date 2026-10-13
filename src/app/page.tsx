@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers } from 'lucide-react';
+import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers, Building2 } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -372,6 +372,92 @@ export default function LandingPage() {
                   <p className="font-semibold text-sm text-[#1a3626]">Agenda, Packaging, & Nametag</p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Rantai Pasok Sirkular Terintegrasi (4 Langkah Supply Chain) */}
+          <div className="mt-28 pt-20 border-t border-[#1a3626]/15">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
+                Rantai Pasok Sirkular Terintegrasi
+              </h2>
+              <p className="text-sm sm:text-base text-[#4a5f52] leading-relaxed">
+                Alur pengadaan <em>asset-light</em> empat tahap yang menghubungkan bank sampah daerah, pengrajin lokal, standardisasi mutu B2B, hingga laporan keberlanjutan korporasi.
+              </p>
+            </div>
+
+            {/* 4 Steps Flow Grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                {
+                  step: '01',
+                  title: 'Bank Sampah Daerah',
+                  subtitle: 'Suplai Bahan Terpilah',
+                  desc: 'Penyortiran limbah plastik botol PET, residu tekstil garmen, dan serat biomassa dengan standar kebersihan ketat.',
+                  tag: 'Input Bahan Terverifikasi',
+                  icon: Recycle,
+                  badgeColor: 'bg-[#1a3626] text-white',
+                },
+                {
+                  step: '02',
+                  title: 'Komunitas Pengrajin',
+                  subtitle: 'Produksi & Upah Adil',
+                  desc: 'Pembuatan kriya handcrafted oleh 120+ pengrajin lokal dengan jaminan kompensasi fair-wage berkelanjutan (SDG 8).',
+                  tag: 'Pemberdayaan Daerah',
+                  icon: Users,
+                  badgeColor: 'bg-[#5c8770] text-white',
+                },
+                {
+                  step: '03',
+                  title: 'Fasilitas QC Circulo',
+                  subtitle: 'Two-Stage Quality Control',
+                  desc: 'Standardisasi master sample sebelum produksi dan inspeksi fisik produk jadi sebelum diberi segel resmi Passed QC.',
+                  tag: 'Standar Mutu B2B',
+                  icon: ShieldCheck,
+                  badgeColor: 'bg-[#f3c44c] text-[#1a3626]',
+                },
+                {
+                  step: '04',
+                  title: 'Klien Korporat B2B',
+                  subtitle: 'Distribusi & Laporan ESG',
+                  desc: 'Pengiriman tepat waktu ke kantor atau event MICE, dilengkapi Impact Report terverifikasi untuk laporan tahunan.',
+                  tag: 'Audit-Ready ESG',
+                  icon: Building2,
+                  badgeColor: 'bg-[#1a3626] text-[#f3c44c]',
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white border border-[#1a3626]/15 hover:border-[#1a3626] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
+                >
+                  <div>
+                    {/* Top Step Number & Icon */}
+                    <div className="flex items-center justify-between mb-5">
+                      <span className={`text-xs font-mono font-bold px-2 py-0.5 ${item.badgeColor}`}>
+                        Langkah {item.step}
+                      </span>
+                      <div className="w-9 h-9 bg-[#f8f7f2] border border-[#1a3626]/10 flex items-center justify-center text-[#1a3626] group-hover:bg-[#1a3626] group-hover:text-white transition-colors">
+                        <item.icon size={18} />
+                      </div>
+                    </div>
+
+                    <h3 className="text-base font-bold text-[#1a3626] mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-[11px] font-mono uppercase text-[#5c8770] font-bold mb-3">
+                      {item.subtitle}
+                    </p>
+                    <p className="text-xs text-[#4a5f52] leading-relaxed mb-4">
+                      {item.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                    <span className="font-mono text-gray-500 font-semibold">{item.tag}</span>
+                    <span className="text-[#1a3626] font-bold">→</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
