@@ -20,6 +20,8 @@ export default function LandingPage() {
     ? PRODUCTS_DATA 
     : PRODUCTS_DATA.filter((p) => p.category === activeCategory);
 
+  const displayedProducts = filteredProducts.slice(0, 6);
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentImg((prev) => (prev + 1) % transitionImages.length);
@@ -383,11 +385,12 @@ export default function LandingPage() {
                  <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] mb-3">Katalog Eco-Merch Siap Kustom</h2>
                  <p className="text-[#4a5f52] text-sm sm:text-base">Pilihan merchandise korporat yang dapat dikustomisasi logo & warna, terbuat 100% dari residu limbah terverifikasi.</p>
                </div>
-               <div className="flex items-center gap-3">
-                 <span className="text-xs font-mono text-[#5c8770] font-bold">
-                   {filteredProducts.length} dari {PRODUCTS_DATA.length} Produk Tersedia
-                 </span>
-               </div>
+               <Link 
+                 href="/katalog" 
+                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors pb-1 border-b-2 border-[#1a3626] uppercase tracking-wider shrink-0"
+               >
+                 Lihat Semua ({PRODUCTS_DATA.length} Koleksi) <ArrowRight size={14} />
+               </Link>
              </div>
 
              {/* Category Filter Tabs */}
@@ -414,9 +417,9 @@ export default function LandingPage() {
                })}
              </div>
 
-             {/* Dynamic Product Grid */}
+             {/* Dynamic Product Grid (Maksimal 6 Produk agar rapi) */}
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {filteredProducts.map((product) => (
+               {displayedProducts.map((product) => (
                  <div 
                    key={product.id} 
                    className="bg-white border border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-5 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between"
@@ -475,6 +478,17 @@ export default function LandingPage() {
                ))}
              </div>
              
+             {/* Tombol Lihat Semua Koleksi */}
+             <div className="mt-10 text-center">
+               <Link 
+                 href="/katalog" 
+                 className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-white hover:bg-[#1a3626] text-[#1a3626] hover:text-white border-2 border-[#1a3626] text-xs font-black uppercase tracking-wider transition-all shadow-xs group cursor-pointer"
+               >
+                 Lihat Semua Koleksi ({PRODUCTS_DATA.length} Produk Lengkap)
+                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+               </Link>
+             </div>
+
              {/* Bottom Quote Banner */}
              <div className="mt-12 p-6 sm:p-8 bg-[#1a3626] text-white flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-[#1a3626]">
                <div>
