@@ -5,6 +5,7 @@ import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, S
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import LottiePlayer from '@/components/animations/LottiePlayer';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 
 export default function LandingPage() {
@@ -407,14 +408,68 @@ export default function LandingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
-            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
-              Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
-            </h2>
-            <p className="text-base text-[#4a5f52] leading-relaxed">
-              Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan.
-            </p>
+          {/* Section Header with Featured Motion Story (Scene.json) */}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 scroll-reveal">
+            {/* Left: Text & Key Highlights */}
+            <div className="lg:col-span-6 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/10 w-fit mb-4">
+                <span className="w-2 h-2 rounded-full bg-[#5c8770] animate-ping"></span>
+                <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a3626]">
+                  Jejak Transformasi Sirkular
+                </span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3626] leading-[1.15] mb-4 tracking-tight">
+                Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
+              </h2>
+
+              <p className="text-sm sm:text-base text-[#4a5f52] leading-relaxed mb-6">
+                Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan. Mengubah residu plastik botol, serat biomassa, dan potongan tekstil menjadi produk merchandise bernilai ekonomi tinggi.
+              </p>
+
+              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#1a3626]/10">
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 size={16} className="text-[#5c8770] shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="text-xs font-bold text-[#1a3626]">Material Terverifikasi</h5>
+                    <p className="text-[11px] text-gray-500">Bank sampah & agregator daur ulang tersertifikasi</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 size={16} className="text-[#5c8770] shrink-0 mt-0.5" />
+                  <div>
+                    <h5 className="text-xs font-bold text-[#1a3626]">Upah Layak Berkelanjutan</h5>
+                    <p className="text-[11px] text-gray-500">Pemberdayaan 120+ pengrajin daerah (SDG 8)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Featured Lottie Motion Frame (Scene.json) */}
+            <div className="lg:col-span-6">
+              <div className="bg-white border-2 border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[0_12px_36px_rgba(26,54,38,0.08)] relative group hover:border-[#5c8770] transition-colors">
+                
+                {/* Frame Header Bar */}
+                <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#1a3626]/10 text-[10px] font-mono">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#f3c44c] animate-pulse"></span>
+                    <span className="font-bold text-[#1a3626] uppercase tracking-wider">Motion Story: Transformasi Sirkular</span>
+                  </div>
+                  <span className="text-gray-400 font-semibold">Scene.json • 60 FPS</span>
+                </div>
+
+                {/* The Lottie Canvas Frame */}
+                <div className="w-full aspect-[4/3] bg-neutral-900 rounded-none overflow-hidden relative border border-[#1a3626]/10 flex items-center justify-center">
+                  <LottiePlayer animationPath="/animations/Scene.json" />
+                </div>
+
+                {/* Frame Footer Caption */}
+                <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-gray-500">
+                  <span className="truncate pr-2">Visualisasi: Dari Sampah Lokal Menuju Nilai Kehidupan</span>
+                  <span className="text-[#1a3626] font-bold shrink-0">Circulo Motion</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* 4 Stats Cards - Clean, Square & Minimal */}
