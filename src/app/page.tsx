@@ -509,53 +509,55 @@ export default function LandingPage() {
                  >
                    <div>
                      {/* Product Image Frame */}
-                     <div className="w-full aspect-[4/3] bg-[#f8f7f2] mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10 flex items-center justify-center p-4">
-                       {product.badge && (
-                         <div className="absolute top-3 left-3 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-wider font-bold px-2.5 py-0.5 z-10 border border-[#f3c44c]/30 rounded-none">
-                           {product.badge}
-                         </div>
-                       )}
-                       <span className="absolute top-3 right-3 text-[10px] font-mono text-gray-500 font-semibold bg-white/80 px-2 py-0.5 border border-gray-200">
-                         Min. {product.minOrder}
-                       </span>
-                       <img 
-                         src={product.image} 
-                         alt={product.name} 
-                         className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
-                       />
-                     </div>
+                      <div className="w-full aspect-[4/3] bg-neutral-100 mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10">
+                        {product.badge && (
+                          <div className="absolute top-3 left-3 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-wider font-bold px-2.5 py-1 z-20 border border-[#f3c44c]/30 shadow-xs">
+                            {product.badge}
+                          </div>
+                        )}
+                        <img 
+                          src={product.image} 
+                          alt={product.name} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                        />
+                      </div>
 
-                     {/* Meta & Titles */}
-                     <div className="flex items-center gap-2 mb-1">
-                       <span className="text-[10px] font-mono text-[#5c8770] font-bold uppercase tracking-wider">
-                         {product.category}
-                       </span>
-                       <span className="text-gray-300">•</span>
-                       <span className="text-[10px] font-mono text-gray-500">
-                         {product.material.split('&')[0]}
-                       </span>
-                     </div>
+                      {/* Meta & Titles */}
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
+                            {product.category}
+                          </span>
+                          <span className="text-gray-300">•</span>
+                          <span className="text-[10px] font-mono text-gray-500">
+                            {product.material.split('&')[0]}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-mono text-[#1a3626] font-bold bg-[#f8f7f2] px-2 py-0.5 border border-[#1a3626]/15 whitespace-nowrap">
+                          Min. {product.minOrder}
+                        </span>
+                      </div>
 
-                     <h4 className="text-lg font-extrabold text-[#1a3626] mb-1 group-hover:text-[#5c8770] transition-colors">
-                       {product.name}
-                     </h4>
-                     <p className="text-xs text-[#4a5f52] mb-3 leading-relaxed">
-                       {product.description}
-                     </p>
-                   </div>
+                      <h4 className="text-lg font-extrabold text-[#1a3626] mb-1 group-hover:text-[#5c8770] transition-colors leading-snug">
+                        {product.name}
+                      </h4>
+                      <p className="text-xs text-[#4a5f52] mb-3 leading-relaxed">
+                        {product.description}
+                      </p>
+                    </div>
 
-                   {/* Bottom Impact & Action Footer */}
-                   <div className="pt-3 border-t border-[#1a3626]/10 flex items-center justify-between mt-2">
-                     <div>
-                       <span className="text-[10px] font-mono uppercase text-gray-400 block">Jejak Dampak ESG</span>
-                       <span className="text-xs font-bold text-[#1a3626]">{product.impactMetric}</span>
-                     </div>
-                     <Link 
-                       href="/dashboard"
-                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-[#5c8770] group/btn px-2.5 py-1.5 bg-[#f8f7f2] border border-[#1a3626]/10 hover:border-[#1a3626] transition-all"
-                     >
-                       Kustomisasi <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                     </Link>
+                    {/* Bottom Impact & Action Footer */}
+                    <div className="pt-3 border-t border-[#1a3626]/10 flex items-center justify-between mt-2">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase text-gray-400 block">Jejak Dampak ESG</span>
+                        <span className="text-xs font-bold text-[#1a3626]">{product.impactMetric}</span>
+                      </div>
+                      <Link 
+                        href="/dashboard"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-white hover:bg-[#1a3626] group/btn px-3 py-1.5 bg-[#f8f7f2] border border-[#1a3626]/15 hover:border-[#1a3626] transition-all"
+                      >
+                        Kustomisasi <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
+                      </Link>
                    </div>
                  </div>
                ))}

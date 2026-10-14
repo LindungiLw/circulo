@@ -126,30 +126,32 @@ export default function KatalogPage() {
                 >
                   <div>
                     {/* Frame Gambar Produk dengan border tegas & latar lembut */}
-                    <div className="w-full aspect-square bg-[#f8f7f2] mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10 flex items-center justify-center p-4">
+                    <div className="w-full aspect-square bg-neutral-100 mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10">
                       {product.badge && (
-                        <div className="absolute top-3 left-3 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-wider font-bold px-2 py-0.5 z-10 border border-[#f3c44c]/30 rounded-none">
+                        <div className="absolute top-3 left-3 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase tracking-wider font-bold px-2.5 py-1 z-20 border border-[#f3c44c]/30 shadow-xs">
                           {product.badge}
                         </div>
                       )}
-                      <span className="absolute top-3 right-3 text-[10px] font-mono text-gray-500 font-semibold bg-white/90 px-2 py-0.5 border border-gray-200">
-                        Min. {product.minOrder}
-                      </span>
                       <img 
                         src={product.image} 
                         alt={product.name} 
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-sm" 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                       />
                     </div>
 
                     {/* Metadata */}
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <span className="text-[10px] font-mono text-[#5c8770] font-bold uppercase tracking-wider">
-                        {product.category}
-                      </span>
-                      <span className="text-gray-300">•</span>
-                      <span className="text-[10px] font-mono text-gray-500">
-                        {product.material.split('&')[0]}
+                    <div className="flex items-center justify-between gap-2 mb-2">
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
+                          {product.category}
+                        </span>
+                        <span className="text-gray-300">•</span>
+                        <span className="text-[10px] font-mono text-gray-500">
+                          {product.material.split('&')[0]}
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-mono text-[#1a3626] font-bold bg-[#f8f7f2] px-2 py-0.5 border border-[#1a3626]/15 whitespace-nowrap">
+                        Min. {product.minOrder}
                       </span>
                     </div>
 

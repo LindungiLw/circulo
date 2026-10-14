@@ -141,32 +141,32 @@ export default function DashboardKatalog() {
             >
               <div>
                 {/* Image Container */}
-                <div className="w-full aspect-[4/3] bg-[#f8f7f2] relative border-b border-gray-100 flex items-center justify-center p-4 overflow-hidden">
+                <div className="w-full aspect-[4/3] bg-neutral-100 relative border-b border-gray-100 overflow-hidden">
                   {product.badge && (
-                    <span className="absolute top-2.5 left-2.5 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase font-bold px-2 py-0.5 z-10">
+                    <span className="absolute top-2.5 left-2.5 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono uppercase font-bold px-2 py-0.5 z-20 border border-[#f3c44c]/30 shadow-xs">
                       {product.badge}
                     </span>
                   )}
-                  <span className="absolute top-2.5 right-2.5 text-[10px] font-mono text-gray-500 bg-white/90 px-2 py-0.5 border border-gray-200">
-                    Min. {product.minOrder}
-                  </span>
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
 
                 {/* Details */}
                 <div className="p-4 space-y-2">
-                  <div>
-                    <span className="text-[10px] font-mono text-gray-400 block">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
                       {product.category}
                     </span>
-                    <h3 className="text-sm font-bold text-[#1a3626] mt-0.5">
-                      {product.name}
-                    </h3>
+                    <span className="text-[10px] font-mono text-[#1a3626] font-bold bg-[#f8f7f2] px-2 py-0.5 border border-[#1a3626]/15 whitespace-nowrap">
+                      Min. {product.minOrder}
+                    </span>
                   </div>
+                  <h3 className="text-sm font-bold text-[#1a3626] mt-0.5 group-hover:text-[#5c8770] transition-colors">
+                    {product.name}
+                  </h3>
 
                   <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
                     <span className="text-gray-500 truncate max-w-[55%]">{product.material}</span>
