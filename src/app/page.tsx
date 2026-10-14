@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers, Building2 } from 'lucide-react';
+import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, Sprout, ArrowUpRight, CheckCircle2, Layers, Building2, ArrowUp, Sparkles, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -16,12 +16,51 @@ export default function LandingPage() {
   
   const [currentImg, setCurrentImg] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const filteredProducts = activeCategory === 'Semua' 
     ? PRODUCTS_DATA 
     : PRODUCTS_DATA.filter((p) => p.category === activeCategory);
 
   const displayedProducts = filteredProducts.slice(0, 6);
+
+  // Scroll tracking for parallax and circular progress
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const current = window.scrollY;
+          setScrollY(current);
+          const total = document.documentElement.scrollHeight - window.innerHeight;
+          setScrollProgress(total > 0 ? (current / total) * 100 : 0);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // IntersectionObserver for scroll-reveal elements
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    const targets = document.querySelectorAll('.scroll-reveal');
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [activeCategory]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -55,7 +94,7 @@ export default function LandingPage() {
              
              {/* The Donut Chart SVG Ring around the image */}
              <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-0 pointer-events-none">
-               <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
+               <svg viewBox="0 0 100 100" className="w-full h-full transition-transform duration-100 ease-out" style={{ transform: `rotate(${-90 + scrollY * 0.12}deg)` }}>
                  <circle cx="50" cy="50" r="48" fill="none" stroke="#f3c44c" strokeWidth="4" strokeDasharray="60 301.59" className="opacity-90" />
                  <circle cx="50" cy="50" r="48" fill="none" stroke="#1a3626" strokeWidth="8" strokeDasharray="100 301.59" strokeDashoffset="-65" className="opacity-90" />
                  <circle cx="50" cy="50" r="48" fill="none" stroke="#5c8770" strokeWidth="2" strokeDasharray="40 301.59" strokeDashoffset="-170" className="opacity-90" />
@@ -69,7 +108,7 @@ export default function LandingPage() {
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-20 pointer-events-none overflow-hidden">
+             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-20 pointer-events-none overflow-hidden transition-transform duration-100 ease-out" style={{ transform: `rotate(${scrollY * 0.08}deg)` }}>
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <path id="curve" d="M 8 50 A 42 42 0 0 1 92 50" fill="transparent" />
                   <text className="text-[3.8px] font-bold fill-[#5c8770] tracking-[0.25em] uppercase" textAnchor="middle">
@@ -211,6 +250,152 @@ export default function LandingPage() {
           </div>
           
         </div>
+
+        {/* Scroll Cue Button linking Hero to Circular Transition */}
+        <div className="flex justify-center mt-12 sm:mt-16 relative z-20">
+          <a 
+            href="#transisi-sirkular" 
+            className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/90 hover:bg-white backdrop-blur-md border border-[#1a3626]/20 hover:border-[#1a3626] rounded-full text-xs font-mono font-bold text-[#1a3626] transition-all shadow-xs hover:shadow-md group cursor-pointer"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-[#5c8770] animate-ping"></span>
+            <span>Jelajahi Siklus Transformasi Sirkular</span>
+            <div className="w-6 h-6 rounded-full bg-[#1a3626] text-white flex items-center justify-center group-hover:translate-y-1 transition-transform">
+              <ChevronDown size={13} />
+            </div>
+          </a>
+        </div>
+      </section>
+
+      {/* SIGNATURE CIRCULAR TRANSITION SECTION (Between Hero & Impact) */}
+      <section id="transisi-sirkular" className="w-full relative z-20 bg-[#1a3626] text-white py-14 overflow-hidden border-y-4 border-[#f3c44c]">
+        
+        {/* Decorative Grid Overlay & Ambient Glow */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f3c44c_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
+        <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-[#5c8770]/20 blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-[#f3c44c]/15 blur-3xl pointer-events-none"></div>
+
+        {/* Marquee Track 1 (Left to Right / Infinite Loop) */}
+        <div className="relative w-full overflow-hidden mb-6 py-2 border-b border-white/10">
+          <div className="animate-marquee whitespace-nowrap text-xs sm:text-sm font-mono tracking-widest uppercase font-bold flex items-center gap-8 text-[#f8f7f2]">
+            <span className="flex items-center gap-2"><Recycle size={15} className="text-[#f3c44c] animate-spin-slow" /> EKONOMI SIRKULAR TERINTEGRASI</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>DARI BANK SAMPAH DAERAH HINGGA KORPORAT B2B</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span className="flex items-center gap-2"><ShieldCheck size={15} className="text-[#5c8770]" /> STANDAR MUTU DUA TAHAP</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>100% LIMBAH TERLACAK & TERUKUR</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span className="flex items-center gap-2"><Sparkles size={14} className="text-[#f3c44c]" /> LAPORAN ESG AUDIT-READY</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>120+ PENGRAJIN LOKAL DIBERDAYAKAN</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>ZERO LANDFILL COMMITMENT</span>
+            <span className="text-[#f3c44c]">•</span>
+            {/* Duplicate for seamless infinite loop */}
+            <span className="flex items-center gap-2"><Recycle size={15} className="text-[#f3c44c] animate-spin-slow" /> EKONOMI SIRKULAR TERINTEGRASI</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>DARI BANK SAMPAH DAERAH HINGGA KORPORAT B2B</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span className="flex items-center gap-2"><ShieldCheck size={15} className="text-[#5c8770]" /> STANDAR MUTU DUA TAHAP</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>100% LIMBAH TERLACAK & TERUKUR</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span className="flex items-center gap-2"><Sparkles size={14} className="text-[#f3c44c]" /> LAPORAN ESG AUDIT-READY</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>120+ PENGRAJIN LOKAL DIBERDAYAKAN</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>ZERO LANDFILL COMMITMENT</span>
+            <span className="text-[#f3c44c]">•</span>
+          </div>
+        </div>
+
+        {/* Center Interactive Transition Cards */}
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
+            
+            {/* Transition Milestone 1 */}
+            <div className="bg-[#12261b] border border-white/10 p-5 rounded-none hover:border-[#f3c44c]/50 transition-all group">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-mono text-[#f3c44c] uppercase tracking-wider font-bold bg-[#f3c44c]/10 px-2 py-0.5 border border-[#f3c44c]/20">
+                  Fase 01 Input
+                </span>
+                <span className="text-xs font-mono text-gray-400">Bank Sampah</span>
+              </div>
+              <h4 className="text-sm font-bold text-white group-hover:text-[#f3c44c] transition-colors mb-1">
+                Limbah Disortir & Dicuci
+              </h4>
+              <p className="text-xs text-gray-300 leading-relaxed">
+                Plastik botol PET, tekstil sisa garmen, dan serat alami divalidasi kualitasnya sebelum diproduksi.
+              </p>
+            </div>
+
+            {/* Center Dynamic Spinning Emblem */}
+            <div className="flex flex-col items-center justify-center text-center p-4">
+              <div className="relative w-24 h-24 flex items-center justify-center mb-3">
+                {/* Outer Rotating Ring */}
+                <div 
+                  className="absolute inset-0 rounded-full border-2 border-dashed border-[#f3c44c] transition-transform duration-100 ease-out"
+                  style={{ transform: `rotate(${scrollY * 0.25}deg)` }}
+                ></div>
+                {/* Inner Icon */}
+                <div className="w-16 h-16 rounded-full bg-[#f3c44c] text-[#1a3626] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <Recycle size={28} className="transition-transform duration-100 ease-out" style={{ transform: `rotate(${-scrollY * 0.25}deg)` }} />
+                </div>
+              </div>
+              <span className="text-[11px] font-mono uppercase tracking-widest text-[#f3c44c] font-bold">
+                TRANSFORMASI SIRKULAR
+              </span>
+              <p className="text-[11px] text-gray-300 mt-0.5">
+                Mengubah Beban Menjadi Aset Bernilai
+              </p>
+            </div>
+
+            {/* Transition Milestone 2 */}
+            <div className="bg-[#12261b] border border-white/10 p-5 rounded-none hover:border-[#5c8770]/60 transition-all group">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[10px] font-mono text-[#5c8770] uppercase tracking-wider font-bold bg-[#5c8770]/10 px-2 py-0.5 border border-[#5c8770]/30">
+                  Fase 02 Output
+                </span>
+                <span className="text-xs font-mono text-gray-400">B2B Ready</span>
+              </div>
+              <h4 className="text-sm font-bold text-white group-hover:text-[#5c8770] transition-colors mb-1">
+                Merchandise & Laporan ESG
+              </h4>
+              <p className="text-xs text-gray-300 leading-relaxed">
+                Produk berstandar ekspor siap kirim, lengkap dengan metrik jejak karbon dan sertifikat dampak.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Marquee Track 2 (Right to Left / Reverse Infinite Loop) */}
+        <div className="relative w-full overflow-hidden mt-6 py-2 border-t border-white/10">
+          <div className="animate-marquee-reverse whitespace-nowrap text-xs font-mono tracking-widest uppercase font-semibold flex items-center gap-8 text-[#a3b899]">
+            <span>100% UPCYCLED RESIDUE</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>SDG 8 PEKERJAAN LAYAK & PERTUMBUHAN EKONOMI</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>SDG 12 KONSUMSI & PRODUKSI BERTANGGUNG JAWAB</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>PENYORTIRAN BERSIH BEBAS KIMIA BERBAHAYA</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>CUSTOM LOGO & CORPORATE IDENTITY</span>
+            <span className="text-[#f3c44c]">•</span>
+            {/* Duplicate for seamless infinite loop */}
+            <span>100% UPCYCLED RESIDUE</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>SDG 8 PEKERJAAN LAYAK & PERTUMBUHAN EKONOMI</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>SDG 12 KONSUMSI & PRODUKSI BERTANGGUNG JAWAB</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>PENYORTIRAN BERSIH BEBAS KIMIA BERBAHAYA</span>
+            <span className="text-[#f3c44c]">•</span>
+            <span>CUSTOM LOGO & CORPORATE IDENTITY</span>
+            <span className="text-[#f3c44c]">•</span>
+          </div>
+        </div>
+
       </section>
 
       {/* Impact & Materials Section */}
@@ -223,7 +408,7 @@ export default function LandingPage() {
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
               Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
             </h2>
@@ -233,7 +418,7 @@ export default function LandingPage() {
           </div>
 
           {/* 4 Stats Cards - Clean, Square & Minimal */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 scroll-reveal">
             {/* Stat 1 */}
             <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
@@ -285,7 +470,7 @@ export default function LandingPage() {
 
           {/* 3 Material Transformation Cards - Square & Concise */}
           <div className="mb-4">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-8 scroll-reveal">
               {/* Material 1: Plastik PET & HDPE */}
               <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
                 <div>
@@ -376,7 +561,7 @@ export default function LandingPage() {
           </div>
 
           {/* Rantai Pasok Sirkular Terintegrasi (4 Langkah Supply Chain) */}
-          <div className="mt-28 pt-20 border-t border-[#1a3626]/15">
+          <div className="mt-28 pt-20 border-t border-[#1a3626]/15 scroll-reveal">
             <div className="text-center max-w-2xl mx-auto mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
                 Rantai Pasok Sirkular Terintegrasi
