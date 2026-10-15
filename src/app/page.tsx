@@ -5,7 +5,7 @@ import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, S
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import LottiePlayer from '@/components/animations/LottiePlayer';
+import CircularBoomSection from '@/components/home/CircularBoomSection';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 
 export default function LandingPage() {
@@ -267,137 +267,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* SIGNATURE CIRCULAR TRANSITION SECTION (Between Hero & Impact) */}
-      <section id="transisi-sirkular" className="w-full relative z-20 bg-[#1a3626] text-white py-14 overflow-hidden border-y-4 border-[#f3c44c]">
-        
-        {/* Decorative Grid Overlay & Ambient Glow */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#f3c44c_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
-        <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-[#5c8770]/20 blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-[#f3c44c]/15 blur-3xl pointer-events-none"></div>
-
-        {/* Marquee Track 1 (Left to Right / Infinite Loop) */}
-        <div className="relative w-full overflow-hidden mb-6 py-2 border-b border-white/10">
-          <div className="animate-marquee whitespace-nowrap text-xs sm:text-sm font-mono tracking-widest uppercase font-bold flex items-center gap-8 text-[#f8f7f2]">
-            <span className="flex items-center gap-2"><Recycle size={15} className="text-[#f3c44c] animate-spin-slow" /> EKONOMI SIRKULAR TERINTEGRASI</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>DARI BANK SAMPAH DAERAH HINGGA KORPORAT B2B</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span className="flex items-center gap-2"><ShieldCheck size={15} className="text-[#5c8770]" /> STANDAR MUTU DUA TAHAP</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>100% LIMBAH TERLACAK & TERUKUR</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span className="flex items-center gap-2"><Sparkles size={14} className="text-[#f3c44c]" /> LAPORAN ESG AUDIT-READY</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>120+ PENGRAJIN LOKAL DIBERDAYAKAN</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>ZERO LANDFILL COMMITMENT</span>
-            <span className="text-[#f3c44c]">•</span>
-            {/* Duplicate for seamless infinite loop */}
-            <span className="flex items-center gap-2"><Recycle size={15} className="text-[#f3c44c] animate-spin-slow" /> EKONOMI SIRKULAR TERINTEGRASI</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>DARI BANK SAMPAH DAERAH HINGGA KORPORAT B2B</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span className="flex items-center gap-2"><ShieldCheck size={15} className="text-[#5c8770]" /> STANDAR MUTU DUA TAHAP</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>100% LIMBAH TERLACAK & TERUKUR</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span className="flex items-center gap-2"><Sparkles size={14} className="text-[#f3c44c]" /> LAPORAN ESG AUDIT-READY</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>120+ PENGRAJIN LOKAL DIBERDAYAKAN</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>ZERO LANDFILL COMMITMENT</span>
-            <span className="text-[#f3c44c]">•</span>
-          </div>
-        </div>
-
-        {/* Center Interactive Transition Cards */}
-        <div className="max-w-6xl mx-auto px-6 py-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-center">
-            
-            {/* Transition Milestone 1 */}
-            <div className="bg-[#12261b] border border-white/10 p-5 rounded-none hover:border-[#f3c44c]/50 transition-all group">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono text-[#f3c44c] uppercase tracking-wider font-bold bg-[#f3c44c]/10 px-2 py-0.5 border border-[#f3c44c]/20">
-                  Fase 01 Input
-                </span>
-                <span className="text-xs font-mono text-gray-400">Bank Sampah</span>
-              </div>
-              <h4 className="text-sm font-bold text-white group-hover:text-[#f3c44c] transition-colors mb-1">
-                Limbah Disortir & Dicuci
-              </h4>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Plastik botol PET, tekstil sisa garmen, dan serat alami divalidasi kualitasnya sebelum diproduksi.
-              </p>
-            </div>
-
-            {/* Center Dynamic Spinning Emblem */}
-            <div className="flex flex-col items-center justify-center text-center p-4">
-              <div className="relative w-24 h-24 flex items-center justify-center mb-3">
-                {/* Outer Rotating Ring */}
-                <div 
-                  className="absolute inset-0 rounded-full border-2 border-dashed border-[#f3c44c] transition-transform duration-100 ease-out"
-                  style={{ transform: `rotate(${scrollY * 0.25}deg)` }}
-                ></div>
-                {/* Inner Icon */}
-                <div className="w-16 h-16 rounded-full bg-[#f3c44c] text-[#1a3626] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <Recycle size={28} className="transition-transform duration-100 ease-out" style={{ transform: `rotate(${-scrollY * 0.25}deg)` }} />
-                </div>
-              </div>
-              <span className="text-[11px] font-mono uppercase tracking-widest text-[#f3c44c] font-bold">
-                TRANSFORMASI SIRKULAR
-              </span>
-              <p className="text-[11px] text-gray-300 mt-0.5">
-                Mengubah Beban Menjadi Aset Bernilai
-              </p>
-            </div>
-
-            {/* Transition Milestone 2 */}
-            <div className="bg-[#12261b] border border-white/10 p-5 rounded-none hover:border-[#5c8770]/60 transition-all group">
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-mono text-[#5c8770] uppercase tracking-wider font-bold bg-[#5c8770]/10 px-2 py-0.5 border border-[#5c8770]/30">
-                  Fase 02 Output
-                </span>
-                <span className="text-xs font-mono text-gray-400">B2B Ready</span>
-              </div>
-              <h4 className="text-sm font-bold text-white group-hover:text-[#5c8770] transition-colors mb-1">
-                Merchandise & Laporan ESG
-              </h4>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Produk berstandar ekspor siap kirim, lengkap dengan metrik jejak karbon dan sertifikat dampak.
-              </p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Marquee Track 2 (Right to Left / Reverse Infinite Loop) */}
-        <div className="relative w-full overflow-hidden mt-6 py-2 border-t border-white/10">
-          <div className="animate-marquee-reverse whitespace-nowrap text-xs font-mono tracking-widest uppercase font-semibold flex items-center gap-8 text-[#a3b899]">
-            <span>100% UPCYCLED RESIDUE</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>SDG 8 PEKERJAAN LAYAK & PERTUMBUHAN EKONOMI</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>SDG 12 KONSUMSI & PRODUKSI BERTANGGUNG JAWAB</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>PENYORTIRAN BERSIH BEBAS KIMIA BERBAHAYA</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>CUSTOM LOGO & CORPORATE IDENTITY</span>
-            <span className="text-[#f3c44c]">•</span>
-            {/* Duplicate for seamless infinite loop */}
-            <span>100% UPCYCLED RESIDUE</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>SDG 8 PEKERJAAN LAYAK & PERTUMBUHAN EKONOMI</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>SDG 12 KONSUMSI & PRODUKSI BERTANGGUNG JAWAB</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>PENYORTIRAN BERSIH BEBAS KIMIA BERBAHAYA</span>
-            <span className="text-[#f3c44c]">•</span>
-            <span>CUSTOM LOGO & CORPORATE IDENTITY</span>
-            <span className="text-[#f3c44c]">•</span>
-          </div>
-        </div>
-
-      </section>
+      {/* SIGNATURE BOOOM CIRCULAR TRANSITION SECTION */}
+      <CircularBoomSection scrollY={scrollY} />
 
       {/* Impact & Materials Section */}
       <section id="dampak" className="w-full py-24 relative z-10 overflow-hidden scroll-mt-16">
@@ -408,68 +279,20 @@ export default function LandingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          {/* Section Header with Featured Motion Story (Scene.json) */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-16 scroll-reveal">
-            {/* Left: Text & Key Highlights */}
-            <div className="lg:col-span-6 flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/10 w-fit mb-4">
-                <span className="w-2 h-2 rounded-full bg-[#5c8770] animate-ping"></span>
-                <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a3626]">
-                  Jejak Transformasi Sirkular
-                </span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1a3626] leading-[1.15] mb-4 tracking-tight">
-                Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
-              </h2>
-
-              <p className="text-sm sm:text-base text-[#4a5f52] leading-relaxed mb-6">
-                Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan. Mengubah residu plastik botol, serat biomassa, dan potongan tekstil menjadi produk merchandise bernilai ekonomi tinggi.
-              </p>
-
-              <div className="grid grid-cols-2 gap-3 pt-4 border-t border-[#1a3626]/10">
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-[#5c8770] shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="text-xs font-bold text-[#1a3626]">Material Terverifikasi</h5>
-                    <p className="text-[11px] text-gray-500">Bank sampah & agregator daur ulang tersertifikasi</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-2">
-                  <CheckCircle2 size={16} className="text-[#5c8770] shrink-0 mt-0.5" />
-                  <div>
-                    <h5 className="text-xs font-bold text-[#1a3626]">Upah Layak Berkelanjutan</h5>
-                    <p className="text-[11px] text-gray-500">Pemberdayaan 120+ pengrajin daerah (SDG 8)</p>
-                  </div>
-                </div>
-              </div>
+          {/* Section Header: Menciptakan Nilai Baru dari Limbah Lokal */}
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/10 mb-4 rounded-none">
+              <span className="w-2 h-2 rounded-full bg-[#5c8770] animate-pulse"></span>
+              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a3626]">
+                Jejak Dampak ESG & Pengrajin
+              </span>
             </div>
-
-            {/* Right: Featured Lottie Motion Frame (Scene.json) */}
-            <div className="lg:col-span-6">
-              <div className="bg-white border-2 border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[0_12px_36px_rgba(26,54,38,0.08)] relative group hover:border-[#5c8770] transition-colors">
-                
-                {/* Frame Header Bar */}
-                <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#1a3626]/10 text-[10px] font-mono">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#f3c44c] animate-pulse"></span>
-                    <span className="font-bold text-[#1a3626] uppercase tracking-wider">Motion Story: Transformasi Sirkular</span>
-                  </div>
-                  <span className="text-gray-400 font-semibold">Scene.json • 60 FPS</span>
-                </div>
-
-                {/* The Lottie Canvas Frame */}
-                <div className="w-full aspect-[4/3] bg-neutral-900 rounded-none overflow-hidden relative border border-[#1a3626]/10 flex items-center justify-center">
-                  <LottiePlayer animationPath="/animations/Scene.json" />
-                </div>
-
-                {/* Frame Footer Caption */}
-                <div className="mt-2.5 flex items-center justify-between text-[10px] font-mono text-gray-500">
-                  <span className="truncate pr-2">Visualisasi: Dari Sampah Lokal Menuju Nilai Kehidupan</span>
-                  <span className="text-[#1a3626] font-bold shrink-0">Circulo Motion</span>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
+              Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
+            </h2>
+            <p className="text-base text-[#4a5f52] leading-relaxed max-w-2xl mx-auto">
+              Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan. Mengubah residu plastik botol, serat biomassa, dan potongan tekstil menjadi produk merchandise bernilai ekonomi tinggi.
+            </p>
           </div>
 
           {/* 4 Stats Cards - Clean, Square & Minimal */}
