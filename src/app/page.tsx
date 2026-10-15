@@ -5,7 +5,6 @@ import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, S
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import CircularBoomSection from '@/components/home/CircularBoomSection';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
 
 export default function LandingPage() {
@@ -252,10 +251,10 @@ export default function LandingPage() {
           
         </div>
 
-        {/* Scroll Cue Button linking Hero to Circular Transition */}
+        {/* Scroll Cue Button linking Hero to Impact Section */}
         <div className="flex justify-center mt-12 sm:mt-16 relative z-20">
           <a 
-            href="#transisi-sirkular" 
+            href="#dampak" 
             className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/90 hover:bg-white backdrop-blur-md border border-[#1a3626]/20 hover:border-[#1a3626] rounded-full text-xs font-mono font-bold text-[#1a3626] transition-all shadow-xs hover:shadow-md group cursor-pointer"
           >
             <span className="w-2.5 h-2.5 rounded-full bg-[#5c8770] animate-ping"></span>
@@ -266,9 +265,6 @@ export default function LandingPage() {
           </a>
         </div>
       </section>
-
-      {/* SIGNATURE BOOOM CIRCULAR TRANSITION SECTION */}
-      <CircularBoomSection scrollY={scrollY} />
 
       {/* Impact & Materials Section */}
       <section id="dampak" className="w-full py-24 relative z-10 overflow-hidden scroll-mt-16">
