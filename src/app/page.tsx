@@ -133,13 +133,13 @@ export default function LandingPage() {
              </div>
 
              {/* Live Impact Card (Overlapping on the right on desktop, at bottom on mobile) */}
-             <div className="absolute bottom-0 lg:top-1/2 lg:-translate-y-1/2 right-auto lg:-right-16 bg-white rounded-none p-4 sm:p-5 border-2 border-[#1a3626] shadow-none hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1 transition-all duration-300 z-30 w-[92%] sm:w-[350px] lg:w-[380px] cursor-default">
+             <div className="absolute bottom-0 lg:top-1/2 lg:-translate-y-1/2 right-auto lg:-right-16 bg-white rounded-none p-4 sm:p-5 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] transition-shadow duration-300 z-30 w-[92%] sm:w-[350px] lg:w-[380px] cursor-default">
 
                {/* Metrics Grid inside card */}
                <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
                  
                  {/* Card 1 */}
-                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Recycle size={15} />
@@ -152,7 +152,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 2 */}
-                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Users size={15} />
@@ -165,7 +165,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 3 */}
-                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Box size={15} />
@@ -178,7 +178,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 4 - Green Highlight */}
-                 <div className="bg-[#e8efe9] border-2 border-[#5c8770]/40 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+                 <div className="bg-[#e8efe9] border-2 border-[#5c8770]/40 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-none hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex flex-col justify-between relative overflow-hidden group cursor-pointer">
                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-1.5 sm:mb-2">
                      <Sprout size={15} />
                    </div>
@@ -189,7 +189,7 @@ export default function LandingPage() {
                </div>
                
                {/* Small Bottom Image in Card */}
-               <div className="w-full h-20 sm:h-24 rounded-none overflow-hidden relative mt-1 flex bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] transition-colors">
+               <div className="w-full h-20 sm:h-24 rounded-none overflow-hidden relative mt-1 flex bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] shadow-none hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                  <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400" alt="Crafting" className="w-1/2 h-full object-cover" />
                  <div className="w-1/2 p-2.5 sm:p-3 flex flex-col justify-center">
                     <p className="text-[8px] sm:text-[9px] font-bold text-[#1a3626] leading-tight mb-1.5">Dari Sampah Lokal Menuju Produk Bernilai</p>
