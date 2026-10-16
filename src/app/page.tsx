@@ -26,6 +26,9 @@ export default function LandingPage() {
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
   const [scrollY, setScrollY] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [selectedProductId, setSelectedProductId] = useState<string>('tote-bag');
+  const [selectedMaterialIdx, setSelectedMaterialIdx] = useState<number>(0);
+  const [selectedStepIdx, setSelectedStepIdx] = useState<number>(0);
 
   const filteredProducts = activeCategory === 'Semua' 
     ? PRODUCTS_DATA 
@@ -289,7 +292,7 @@ export default function LandingPage() {
           {/* 4 Stats Cards - Clean, Square & Minimal */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 scroll-reveal">
             {/* Stat 1 */}
-            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
                 <Recycle size={22} />
               </div>
@@ -301,7 +304,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 2 */}
-            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] mb-4">
                 <Users size={22} />
               </div>
@@ -313,7 +316,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 3 */}
-            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
                 <Box size={22} />
               </div>
@@ -325,7 +328,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 4 */}
-            <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow">
+            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#5c8770] mb-4">
                 <Sprout size={22} />
               </div>
@@ -341,12 +344,19 @@ export default function LandingPage() {
           <div className="mb-4">
             <div className="grid md:grid-cols-3 gap-8 scroll-reveal">
               {/* Material 1: Plastik PET & HDPE */}
-              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+              <div 
+                onClick={() => setSelectedMaterialIdx(0)}
+                className={`bg-white border-2 rounded-none p-6 transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
+                  selectedMaterialIdx === 0
+                    ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1'
+                    : 'border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                }`}
+              >
                 <div>
                   <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
                     <Recycle size={24} />
                   </div>
-                  <h4 className="text-xl font-bold text-[#1a3626] mb-2">Plastik PET & HDPE</h4>
+                  <h4 className="text-xl font-bold text-[#1a3626] mb-2 group-hover:text-[#5c8770] transition-colors">Plastik PET & HDPE</h4>
                   <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
                     Limbah botol dan kemasan plastik disortir lalu diproses menjadi benang kain daur ulang (rPET).
                   </p>
@@ -370,12 +380,19 @@ export default function LandingPage() {
               </div>
 
               {/* Material 2: Kain Perca & Tekstil */}
-              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+              <div 
+                onClick={() => setSelectedMaterialIdx(1)}
+                className={`bg-white border-2 rounded-none p-6 transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
+                  selectedMaterialIdx === 1
+                    ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1'
+                    : 'border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                }`}
+              >
                 <div>
                   <div className="w-12 h-12 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
                     <Box size={24} />
                   </div>
-                  <h4 className="text-xl font-bold text-[#1a3626] mb-2">Kain Perca & Tekstil</h4>
+                  <h4 className="text-xl font-bold text-[#1a3626] mb-2 group-hover:text-[#5c8770] transition-colors">Kain Perca & Tekstil</h4>
                   <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
                     Sisa potongan industri garmen lokal disortir warna dan dirajut kembali tanpa pewarna kimia tambahan.
                   </p>
@@ -399,12 +416,19 @@ export default function LandingPage() {
               </div>
 
               {/* Material 3: Kertas & Biomassa */}
-              <div className="bg-white border border-[#1a3626]/10 rounded-none p-6 shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between group">
+              <div 
+                onClick={() => setSelectedMaterialIdx(2)}
+                className={`bg-white border-2 rounded-none p-6 transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
+                  selectedMaterialIdx === 2
+                    ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1'
+                    : 'border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                }`}
+              >
                 <div>
                   <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4 group-hover:scale-105 transition-transform">
                     <Sprout size={24} />
                   </div>
-                  <h4 className="text-xl font-bold text-[#1a3626] mb-2">Kertas & Biomassa</h4>
+                  <h4 className="text-xl font-bold text-[#1a3626] mb-2 group-hover:text-[#5c8770] transition-colors">Kertas & Biomassa</h4>
                   <p className="text-sm text-[#4a5f52] leading-relaxed mb-4">
                     Limbah kertas kantor dan serat alam (pelepah pinang, sabut kelapa) dicetak menjadi bahan komposit padat.
                   </p>
@@ -479,11 +503,18 @@ export default function LandingPage() {
                   icon: Building2,
                   badgeColor: 'bg-[#1a3626] text-[#f3c44c]',
                 },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white border border-[#1a3626]/15 hover:border-[#1a3626] p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
-                >
+              ].map((item, idx) => {
+                const isSelected = selectedStepIdx === idx;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedStepIdx(idx)}
+                    className={`bg-white border-2 p-6 transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
+                      isSelected
+                        ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1'
+                        : 'border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                    }`}
+                  >
                   <div>
                     {/* Top Step Number & Icon */}
                     <div className="flex items-center justify-between mb-5">
@@ -511,8 +542,9 @@ export default function LandingPage() {
                     <span className="text-[#1a3626] font-bold">→</span>
                   </div>
                 </div>
-              ))}
-            </div>
+              );
+            })}
+          </div>
           </div>
         </div>
       </section>
@@ -562,11 +594,18 @@ export default function LandingPage() {
 
              {/* Dynamic Product Grid (Maksimal 6 Produk agar rapi) */}
              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               {displayedProducts.map((product) => (
-                 <div 
-                   key={product.id} 
-                   className="bg-white border border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-5 shadow-xs hover:shadow-md transition-all group flex flex-col justify-between"
-                 >
+               {displayedProducts.map((product) => {
+                 const isSelected = selectedProductId === product.id;
+                 return (
+                   <div 
+                     key={product.id} 
+                     onClick={() => setSelectedProductId(product.id)}
+                     className={`bg-white border-2 rounded-none p-5 transition-all duration-300 group flex flex-col justify-between cursor-pointer ${
+                       isSelected
+                         ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1'
+                         : 'border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                     }`}
+                   >
                    <div>
                      {/* Product Image Frame */}
                       <div className="w-full aspect-[4/3] bg-neutral-100 mb-4 overflow-hidden rounded-none relative border border-[#1a3626]/10">
@@ -620,7 +659,8 @@ export default function LandingPage() {
                       </Link>
                    </div>
                  </div>
-               ))}
+               );
+             })}
              </div>
              
 

@@ -1,10 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Quote, Building2, CheckCircle2, TrendingUp, Sparkles, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function ClientTestimonialsSection() {
+  const [selectedCaseIdx, setSelectedCaseIdx] = useState<number>(0);
+
   const caseStudies = [
     {
       company: 'Bank Syariah Nasional & ESG Summit',
@@ -64,11 +66,18 @@ export default function ClientTestimonialsSection() {
 
         {/* 3 Case Study Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {caseStudies.map((cs, idx) => (
-            <div
-              key={idx}
-              className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] p-6 sm:p-7 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group"
-            >
+          {caseStudies.map((cs, idx) => {
+            const isSelected = selectedCaseIdx === idx;
+            return (
+              <div
+                key={idx}
+                onClick={() => setSelectedCaseIdx(idx)}
+                className={`bg-white border-2 p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between group cursor-pointer ${
+                  isSelected 
+                    ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1' 
+                    : 'border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                }`}
+              >
               <div>
                 {/* Header Tag */}
                 <div className="flex items-center justify-between pb-4 border-b border-gray-100 mb-5">
@@ -110,8 +119,9 @@ export default function ClientTestimonialsSection() {
                 </div>
               </div>
 
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </div>
 
       </div>

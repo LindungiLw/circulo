@@ -58,10 +58,10 @@ export default function ImpactCalculatorSection() {
                         key={key}
                         type="button"
                         onClick={() => setSelectedProduct(key)}
-                        className={`p-3 text-left border text-xs font-bold transition-all cursor-pointer flex flex-col justify-between h-20 ${
+                        className={`p-3 text-left border-2 text-xs font-bold transition-all cursor-pointer flex flex-col justify-between h-20 ${
                           active 
-                            ? 'border-[#1a3626] bg-[#1a3626] text-white shadow-sm' 
-                            : 'border-[#1a3626]/20 bg-[#fcfbf7] text-[#1a3626] hover:border-[#1a3626] hover:bg-white'
+                            ? 'border-[#1a3626] bg-[#1a3626] text-white shadow-[4px_4px_0px_#f3c44c] -translate-x-0.5 -translate-y-0.5' 
+                            : 'border-[#1a3626]/20 bg-[#fcfbf7] text-[#1a3626] hover:border-[#1a3626] hover:bg-white hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
                         }`}
                       >
                         <span className="leading-snug">{prod.name.split(' (')[0]}</span>
@@ -104,10 +104,10 @@ export default function ImpactCalculatorSection() {
                       key={pill}
                       type="button"
                       onClick={() => setQuantity(pill)}
-                      className={`px-2.5 py-1 text-[11px] font-mono font-bold border transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 text-[11px] font-mono font-bold border transition-all cursor-pointer ${
                         quantity === pill 
-                          ? 'bg-[#5c8770] text-white border-[#5c8770]' 
-                          : 'bg-white text-[#1a3626] border-[#1a3626]/20 hover:border-[#1a3626]'
+                          ? 'bg-[#1a3626] text-white border-[#1a3626] shadow-[2px_2px_0px_#f3c44c]' 
+                          : 'bg-white text-[#1a3626] border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[2px_2px_0px_#1a3626]'
                       }`}
                     >
                       {pill.toLocaleString('id-ID')}
@@ -140,7 +140,7 @@ export default function ImpactCalculatorSection() {
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   
                   {/* Metric 1 */}
-                  <div className="bg-white/5 border border-white/10 p-3.5">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#f3c44c] mb-1">
                       <Recycle size={15} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Botol Terdiversi</span>
@@ -150,7 +150,7 @@ export default function ImpactCalculatorSection() {
                   </div>
 
                   {/* Metric 2 */}
-                  <div className="bg-white/5 border border-white/10 p-3.5">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#5c8770] mb-1">
                       <Sprout size={15} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Limbah Padat</span>
@@ -160,7 +160,7 @@ export default function ImpactCalculatorSection() {
                   </div>
 
                   {/* Metric 3 */}
-                  <div className="bg-white/5 border border-white/10 p-3.5">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#f3c44c] mb-1">
                       <Sparkles size={15} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Reduksi Karbon</span>
@@ -170,7 +170,7 @@ export default function ImpactCalculatorSection() {
                   </div>
 
                   {/* Metric 4 */}
-                  <div className="bg-white/5 border border-white/10 p-3.5">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#5c8770] mb-1">
                       <Users size={15} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Dampak SDG 8</span>

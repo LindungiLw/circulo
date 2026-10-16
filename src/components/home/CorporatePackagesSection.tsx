@@ -1,10 +1,12 @@
 "use client";
 
-import React from 'react';
-import { Package, Users, Award, Check, ArrowRight, Sparkles, Clock, Layers } from 'lucide-react';
+import React, { useState } from 'react';
+import { Package, Users, Award, Check, ArrowRight, Sparkles, Clock, Layers, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CorporatePackagesSection() {
+  const [selectedPackageId, setSelectedPackageId] = useState<string>('onboarding-kit');
+
   const packages = [
     {
       id: 'onboarding-kit',
@@ -85,89 +87,100 @@ export default function CorporatePackagesSection() {
 
         {/* 3 Packages Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {packages.map((pkg) => (
-            <div
-              key={pkg.id}
-              className={`bg-white border-2 flex flex-col justify-between transition-all duration-300 relative ${
-                pkg.isPopular 
-                  ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626]' 
-                  : 'border-[#1a3626]/20 hover:border-[#1a3626] shadow-xs hover:shadow-md'
-              }`}
-            >
-              {/* Top Tag */}
-              <div className="p-6 pb-0">
-                <div className="flex items-center justify-between mb-3">
-                  <span className={`text-[10px] font-mono font-bold px-2.5 py-1 uppercase tracking-wider ${pkg.badgeColor}`}>
-                    {pkg.tag}
-                  </span>
-                  <span className="text-xs font-mono text-gray-500 font-bold">
-                    Min. {pkg.minOrder}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-extrabold text-[#1a3626] mb-1 leading-snug">
-                  {pkg.name}
-                </h3>
-                <p className="text-xs font-mono text-[#5c8770] font-bold uppercase mb-3">
-                  {pkg.subtitle}
-                </p>
-                <p className="text-xs text-[#4a5f52] leading-relaxed mb-5">
-                  {pkg.description}
-                </p>
-
-                {/* Lead Time & Specs */}
-                <div className="flex items-center gap-4 text-xs font-mono text-gray-600 pb-4 border-b border-gray-100 mb-5">
-                  <span className="flex items-center gap-1.5">
-                    <Clock size={13} className="text-[#5c8770]" /> {pkg.leadTime}
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Layers size={13} className="text-[#5c8770]" /> Custom Pantone
-                  </span>
-                </div>
-
-                {/* Items Checklist */}
-                <div className="space-y-2.5 mb-6">
-                  <p className="text-[11px] font-mono text-gray-400 uppercase tracking-wider font-bold">
-                    Item Termasuk:
-                  </p>
-                  {pkg.items.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5">
-                      <div className="w-4 h-4 rounded-full bg-[#e8efe9] text-[#1a3626] flex items-center justify-center shrink-0 mt-0.5">
-                        <Check size={11} strokeWidth={3} />
-                      </div>
-                      <span className="text-xs text-[#1a3626] leading-tight font-medium">
-                        {item}
+          {packages.map((pkg) => {
+            const isSelected = selectedPackageId === pkg.id;
+            return (
+              <div
+                key={pkg.id}
+                onClick={() => setSelectedPackageId(pkg.id)}
+                className={`bg-white border-2 flex flex-col justify-between transition-all duration-300 relative cursor-pointer group ${
+                  isSelected 
+                    ? 'border-[#1a3626] shadow-[8px_8px_0px_#1a3626] -translate-x-1 -translate-y-1' 
+                    : 'border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-1 hover:-translate-y-1'
+                }`}
+              >
+                {/* Top Tag */}
+                <div className="p-6 pb-0">
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-1.5">
+                      <span className={`text-[10px] font-mono font-bold px-2.5 py-1 uppercase tracking-wider ${pkg.badgeColor}`}>
+                        {pkg.tag}
                       </span>
+                      {isSelected && (
+                        <span className="text-[10px] font-mono font-extrabold px-2 py-0.5 bg-[#f3c44c] text-[#1a3626] flex items-center gap-1">
+                          <CheckCircle2 size={11} /> Dipilih
+                        </span>
+                      )}
                     </div>
-                  ))}
+                    <span className="text-xs font-mono text-gray-500 font-bold">
+                      Min. {pkg.minOrder}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-extrabold text-[#1a3626] mb-1 leading-snug group-hover:text-[#5c8770] transition-colors">
+                    {pkg.name}
+                  </h3>
+                  <p className="text-xs font-mono text-[#5c8770] font-bold uppercase mb-3">
+                    {pkg.subtitle}
+                  </p>
+                  <p className="text-xs text-[#4a5f52] leading-relaxed mb-5">
+                    {pkg.description}
+                  </p>
+
+                  {/* Lead Time & Specs */}
+                  <div className="flex items-center gap-4 text-xs font-mono text-gray-600 pb-4 border-b border-gray-100 mb-5">
+                    <span className="flex items-center gap-1.5">
+                      <Clock size={13} className="text-[#5c8770]" /> {pkg.leadTime}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Layers size={13} className="text-[#5c8770]" /> Custom Pantone
+                    </span>
+                  </div>
+
+                  {/* Items Checklist */}
+                  <div className="space-y-2.5 mb-6">
+                    <p className="text-[11px] font-mono text-gray-400 uppercase tracking-wider font-bold">
+                      Item Termasuk:
+                    </p>
+                    {pkg.items.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2.5">
+                        <div className="w-4 h-4 rounded-full bg-[#e8efe9] text-[#1a3626] flex items-center justify-center shrink-0 mt-0.5">
+                          <Check size={11} strokeWidth={3} />
+                        </div>
+                        <span className="text-xs text-[#1a3626] leading-tight font-medium">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Bottom Footer with Impact & CTA */}
-              <div className="p-6 pt-4 bg-[#f8f7f2] border-t border-[#1a3626]/10 mt-auto">
-                <div className="mb-4">
-                  <span className="text-[10px] font-mono uppercase text-gray-400 block mb-0.5">
-                    Jejak Dampak Terverifikasi:
-                  </span>
-                  <span className="text-xs font-bold text-[#1a3626]">
-                    {pkg.impact}
-                  </span>
+                {/* Bottom Footer with Impact & CTA */}
+                <div className="p-6 pt-4 bg-[#f8f7f2] border-t border-[#1a3626]/10 mt-auto">
+                  <div className="mb-4">
+                    <span className="text-[10px] font-mono uppercase text-gray-400 block mb-0.5">
+                      Jejak Dampak Terverifikasi:
+                    </span>
+                    <span className="text-xs font-bold text-[#1a3626]">
+                      {pkg.impact}
+                    </span>
+                  </div>
+
+                  <Link
+                    href="/dashboard"
+                    className={`w-full py-3 text-xs font-extrabold flex items-center justify-center gap-2 transition-all ${
+                      isSelected
+                        ? 'bg-[#1a3626] hover:bg-[#12261b] text-white shadow-xs'
+                        : 'bg-white group-hover:bg-[#1a3626] text-[#1a3626] group-hover:text-white border border-[#1a3626]/20 group-hover:border-[#1a3626]'
+                    }`}
+                  >
+                    {isSelected ? 'Ajukan Penawaran Paket Ini' : 'Pilih Paket Ini'} <ArrowRight size={14} />
+                  </Link>
                 </div>
 
-                <Link
-                  href="/dashboard"
-                  className={`w-full py-3 text-xs font-extrabold flex items-center justify-center gap-2 transition-all ${
-                    pkg.isPopular
-                      ? 'bg-[#1a3626] hover:bg-[#12261b] text-white shadow-xs'
-                      : 'bg-white hover:bg-[#1a3626] text-[#1a3626] hover:text-white border border-[#1a3626]/20 hover:border-[#1a3626]'
-                  }`}
-                >
-                  Ajukan Penawaran Paket Ini <ArrowRight size={14} />
-                </Link>
               </div>
-
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Custom Retainer Banner */}

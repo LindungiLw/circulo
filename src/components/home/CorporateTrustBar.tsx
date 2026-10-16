@@ -49,7 +49,7 @@ export default function CorporateTrustBar() {
           {partners.map((partner, idx) => (
             <div 
               key={idx}
-              className="bg-white/5 hover:bg-white/10 border border-white/10 p-4 transition-all duration-300 flex flex-col justify-between group"
+              className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#f3c44c] hover:shadow-[4px_4px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 p-4 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
             >
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-mono text-[#f3c44c] font-bold">0{idx + 1}</span>
