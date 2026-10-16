@@ -251,19 +251,6 @@ export default function LandingPage() {
           
         </div>
 
-        {/* Scroll Cue Button linking Hero to Impact Section */}
-        <div className="flex justify-center mt-12 sm:mt-16 relative z-20">
-          <a 
-            href="#dampak" 
-            className="inline-flex items-center gap-3 px-5 py-2.5 bg-white/90 hover:bg-white backdrop-blur-md border border-[#1a3626]/20 hover:border-[#1a3626] rounded-full text-xs font-mono font-bold text-[#1a3626] transition-all shadow-xs hover:shadow-md group cursor-pointer"
-          >
-            <span className="w-2.5 h-2.5 rounded-full bg-[#5c8770] animate-ping"></span>
-            <span>Jelajahi Siklus Transformasi Sirkular</span>
-            <div className="w-6 h-6 rounded-full bg-[#1a3626] text-white flex items-center justify-center group-hover:translate-y-1 transition-transform">
-              <ChevronDown size={13} />
-            </div>
-          </a>
-        </div>
       </section>
 
       {/* Impact & Materials Section */}
@@ -275,19 +262,13 @@ export default function LandingPage() {
         </div>
 
         <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-          {/* Section Header: Menciptakan Nilai Baru dari Limbah Lokal */}
-          <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/10 mb-4 rounded-none">
-              <span className="w-2 h-2 rounded-full bg-[#5c8770] animate-pulse"></span>
-              <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-[#1a3626]">
-                Jejak Dampak ESG & Pengrajin
-              </span>
-            </div>
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
             <h2 className="text-4xl md:text-5xl font-extrabold text-[#1a3626] leading-tight mb-4 tracking-tight">
               Menciptakan Nilai Baru<br />dari <span className="text-[#5c8770]">Limbah Lokal</span>
             </h2>
-            <p className="text-base text-[#4a5f52] leading-relaxed max-w-2xl mx-auto">
-              Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan. Mengubah residu plastik botol, serat biomassa, dan potongan tekstil menjadi produk merchandise bernilai ekonomi tinggi.
+            <p className="text-base text-[#4a5f52] leading-relaxed">
+              Mengelola rantai pasok berdampak yang memberdayakan pengrajin lokal dan menyelamatkan lingkungan.
             </p>
           </div>
 
