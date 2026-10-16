@@ -5,7 +5,7 @@ import { Package, Users, Award, Check, ArrowRight, Sparkles, Clock, Layers, Chec
 import Link from 'next/link';
 
 export default function CorporatePackagesSection() {
-  const [selectedPackageId, setSelectedPackageId] = useState<string>('onboarding-kit');
+  const [selectedPackageId, setSelectedPackageId] = useState<string | null>(null);
 
   const packages = [
     {
@@ -180,7 +180,7 @@ export default function CorporatePackagesSection() {
         </div>
 
         {/* Custom Retainer Banner */}
-        <div className="border-2 border-[#1a3626] bg-[#e8efe9]/60 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[8px_8px_0px_#1a3626]">
+        <div className="border-2 border-[#1a3626] bg-[#e8efe9]/60 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-none hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300">
           <div className="flex items-start gap-4">
             <div className="w-12 h-12 bg-[#1a3626] text-[#f3c44c] flex items-center justify-center shrink-0">
               <Sparkles size={22} />
@@ -196,7 +196,7 @@ export default function CorporatePackagesSection() {
           </div>
           <Link
             href="/dashboard"
-            className="shrink-0 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold px-6 py-3.5 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 whitespace-nowrap"
+            className="shrink-0 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold px-6 py-3.5 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 whitespace-nowrap"
           >
             Pelajari Skema Retainer <ArrowRight size={14} />
           </Link>

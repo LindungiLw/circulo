@@ -52,7 +52,7 @@ export default function Navbar() {
       <nav 
         className={`w-full px-4 sm:px-8 z-40 fixed top-0 left-0 transition-all duration-300 ease-in-out ${
           isScrolled 
-            ? 'py-3.5 bg-[#f8f7f2]/95 backdrop-blur-md border-b-2 border-[#1a3626] shadow-[0_4px_0px_#1a3626]' 
+            ? 'py-3.5 bg-[#f8f7f2]/95 backdrop-blur-md border-b-2 border-[#1a3626]' 
             : 'py-5 sm:py-6 bg-transparent border-b-2 border-transparent'
         }`}
       >
@@ -147,7 +147,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsCalculatorOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-[#1a3626] text-xs font-bold text-[#1a3626] shadow-[3px_3px_0px_#1a3626] hover:shadow-[4px_4px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer ml-1"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-[#1a3626] text-xs font-bold text-[#1a3626] shadow-none hover:shadow-[4px_4px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer ml-1"
             >
               <Calculator size={13} className="text-[#5c8770]" />
               Kalkulator ESG
@@ -158,7 +158,7 @@ export default function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <Link
               href="/login"
-              className="text-[#1a3626] font-bold text-xs sm:text-sm px-3.5 py-2 border-2 border-[#1a3626] bg-white shadow-[3px_3px_0px_#1a3626] hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all flex items-center gap-1.5"
+              className="text-[#1a3626] font-bold text-xs sm:text-sm px-3.5 py-2 border-2 border-[#1a3626] bg-white shadow-none hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all flex items-center gap-1.5"
             >
               <Building2 size={16} />
               Masuk Klien
@@ -166,7 +166,7 @@ export default function Navbar() {
 
             <Link 
               href="/dashboard" 
-              className="bg-[#f3c44c] text-[#1a3626] border-2 border-[#1a3626] px-5 sm:px-6 py-2 rounded-none font-extrabold text-xs sm:text-sm flex items-center gap-2 hover:bg-[#e3b43c] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all"
+              className="bg-[#f3c44c] text-[#1a3626] border-2 border-[#1a3626] px-5 sm:px-6 py-2 rounded-none font-extrabold text-xs sm:text-sm flex items-center gap-2 hover:bg-[#e3b43c] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all"
             >
               Coba Dashboard <ArrowRight size={15} />
             </Link>
@@ -177,7 +177,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsCalculatorOpen(true)}
-              className="sm:hidden p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
+              className="sm:hidden p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-none hover:shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
               aria-label="Kalkulator ESG"
             >
               <Calculator size={18} />
@@ -185,7 +185,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
+              className="p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-none hover:shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
               aria-label="Buka menu navigasi"
             >
               <Menu size={22} />

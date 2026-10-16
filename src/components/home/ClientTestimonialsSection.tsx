@@ -5,7 +5,7 @@ import { Quote, Building2, CheckCircle2, TrendingUp, Sparkles, ArrowRight } from
 import Link from 'next/link';
 
 export default function ClientTestimonialsSection() {
-  const [selectedCaseIdx, setSelectedCaseIdx] = useState<number>(0);
+  const [selectedCaseIdx, setSelectedCaseIdx] = useState<number | null>(null);
 
   const caseStudies = [
     {

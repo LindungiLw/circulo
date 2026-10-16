@@ -33,7 +33,7 @@ export default function ImpactCalculatorSection() {
         </div>
 
         {/* Calculator Main Box */}
-        <div className="bg-white border-2 border-[#1a3626] shadow-[8px_8px_0px_#1a3626] p-6 sm:p-10 max-w-5xl mx-auto">
+        <div className="bg-white border-2 border-[#1a3626] shadow-none hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 p-6 sm:p-10 max-w-5xl mx-auto">
           
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             
@@ -188,7 +188,7 @@ export default function ImpactCalculatorSection() {
               {/* Action Button */}
               <Link 
                 href="/dashboard"
-                className="w-full py-3.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all group"
+                className="w-full py-3.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all group"
               >
                 Ajukan Penawaran dengan Estimasi Ini
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
