@@ -107,7 +107,7 @@ export default function ClientTestimonialsSection() {
                 </span>
                 <div className="grid grid-cols-3 gap-2 text-center">
                   {cs.metrics.map((m, mIdx) => (
-                    <div key={mIdx} className="bg-white p-2 border border-gray-200">
+                    <div key={mIdx} className="bg-white p-2 border border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[2px_2px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all">
                       <span className="text-xs sm:text-sm font-black text-[#1a3626] block">
                         {m.val}
                       </span>

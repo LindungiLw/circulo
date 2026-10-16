@@ -19,7 +19,7 @@ export default function ClientLoginModal({ isOpen, onClose }: ClientLoginModalPr
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div 
-        className="bg-[#f8f7f2] border-2 border-[#1a3626] w-full max-w-md shadow-2xl relative rounded-none p-6 sm:p-8"
+        className="bg-[#f8f7f2] border-2 border-[#1a3626] w-full max-w-md shadow-[10px_10px_0px_#1a3626] relative rounded-none p-6 sm:p-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -81,7 +81,7 @@ export default function ClientLoginModal({ isOpen, onClose }: ClientLoginModalPr
         <Link
           href="/dashboard"
           onClick={onClose}
-          className="w-full py-3 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors shadow-sm"
+          className="w-full py-3.5 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
         >
           Masuk ke Dashboard Klien <ArrowRight size={14} />
         </Link>

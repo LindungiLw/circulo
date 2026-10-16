@@ -25,7 +25,7 @@ export default function SolutionsDropdown({ isOpen, onClose }: SolutionsDropdown
 
   return (
     <div 
-      className="absolute top-full left-0 mt-2 w-[540px] bg-[#f8f7f2] border-2 border-[#1a3626] shadow-xl p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
+      className="absolute top-full left-0 mt-2 w-[540px] bg-[#f8f7f2] border-2 border-[#1a3626] shadow-[6px_6px_0px_#1a3626] p-5 z-50 animate-in fade-in slide-in-from-top-2 duration-150"
       onMouseLeave={onClose}
     >
       <div className="flex items-center justify-between pb-3 border-b border-[#1a3626]/10 mb-4">
@@ -45,7 +45,7 @@ export default function SolutionsDropdown({ isOpen, onClose }: SolutionsDropdown
             key={item.id}
             href={item.href}
             onClick={onClose}
-            className="p-3 bg-white border border-[#1a3626]/15 hover:border-[#1a3626] hover:bg-[#e8efe9]/30 transition-all group block"
+            className="p-3 bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all group block cursor-pointer"
           >
             <div className="flex items-center gap-2 mb-1.5">
               <div className="w-7 h-7 bg-[#f8f7f2] border border-[#1a3626]/10 flex items-center justify-center">

@@ -52,20 +52,23 @@ export default function Navbar() {
       <nav 
         className={`w-full px-4 sm:px-8 z-40 fixed top-0 left-0 transition-all duration-300 ease-in-out ${
           isScrolled 
-            ? 'py-3.5 bg-[#f8f7f2]/95 backdrop-blur-md border-b border-[#1a3626]/10 shadow-xs' 
-            : 'py-5 sm:py-6 bg-transparent border-b border-transparent'
+            ? 'py-3.5 bg-[#f8f7f2]/95 backdrop-blur-md border-b-2 border-[#1a3626] shadow-[0_4px_0px_#1a3626]' 
+            : 'py-5 sm:py-6 bg-transparent border-b-2 border-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-3 text-2xl font-black text-[#1a3626] group">
+          <Link 
+            href="/" 
+            className="flex items-center gap-2.5 text-2xl font-black text-[#1a3626] group px-2 py-1 border-2 border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+          >
             <img src="/logo.png" alt="Circulo Logo" className="w-8 h-8 object-contain transition-transform group-hover:rotate-12 duration-300" />
             <span className="tracking-tight">Circulo</span>
           </Link>
 
           {/* Desktop Center Menu Links */}
-          <div className="hidden lg:flex items-center gap-7 text-[#1a3626] font-semibold text-sm">
+          <div className="hidden lg:flex items-center gap-2 text-[#1a3626] font-semibold text-xs xl:text-sm">
             
             {/* Dropdown: Solusi B2B */}
             <div 
@@ -75,13 +78,15 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsSolutionsOpen(!isSolutionsOpen)}
-                className={`flex items-center gap-1.5 py-1 transition-colors hover:text-[#5c8770] ${
-                  isSolutionsOpen || activeSection === 'solusi' ? 'text-[#5c8770]' : ''
+                className={`flex items-center gap-1.5 px-3 py-1.5 border-2 transition-all cursor-pointer ${
+                  isSolutionsOpen || activeSection === 'solusi' 
+                    ? 'border-[#1a3626] bg-white text-[#1a3626] font-extrabold shadow-[3px_3px_0px_#1a3626] -translate-x-0.5 -translate-y-0.5' 
+                    : 'border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
                 }`}
                 aria-expanded={isSolutionsOpen}
               >
                 Solusi B2B
-                <ChevronDown size={15} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180 text-[#5c8770]' : ''}`} />
+                <ChevronDown size={14} className={`transition-transform duration-200 ${isSolutionsOpen ? 'rotate-180 text-[#5c8770]' : ''}`} />
               </button>
               
               <SolutionsDropdown 
@@ -93,8 +98,10 @@ export default function Navbar() {
             {/* Link: Dampak ESG */}
             <a 
               href="#dampak" 
-              className={`py-1 transition-colors hover:text-[#5c8770] ${
-                activeSection === 'dampak' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              className={`px-3 py-1.5 border-2 transition-all cursor-pointer ${
+                activeSection === 'dampak' 
+                  ? 'border-[#1a3626] bg-white text-[#1a3626] font-extrabold shadow-[3px_3px_0px_#1a3626] -translate-x-0.5 -translate-y-0.5' 
+                  : 'border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
               Dampak ESG
@@ -103,8 +110,10 @@ export default function Navbar() {
             {/* Link: Keunggulan */}
             <a 
               href="#mengapa-circulo" 
-              className={`py-1 transition-colors hover:text-[#5c8770] ${
-                activeSection === 'mengapa-circulo' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              className={`px-3 py-1.5 border-2 transition-all cursor-pointer ${
+                activeSection === 'mengapa-circulo' 
+                  ? 'border-[#1a3626] bg-white text-[#1a3626] font-extrabold shadow-[3px_3px_0px_#1a3626] -translate-x-0.5 -translate-y-0.5' 
+                  : 'border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
               Keunggulan
@@ -113,8 +122,10 @@ export default function Navbar() {
             {/* Link: Katalog Produk */}
             <a 
               href="#katalog" 
-              className={`py-1 transition-colors hover:text-[#5c8770] ${
-                activeSection === 'katalog' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              className={`px-3 py-1.5 border-2 transition-all cursor-pointer ${
+                activeSection === 'katalog' 
+                  ? 'border-[#1a3626] bg-white text-[#1a3626] font-extrabold shadow-[3px_3px_0px_#1a3626] -translate-x-0.5 -translate-y-0.5' 
+                  : 'border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
               Katalog
@@ -123,8 +134,10 @@ export default function Navbar() {
             {/* Link: Paket Pengadaan */}
             <a 
               href="#paket-korporat" 
-              className={`py-1 transition-colors hover:text-[#5c8770] ${
-                activeSection === 'paket-korporat' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              className={`px-3 py-1.5 border-2 transition-all cursor-pointer ${
+                activeSection === 'paket-korporat' 
+                  ? 'border-[#1a3626] bg-white text-[#1a3626] font-extrabold shadow-[3px_3px_0px_#1a3626] -translate-x-0.5 -translate-y-0.5' 
+                  : 'border-transparent hover:border-[#1a3626] hover:bg-white hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
               }`}
             >
               Paket Pengadaan
@@ -134,7 +147,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsCalculatorOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-[#1a3626]/20 text-xs font-bold text-[#1a3626] hover:border-[#1a3626] hover:bg-[#e8efe9]/50 transition-all shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white border-2 border-[#1a3626] text-xs font-bold text-[#1a3626] shadow-[3px_3px_0px_#1a3626] hover:shadow-[4px_4px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all cursor-pointer ml-1"
             >
               <Calculator size={13} className="text-[#5c8770]" />
               Kalkulator ESG
@@ -142,10 +155,10 @@ export default function Navbar() {
           </div>
 
           {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-4">
+          <div className="hidden sm:flex items-center gap-3">
             <Link
               href="/login"
-              className="text-[#1a3626] font-bold text-xs sm:text-sm hover:text-[#5c8770] transition-colors px-2 py-1 flex items-center gap-1.5"
+              className="text-[#1a3626] font-bold text-xs sm:text-sm px-3.5 py-2 border-2 border-[#1a3626] bg-white shadow-[3px_3px_0px_#1a3626] hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all flex items-center gap-1.5"
             >
               <Building2 size={16} />
               Masuk Klien
@@ -153,7 +166,7 @@ export default function Navbar() {
 
             <Link 
               href="/dashboard" 
-              className="bg-[#f3c44c] text-[#1a3626] px-5 sm:px-6 py-2.5 rounded-none font-extrabold text-xs sm:text-sm flex items-center gap-2 hover:bg-[#e3b43c] transition-colors shadow-xs"
+              className="bg-[#f3c44c] text-[#1a3626] border-2 border-[#1a3626] px-5 sm:px-6 py-2 rounded-none font-extrabold text-xs sm:text-sm flex items-center gap-2 hover:bg-[#e3b43c] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 active:shadow-none transition-all"
             >
               Coba Dashboard <ArrowRight size={15} />
             </Link>
@@ -164,19 +177,18 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setIsCalculatorOpen(true)}
-              className="sm:hidden p-2 text-[#1a3626] hover:bg-gray-200 border border-[#1a3626]/10"
+              className="sm:hidden p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
               aria-label="Kalkulator ESG"
             >
               <Calculator size={18} />
             </button>
-
             <button
               type="button"
               onClick={() => setIsMobileMenuOpen(true)}
-              className="p-2 text-[#1a3626] hover:bg-gray-200 transition-colors"
+              className="p-2 text-[#1a3626] bg-white hover:bg-gray-100 border-2 border-[#1a3626] shadow-[3px_3px_0px_#1a3626] active:translate-x-0.5 active:translate-y-0.5 transition-all"
               aria-label="Buka menu navigasi"
             >
-              <Menu size={26} />
+              <Menu size={22} />
             </button>
           </div>
 

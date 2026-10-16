@@ -127,7 +127,7 @@ export default function WhyCirculoSection() {
         </div>
 
         {/* Bottom Banner */}
-        <div className="bg-[#1a3626] text-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-[#1a3626]">
+        <div className="bg-[#1a3626] text-white p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border-2 border-[#1a3626] shadow-[8px_8px_0px_#1a3626]">
           <div className="max-w-xl">
             <h4 className="text-lg sm:text-xl font-bold mb-1.5">
               Siap Mengalihkan Rantai Pasok Suvenir Perusahaan Anda?
@@ -138,7 +138,7 @@ export default function WhyCirculoSection() {
           </div>
           <Link
             href="/dashboard"
-            className="shrink-0 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs px-7 py-3.5 transition-all flex items-center gap-2 shadow-sm"
+            className="shrink-0 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs px-7 py-3.5 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2"
           >
             Mulai Konsultasi Pengadaan <ArrowRight size={15} />
           </Link>

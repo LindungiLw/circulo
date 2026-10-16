@@ -192,7 +192,7 @@ export default function ImpactCalculatorSection() {
               {/* Action Button */}
               <Link 
                 href="/dashboard"
-                className="w-full py-3.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs flex items-center justify-center gap-2 transition-all shadow-md group"
+                className="w-full py-3.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-extrabold text-xs flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all group"
               >
                 Ajukan Penawaran dengan Estimasi Ini
                 <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />

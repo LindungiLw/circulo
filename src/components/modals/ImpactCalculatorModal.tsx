@@ -26,7 +26,7 @@ export default function ImpactCalculatorModal({ isOpen, onClose }: ImpactCalcula
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div 
-        className="bg-[#f8f7f2] border-2 border-[#1a3626] w-full max-w-2xl shadow-2xl relative rounded-none p-6 sm:p-8 overflow-hidden"
+        className="bg-[#f8f7f2] border-2 border-[#1a3626] w-full max-w-2xl shadow-[10px_10px_0px_#1a3626] relative rounded-none p-6 sm:p-8 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -63,10 +63,10 @@ export default function ImpactCalculatorModal({ isOpen, onClose }: ImpactCalcula
                     key={key}
                     type="button"
                     onClick={() => setSelectedProduct(key)}
-                    className={`p-3 text-left border text-xs font-bold transition-all ${
+                    className={`p-3 text-left border-2 text-xs font-bold transition-all ${
                       active 
-                        ? 'border-[#1a3626] bg-[#1a3626] text-white shadow-xs' 
-                        : 'border-[#1a3626]/20 bg-white text-[#1a3626] hover:bg-[#e8efe9]/50'
+                        ? 'border-[#1a3626] bg-[#1a3626] text-white shadow-[3px_3px_0px_#f3c44c] -translate-x-0.5 -translate-y-0.5' 
+                        : 'border-[#1a3626]/20 bg-white text-[#1a3626] hover:border-[#1a3626] hover:shadow-[3px_3px_0px_#1a3626]'
                     }`}
                   >
                     {prod.name.split(' (')[0]}
@@ -140,7 +140,7 @@ export default function ImpactCalculatorModal({ isOpen, onClose }: ImpactCalcula
           <Link
             href="/dashboard"
             onClick={onClose}
-            className="w-full sm:w-auto px-6 py-2.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] text-xs font-extrabold flex items-center justify-center gap-2 transition-colors shadow-xs"
+            className="w-full sm:w-auto px-6 py-2.5 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] text-xs font-extrabold flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-[3px_3px_0px_#1a3626] hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             Lanjutkan ke Pemesanan <ArrowRight size={14} />
           </Link>

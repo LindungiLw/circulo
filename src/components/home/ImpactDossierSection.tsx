@@ -121,7 +121,7 @@ export default function ImpactDossierSection() {
           <div className="lg:col-span-5 space-y-5">
             
             {/* Feature 1 */}
-            <div className="bg-white border border-[#1a3626]/15 p-5 shadow-xs hover:border-[#1a3626] transition-colors">
+            <div className="bg-white border-2 border-[#1a3626] p-5 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-[#e8efe9] border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] shrink-0">
                   <QrCode size={20} />
@@ -138,7 +138,7 @@ export default function ImpactDossierSection() {
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white border border-[#1a3626]/15 p-5 shadow-xs hover:border-[#1a3626] transition-colors">
+            <div className="bg-white border-2 border-[#1a3626] p-5 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-[#fdf5df] border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] shrink-0">
                   <FileCheck size={20} />
@@ -155,7 +155,7 @@ export default function ImpactDossierSection() {
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white border border-[#1a3626]/15 p-5 shadow-xs hover:border-[#1a3626] transition-colors">
+            <div className="bg-white border-2 border-[#1a3626] p-5 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 bg-[#e8efe9] border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] shrink-0">
                   <ShieldCheck size={20} />
@@ -175,7 +175,7 @@ export default function ImpactDossierSection() {
             <div className="pt-2">
               <Link
                 href="/dashboard"
-                className="w-full py-3 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors"
+                className="w-full py-3.5 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               >
                 Lihat Contoh Dokumen di Dashboard <ArrowRight size={14} />
               </Link>

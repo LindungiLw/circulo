@@ -133,13 +133,13 @@ export default function LandingPage() {
              </div>
 
              {/* Live Impact Card (Overlapping on the right on desktop, at bottom on mobile) */}
-             <div className="absolute bottom-0 lg:top-1/2 lg:-translate-y-1/2 right-auto lg:-right-16 bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(26,54,38,0.12)] border border-gray-100 z-30 w-[92%] sm:w-[350px] lg:w-[380px]">
+             <div className="absolute bottom-0 lg:top-1/2 lg:-translate-y-1/2 right-auto lg:-right-16 bg-white rounded-none p-4 sm:p-5 shadow-[8px_8px_0px_#1a3626] border-2 border-[#1a3626] z-30 w-[92%] sm:w-[350px] lg:w-[380px]">
 
                {/* Metrics Grid inside card */}
                <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
                  
                  {/* Card 1 */}
-                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[2px_2px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Recycle size={15} />
@@ -152,7 +152,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 2 */}
-                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[2px_2px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Users size={15} />
@@ -165,7 +165,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 3 */}
-                 <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm hover:shadow-md transition-shadow">
+                 <div className="bg-[#fcfbf7] border-2 border-[#1a3626]/20 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[2px_2px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#e8efe9] rounded-full flex items-center justify-center text-[#1a3626]">
                        <Box size={15} />
@@ -178,7 +178,7 @@ export default function LandingPage() {
                  </div>
 
                  {/* Card 4 - Green Highlight */}
-                 <div className="bg-[#e8efe9] border border-[#5c8770]/20 rounded-xl sm:rounded-2xl p-3 sm:p-4 shadow-sm flex flex-col justify-between relative overflow-hidden group cursor-pointer">
+                 <div className="bg-[#e8efe9] border-2 border-[#5c8770]/40 hover:border-[#1a3626] rounded-none p-3 sm:p-4 shadow-[2px_2px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex flex-col justify-between relative overflow-hidden group cursor-pointer">
                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-[#5c8770] rounded-full flex items-center justify-center text-white mb-1.5 sm:mb-2">
                      <Sprout size={15} />
                    </div>
@@ -189,7 +189,7 @@ export default function LandingPage() {
                </div>
                
                {/* Small Bottom Image in Card */}
-               <div className="w-full h-20 sm:h-24 rounded-lg sm:rounded-xl overflow-hidden relative mt-1 flex bg-[#f8f7f2]">
+               <div className="w-full h-20 sm:h-24 rounded-none overflow-hidden relative mt-1 flex bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] transition-colors">
                  <img src="https://images.unsplash.com/photo-1616423640778-28d1b53229bd?auto=format&fit=crop&q=80&w=400" alt="Crafting" className="w-1/2 h-full object-cover" />
                  <div className="w-1/2 p-2.5 sm:p-3 flex flex-col justify-center">
                     <p className="text-[8px] sm:text-[9px] font-bold text-[#1a3626] leading-tight mb-1.5">Dari Sampah Lokal Menuju Produk Bernilai</p>
@@ -213,10 +213,16 @@ export default function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8">
-              <Link href="/dashboard" className="w-full sm:w-auto bg-[#1a3626] text-white px-7 py-3.5 rounded-none font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] transition-colors shadow-md">
+              <Link 
+                href="/dashboard" 
+                className="w-full sm:w-auto bg-[#1a3626] text-white px-7 py-3.5 rounded-none font-bold text-xs sm:text-sm flex items-center justify-center gap-2 hover:bg-[#12261b] border-2 border-[#1a3626] shadow-[4px_4px_0px_#f3c44c] hover:shadow-[6px_6px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+              >
                 Mulai Kolaborasi <ArrowRight size={16} />
               </Link>
-              <Link href="/katalog" className="w-full sm:w-auto bg-transparent border border-[#1a3626] text-[#1a3626] px-7 py-3.5 rounded-none font-semibold text-xs sm:text-sm hover:bg-[#1a3626]/5 transition-colors flex items-center justify-center">
+              <Link 
+                href="/katalog" 
+                className="w-full sm:w-auto bg-white border-2 border-[#1a3626] text-[#1a3626] px-7 py-3.5 rounded-none font-bold text-xs sm:text-sm hover:bg-[#f8f7f2] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center justify-center"
+              >
                 Lihat Katalog
               </Link>
             </div>
@@ -240,7 +246,7 @@ export default function LandingPage() {
             </div>
 
             {/* Auto-Transitioning Photo Carousel */}
-            <div className="w-full max-w-[480px] h-[200px] relative rounded-2xl overflow-hidden shadow-lg border-4 border-white">
+            <div className="w-full max-w-[480px] h-[200px] relative rounded-none overflow-hidden border-2 border-[#1a3626] shadow-[8px_8px_0px_#1a3626]">
               {transitionImages.map((src, index) => (
                 <img 
                   key={index}
@@ -292,7 +298,7 @@ export default function LandingPage() {
           {/* 4 Stats Cards - Clean, Square & Minimal */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20 scroll-reveal">
             {/* Stat 1 */}
-            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div className="bg-white border-2 border-[#1a3626] rounded-none p-6 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
                 <Recycle size={22} />
               </div>
@@ -304,7 +310,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 2 */}
-            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div className="bg-white border-2 border-[#1a3626] rounded-none p-6 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#fdf5df] rounded-none border border-[#f3c44c]/30 flex items-center justify-center text-[#1a3626] mb-4">
                 <Users size={22} />
               </div>
@@ -316,7 +322,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 3 */}
-            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div className="bg-white border-2 border-[#1a3626] rounded-none p-6 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#1a3626] mb-4">
                 <Box size={22} />
               </div>
@@ -328,7 +334,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stat 4 */}
-            <div className="bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] rounded-none p-6 shadow-xs hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
+            <div className="bg-white border-2 border-[#1a3626] rounded-none p-6 shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer">
               <div className="w-12 h-12 bg-[#e8efe9] rounded-none border border-[#5c8770]/20 flex items-center justify-center text-[#5c8770] mb-4">
                 <Sprout size={22} />
               </div>
@@ -653,7 +659,7 @@ export default function LandingPage() {
                       </div>
                       <Link 
                         href="/dashboard"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-white hover:bg-[#1a3626] group/btn px-3 py-1.5 bg-[#f8f7f2] border border-[#1a3626]/15 hover:border-[#1a3626] transition-all"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-white hover:bg-[#1a3626] group/btn px-3.5 py-1.5 bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                       >
                         Kustomisasi <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
                       </Link>
@@ -666,14 +672,14 @@ export default function LandingPage() {
 
 
              {/* Bottom Quote Banner */}
-             <div className="mt-12 p-6 sm:p-8 bg-[#1a3626] text-white flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-[#1a3626]">
+             <div className="mt-12 p-6 sm:p-8 bg-[#1a3626] text-white flex flex-col sm:flex-row items-center justify-between gap-6 border-2 border-[#1a3626] shadow-[8px_8px_0px_#1a3626]">
                <div>
                  <h4 className="text-lg font-bold mb-1">Butuh Katalog PDF Lengkap atau Pesanan Khusus?</h4>
                  <p className="text-xs text-white/70">Tim konsultan keberlanjutan kami siap membantu penyesuaian warna Pantone & sertifikasi audit ESG perusahaan Anda.</p>
                </div>
                <Link 
                  href="/dashboard" 
-                 className="shrink-0 bg-[#f3c44c] hover:bg-[#e3b43c] text-[#1a3626] font-extrabold text-xs px-6 py-3 transition-colors flex items-center gap-2"
+                 className="shrink-0 bg-[#f3c44c] hover:bg-[#e3b43c] text-[#1a3626] font-extrabold text-xs px-6 py-3.5 border-2 border-[#1a3626] shadow-[4px_4px_0px_#1a3626] hover:shadow-[6px_6px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2"
                >
                  Ajukan Penawaran Korporat <ArrowRight size={15} />
                </Link>

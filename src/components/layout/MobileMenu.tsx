@@ -108,7 +108,7 @@ export default function MobileMenu({
                 key={item.id}
                 href={item.href}
                 onClick={onClose}
-                className="p-3 bg-white border border-[#1a3626]/10 block hover:border-[#1a3626] transition-all"
+                className="p-3 bg-white border-2 border-[#1a3626]/15 hover:border-[#1a3626] hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 block transition-all"
               >
                 <p className="text-xs font-bold text-[#1a3626]">{item.title}</p>
                 <p className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{item.description}</p>
@@ -122,7 +122,7 @@ export default function MobileMenu({
           <Link
             href="/login"
             onClick={onClose}
-            className="w-full py-3 bg-transparent border border-[#1a3626] text-[#1a3626] font-bold text-xs flex items-center justify-center gap-2 hover:bg-[#1a3626]/5 transition-colors"
+            className="w-full py-3 bg-white border-2 border-[#1a3626] text-[#1a3626] font-bold text-xs flex items-center justify-center gap-2 shadow-[3px_3px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
           >
             <Building2 size={16} /> Masuk Akun Klien
           </Link>
@@ -130,7 +130,7 @@ export default function MobileMenu({
           <Link
             href="/dashboard"
             onClick={onClose}
-            className="w-full py-3 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] font-black text-xs flex items-center justify-center gap-2 transition-colors shadow-xs"
+            className="w-full py-3 bg-[#f3c44c] hover:bg-[#e2b43b] text-[#1a3626] border-2 border-[#1a3626] font-black text-xs flex items-center justify-center gap-2 transition-all shadow-[3px_3px_0px_#1a3626] hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5"
           >
             Buka Dashboard Demo <ArrowRight size={14} />
           </Link>
