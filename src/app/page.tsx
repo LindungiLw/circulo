@@ -6,6 +6,14 @@ import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
+import {
+  CorporateTrustBar,
+  ImpactCalculatorSection,
+  WhyCirculoSection,
+  ImpactDossierSection,
+  CorporatePackagesSection,
+  ClientTestimonialsSection,
+} from '@/components/home';
 
 export default function LandingPage() {
   const transitionImages = [
@@ -252,6 +260,12 @@ export default function LandingPage() {
         </div>
 
       </section>
+ 
+      {/* Corporate Trust & Ecosystem Partners Bar */}
+      <CorporateTrustBar />
+
+      {/* Interactive ESG Impact Simulator Section */}
+      <ImpactCalculatorSection />
 
       {/* Impact & Materials Section */}
       <section id="dampak" className="w-full py-24 relative z-10 overflow-hidden scroll-mt-16">
@@ -500,10 +514,16 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-           {/* Product Catalog Section */}
-           <div id="katalog" className="mt-28 pt-20 border-t border-[#1a3626]/15 scroll-mt-20">
-             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
+      {/* Strategic Value Differentiation: Why Circulo vs Conventional */}
+      <WhyCirculoSection />
+
+      {/* Product Catalog Section */}
+      <section id="katalog" className="w-full py-24 bg-white border-b border-[#1a3626]/15 scroll-mt-20 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
                <div className="max-w-xl">
                  <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1a3626] mb-3">Katalog Eco-Merch Siap Kustom</h2>
                  <p className="text-[#4a5f52] text-sm sm:text-base">Pilihan merchandise korporat yang dapat dikustomisasi logo & warna, terbuat 100% dari residu limbah terverifikasi.</p>
@@ -619,9 +639,16 @@ export default function LandingPage() {
                </Link>
              </div>
            </div>
-           
-        </div>
-      </section>
+        </section>
+
+      {/* 5. Audit-Ready Impact Dossier & QR Traceability */}
+      <ImpactDossierSection />
+
+      {/* 6. Corporate B2B Solution Packages */}
+      <CorporatePackagesSection />
+
+      {/* 7. Client Testimonials & Case Studies */}
+      <ClientTestimonialsSection />
 
       {/* Corporate B2B Footer */}
       <Footer />

@@ -55,6 +55,14 @@ export default function MobileMenu({
             >
               Dampak ESG & Rantai Pasok
             </a>
+
+            <a 
+              href="#mengapa-circulo" 
+              onClick={onClose}
+              className="block py-2 text-base font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors border-b border-gray-200/60"
+            >
+              Keunggulan vs Konvensional
+            </a>
             
             <a 
               href="#katalog" 
@@ -62,6 +70,14 @@ export default function MobileMenu({
               className="block py-2 text-base font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors border-b border-gray-200/60"
             >
               Katalog Eco-Merchandise
+            </a>
+
+            <a 
+              href="#paket-korporat" 
+              onClick={onClose}
+              className="block py-2 text-base font-bold text-[#1a3626] hover:text-[#5c8770] transition-colors border-b border-gray-200/60"
+            >
+              Paket Pengadaan B2B
             </a>
 
             {/* Impact Calculator Trigger */}

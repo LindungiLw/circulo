@@ -27,7 +27,7 @@ export default function Navbar() {
       setIsScrolled(window.scrollY > 20);
 
       // Simple scroll spy
-      const sections = ['solusi', 'dampak', 'katalog'];
+      const sections = ['solusi', 'dampak', 'mengapa-circulo', 'katalog', 'paket-korporat'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -65,7 +65,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Center Menu Links */}
-          <div className="hidden lg:flex items-center gap-8 text-[#1a3626] font-semibold text-sm">
+          <div className="hidden lg:flex items-center gap-7 text-[#1a3626] font-semibold text-sm">
             
             {/* Dropdown: Solusi B2B */}
             <div 
@@ -100,6 +100,16 @@ export default function Navbar() {
               Dampak ESG
             </a>
 
+            {/* Link: Keunggulan */}
+            <a 
+              href="#mengapa-circulo" 
+              className={`py-1 transition-colors hover:text-[#5c8770] ${
+                activeSection === 'mengapa-circulo' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              }`}
+            >
+              Keunggulan
+            </a>
+
             {/* Link: Katalog Produk */}
             <a 
               href="#katalog" 
@@ -108,6 +118,16 @@ export default function Navbar() {
               }`}
             >
               Katalog
+            </a>
+
+            {/* Link: Paket Pengadaan */}
+            <a 
+              href="#paket-korporat" 
+              className={`py-1 transition-colors hover:text-[#5c8770] ${
+                activeSection === 'paket-korporat' ? 'text-[#5c8770] font-black border-b-2 border-[#5c8770]' : ''
+              }`}
+            >
+              Paket Pengadaan
             </a>
 
             {/* Interactive Feature: ESG Simulator Button */}
