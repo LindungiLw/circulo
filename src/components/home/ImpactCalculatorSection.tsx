@@ -24,10 +24,6 @@ export default function ImpactCalculatorSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/15 text-[#1a3626] text-xs font-mono font-bold uppercase tracking-wider mb-4">
-            <Calculator size={14} className="text-[#5c8770]" />
-            Simulasi Dampak Interaktif B2B
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a3626] tracking-tight leading-tight mb-4">
             Hitung Estimasi Kontribusi <span className="text-[#5c8770]">ESG Perusahaan Anda</span>
           </h2>

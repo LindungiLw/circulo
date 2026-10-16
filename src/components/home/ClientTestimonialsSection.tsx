@@ -52,10 +52,6 @@ export default function ClientTestimonialsSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/15 text-[#1a3626] text-xs font-mono font-bold uppercase tracking-wider mb-4">
-            <Building2 size={14} className="text-[#5c8770]" />
-            Validasi & Kepuasan Mitra
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a3626] tracking-tight leading-tight mb-4">
             Studi Kasus & <span className="text-[#5c8770]">Cerita Dampak Nyata</span>
           </h2>

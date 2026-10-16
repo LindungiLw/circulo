@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Check, X, ShieldAlert, ShieldCheck, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, X, ShieldAlert, ShieldCheck, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 export default function WhyCirculoSection() {
@@ -44,10 +44,6 @@ export default function WhyCirculoSection() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a3626]/5 border border-[#1a3626]/15 text-[#1a3626] text-xs font-mono font-bold uppercase tracking-wider mb-4">
-            <Sparkles size={14} className="text-[#f3c44c]" />
-            Diferensiasi Nilai Strategis
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#1a3626] tracking-tight leading-tight mb-4">
             Mengapa Memilih Circulo Dibandingkan <span className="text-[#5c8770]">Vendor Konvensional?</span>
           </h2>
