@@ -108,16 +108,16 @@ export default function LandingPage() {
              </div>
 
              {/* Curved Text SVG */}
-             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-20 pointer-events-none overflow-hidden transition-transform duration-100 ease-out" style={{ transform: `rotate(${scrollY * 0.08}deg)` }}>
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  <path id="curve" d="M 8 50 A 42 42 0 0 1 92 50" fill="transparent" />
+             <div className="absolute w-[330px] h-[330px] sm:w-[440px] sm:h-[440px] lg:w-[560px] lg:h-[560px] lg:-left-5 z-20 pointer-events-none overflow-visible transition-transform duration-100 ease-out" style={{ transform: `rotate(${scrollY * 0.08}deg)` }}>
+                <svg viewBox="0 0 100 100" className="w-full h-full overflow-visible">
+                  <path id="curve" d="M 1 50 A 49 49 0 0 1 99 50" fill="transparent" />
                   <text className="text-[3.8px] font-bold fill-[#5c8770] tracking-[0.25em] uppercase" textAnchor="middle">
                     <textPath href="#curve" startOffset="50%">
                       From Waste to Value
                     </textPath>
                   </text>
-                  <circle cx="24" cy="22" r="1.2" fill="#f3c44c" />
-                  <circle cx="76" cy="22" r="1.2" fill="#f3c44c" />
+                  <circle cx="13" cy="18.5" r="1.2" fill="#f3c44c" />
+                  <circle cx="87" cy="18.5" r="1.2" fill="#f3c44c" />
                 </svg>
              </div>
 
