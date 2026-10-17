@@ -99,7 +99,7 @@ export default function Dashboard() {
 
       {/* Sidebar */}
       <aside 
-        className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-64 sm:w-72 bg-[#1a3626] text-white flex flex-col justify-between transition-transform duration-300 ease-in-out border-r border-[#1a3626] ${
+        className={`fixed lg:sticky top-0 left-0 z-50 h-screen w-64 sm:w-72 bg-[#1a3626] text-white flex flex-col justify-between transition-transform duration-300 ease-in-out border-r border-[#1a3626] overflow-y-auto ${
           mobileSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
@@ -238,7 +238,7 @@ export default function Dashboard() {
               </button>
 
               {notificationsOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-white border-2 border-[#1a3626] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-150">
+                <div className="absolute right-0 mt-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] bg-white border-2 border-[#1a3626] shadow-xl p-4 z-50 animate-in fade-in zoom-in-95 duration-150">
                   <div className="flex items-center justify-between pb-2 mb-3 border-b border-gray-200">
                     <h4 className="text-xs font-bold uppercase tracking-wider text-[#1a3626]">
                       Notifikasi Terbaru
@@ -296,7 +296,7 @@ export default function Dashboard() {
         </header>
 
         {/* Tab Content Render */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-10 max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-3.5 sm:p-6 lg:p-10 max-w-7xl mx-auto w-full pb-24 lg:pb-10">
           {activeTab === 'dashboard' && (
             <DashboardOverview onNavigateTab={handleSelectTab} />
           )}
@@ -313,6 +313,36 @@ export default function Dashboard() {
             <DashboardSettings />
           )}
         </main>
+
+        {/* Mobile Sticky Bottom Navigation Bar */}
+        <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 px-2 py-1.5 flex items-center justify-around shadow-[0_-4px_12px_rgba(0,0,0,0.06)]">
+          {navItems.map((item) => {
+            const isActive = activeTab === item.id;
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleSelectTab(item.id)}
+                type="button"
+                className={`flex flex-col items-center justify-center flex-1 py-1 px-1 transition-all cursor-pointer ${
+                  isActive ? 'text-[#1a3626]' : 'text-gray-400 hover:text-gray-600'
+                }`}
+              >
+                <div className="relative">
+                  <Icon size={19} className={isActive ? 'text-[#1a3626]' : 'text-gray-400'} />
+                  {item.badge && (
+                    <span className="absolute -top-1 -right-2 w-2 h-2 rounded-full bg-[#5c8770]" />
+                  )}
+                </div>
+                <span className={`text-[10px] mt-0.5 tracking-tight ${
+                  isActive ? 'font-black text-[#1a3626]' : 'font-medium'
+                }`}>
+                  {item.id === 'dashboard' ? 'Ringkasan' : item.id === 'esg' ? 'ESG' : item.label.split(' ')[0]}
+                </span>
+              </button>
+            );
+          })}
+        </nav>
 
       </div>
 

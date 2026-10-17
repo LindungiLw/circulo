@@ -103,13 +103,13 @@ export default function DashboardKatalog() {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex gap-1.5 overflow-x-auto pb-1 sm:pb-0 sm:flex-wrap">
           {PRODUCT_CATEGORIES.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer border ${
+              className={`px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer border whitespace-nowrap shrink-0 ${
                 selectedCategory === cat
                   ? 'bg-[#1a3626] text-white border-[#1a3626]'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
@@ -209,10 +209,10 @@ export default function DashboardKatalog() {
 
       {/* Clean Quotation Modal */}
       {selectedProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white w-full max-w-lg border-2 border-[#1a3626] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/50 backdrop-blur-xs">
+          <div className="bg-white w-full max-w-lg border-2 border-[#1a3626] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
             
-            <div className="bg-[#1a3626] text-white p-4 flex items-center justify-between">
+            <div className="bg-[#1a3626] text-white p-4 flex items-center justify-between shrink-0">
               <div>
                 <span className="text-[10px] font-mono text-[#f3c44c] font-bold block uppercase">
                   Pengadaan Korporat
@@ -227,7 +227,7 @@ export default function DashboardKatalog() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmitQuotation} className="p-5 space-y-4">
+            <form onSubmit={handleSubmitQuotation} className="p-4 sm:p-5 space-y-4 overflow-y-auto flex-1">
               
               <div className="flex items-center gap-3 p-2.5 bg-[#f8f7f2] border border-gray-200">
                 <img

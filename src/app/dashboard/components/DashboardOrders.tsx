@@ -128,13 +128,13 @@ export default function DashboardOrders() {
           <p className="text-xs text-gray-500 mt-0.5">Pantau status produksi dan jadwal pengiriman.</p>
         </div>
 
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex gap-1.5 overflow-x-auto pb-1 sm:pb-0 sm:flex-wrap">
           {['Semua', 'Dalam Produksi', 'Inspeksi QC', 'Terkirim'].map((st) => (
             <button
               key={st}
               type="button"
               onClick={() => setFilterStatus(st)}
-              className={`px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer border ${
+              className={`px-3 py-1.5 text-xs font-bold transition-colors cursor-pointer border whitespace-nowrap shrink-0 ${
                 filterStatus === st
                   ? 'bg-[#1a3626] text-white border-[#1a3626]'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
@@ -151,9 +151,9 @@ export default function DashboardOrders() {
         {filteredOrders.map((order) => (
           <div
             key={order.id}
-            className="bg-white border border-gray-200 p-5 hover:border-[#1a3626] transition-all shadow-xs"
+            className="bg-white border border-gray-200 p-4 sm:p-5 hover:border-[#1a3626] transition-all shadow-xs"
           >
-            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-5">
               
               <div className="space-y-1.5 lg:max-w-md">
                 <div className="flex items-center gap-2">
@@ -190,11 +190,11 @@ export default function DashboardOrders() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-2 shrink-0">
+              <div className="flex items-center gap-2 w-full sm:w-auto pt-2 lg:pt-0 border-t lg:border-t-0 border-gray-100">
                 <button
                   type="button"
                   onClick={() => setSelectedOrder(order)}
-                  className="px-3.5 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
+                  className="flex-1 sm:flex-initial justify-center px-3.5 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   Lacak <ArrowRight size={12} />
                 </button>
@@ -215,10 +215,10 @@ export default function DashboardOrders() {
 
       {/* Clean Tracking Modal */}
       {selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs">
-          <div className="bg-white w-full max-w-lg border-2 border-[#1a3626] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/50 backdrop-blur-xs">
+          <div className="bg-white w-full max-w-lg border-2 border-[#1a3626] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-150 max-h-[92vh] flex flex-col">
             
-            <div className="bg-[#1a3626] text-white p-4 flex items-center justify-between">
+            <div className="bg-[#1a3626] text-white p-4 flex items-center justify-between shrink-0">
               <div>
                 <span className="text-[10px] font-mono text-[#f3c44c] font-bold block uppercase">
                   Detail Pesanan
@@ -233,7 +233,7 @@ export default function DashboardOrders() {
               </button>
             </div>
 
-            <div className="p-5 space-y-5">
+            <div className="p-4 sm:p-5 space-y-5 overflow-y-auto flex-1">
               
               <div className="grid grid-cols-3 gap-2 p-3 bg-[#f8f7f2] border border-gray-200 text-xs">
                 <div>

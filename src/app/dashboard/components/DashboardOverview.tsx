@@ -126,16 +126,16 @@ export default function DashboardOverview({ onNavigateTab }: DashboardOverviewPr
           <p className="text-xs text-gray-500 mt-0.5">PT Danareksa (Persero) • Periode YTD 2026</p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={() => onNavigateTab('esg')}
-            className="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-300 text-[#1a3626] text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer"
+            className="flex-1 sm:flex-initial justify-center px-3.5 py-2 bg-white hover:bg-gray-50 border border-gray-300 text-[#1a3626] text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer"
           >
             <Download size={13} /> Unduh Laporan PDF
           </button>
           <button
             onClick={() => onNavigateTab('katalog')}
-            className="px-4 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer"
+            className="flex-1 sm:flex-initial justify-center px-3.5 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-2 transition-colors cursor-pointer"
           >
             Buat Pesanan <ArrowRight size={13} />
           </button>
@@ -143,7 +143,7 @@ export default function DashboardOverview({ onNavigateTab }: DashboardOverviewPr
       </div>
 
       {/* 4 Clean Metric Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {[
           {
             title: 'Plastik Terdiversi',
@@ -177,21 +177,21 @@ export default function DashboardOverview({ onNavigateTab }: DashboardOverviewPr
           <div
             key={idx}
             onClick={() => setActiveMetric(card.metricKey)}
-            className={`bg-white border p-5 transition-all cursor-pointer shadow-xs ${
+            className={`bg-white border p-3.5 sm:p-5 transition-all cursor-pointer shadow-xs ${
               activeMetric === card.metricKey
                 ? 'border-[#1a3626] bg-[#1a3626]/[0.02]'
                 : 'border-gray-200 hover:border-gray-400'
             }`}
           >
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium text-gray-500">{card.title}</span>
-              <div className="w-7 h-7 bg-[#f8f7f2] border border-gray-200 flex items-center justify-center text-[#1a3626]">
-                <card.icon size={14} />
+            <div className="flex items-center justify-between mb-2 sm:mb-3">
+              <span className="text-[11px] sm:text-xs font-medium text-gray-500 truncate">{card.title}</span>
+              <div className="w-6 h-6 sm:w-7 sm:h-7 bg-[#f8f7f2] border border-gray-200 flex items-center justify-center text-[#1a3626] shrink-0">
+                <card.icon size={13} />
               </div>
             </div>
-            <div className="text-2xl font-black text-[#1a3626] tracking-tight">{card.value}</div>
-            <div className="mt-2 text-[11px] font-semibold text-[#5c8770] flex items-center gap-1">
-              <ArrowUp size={11} /> {card.trend} vs periode lalu
+            <div className="text-base sm:text-2xl font-black text-[#1a3626] tracking-tight">{card.value}</div>
+            <div className="mt-1.5 sm:mt-2 text-[10px] sm:text-[11px] font-semibold text-[#5c8770] flex items-center gap-1">
+              <ArrowUp size={11} /> {card.trend} <span className="hidden sm:inline">vs periode lalu</span>
             </div>
           </div>
         ))}
@@ -201,15 +201,15 @@ export default function DashboardOverview({ onNavigateTab }: DashboardOverviewPr
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         {/* Chart Column (8 cols) */}
-        <div className="lg:col-span-8 bg-white border border-gray-200 p-6 shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div className="lg:col-span-8 bg-white border border-gray-200 p-4 sm:p-6 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
             <h3 className="text-sm font-bold text-[#1a3626]">Grafik Dampak Kumulatif (2026)</h3>
 
-            <div className="flex items-center gap-1 p-0.5 bg-[#f8f7f2] border border-gray-200">
+            <div className="flex items-center gap-1 p-0.5 bg-[#f8f7f2] border border-gray-200 w-full sm:w-auto justify-between sm:justify-start">
               <button
                 type="button"
                 onClick={() => setActiveMetric('plastik')}
-                className={`px-3 py-1 text-xs font-bold transition-colors cursor-pointer ${
+                className={`flex-1 sm:flex-initial text-center px-3 py-1 text-xs font-bold transition-colors cursor-pointer ${
                   activeMetric === 'plastik' ? 'bg-[#1a3626] text-white' : 'text-gray-600 hover:text-black'
                 }`}
               >
@@ -242,7 +242,7 @@ export default function DashboardOverview({ onNavigateTab }: DashboardOverviewPr
         </div>
 
         {/* Recent Orders Column (4 cols) */}
-        <div className="lg:col-span-4 bg-white border border-gray-200 p-6 shadow-xs flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-white border border-gray-200 p-4 sm:p-6 shadow-xs flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between pb-3 mb-4 border-b border-gray-100">
               <h3 className="text-sm font-bold text-[#1a3626]">Status Pesanan</h3>

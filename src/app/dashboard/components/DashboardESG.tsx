@@ -24,7 +24,7 @@ export default function DashboardESG() {
     <div className="space-y-6">
       
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
           <h2 className="text-xl font-bold text-[#1a3626]">Audit & Sertifikasi ESG</h2>
           <p className="text-xs text-gray-500 mt-0.5">Validasi metrik keberlanjutan resmi untuk laporan korporat.</p>
@@ -32,31 +32,31 @@ export default function DashboardESG() {
 
         <button
           onClick={() => alert('Mengunduh Sertifikat ESG Resmi...')}
-          className="px-4 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors"
+          className="w-full sm:w-auto justify-center px-4 py-2 bg-[#1a3626] hover:bg-[#254d36] text-white text-xs font-bold flex items-center gap-2 cursor-pointer transition-colors"
         >
           <Download size={13} /> Unduh Sertifikat PDF
         </button>
       </div>
 
       {/* Clean Digital Certificate */}
-      <div className="bg-white border-2 border-[#1a3626] p-6 sm:p-8 shadow-xs">
+      <div className="bg-white border-2 border-[#1a3626] p-4 sm:p-8 shadow-xs">
         
-        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-6 border-b border-gray-200">
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-4 pb-5 sm:pb-6 border-b border-gray-200">
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#1a3626] text-[#f3c44c] text-[10px] font-mono font-bold mb-2">
               <Award size={12} /> VERIFIED ESG IMPACT
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-[#1a3626]">
+            <h3 className="text-base sm:text-xl font-black text-[#1a3626]">
               Sertifikat Verifikasi Dampak Sirkular & Emisi
             </h3>
             <p className="text-xs text-gray-500 mt-0.5">PT Danareksa (Persero) • Terbit: 05 Oktober 2026</p>
           </div>
 
-          <div className="flex items-center gap-2 bg-[#f8f7f2] border border-gray-300 px-3 py-1.5 shrink-0">
+          <div className="flex items-center justify-between sm:justify-start gap-2 bg-[#f8f7f2] border border-gray-300 px-3 py-1.5 w-full sm:w-auto shrink-0">
             <span className="font-mono text-xs font-bold text-[#1a3626]">{certNumber}</span>
             <button
               onClick={handleCopyCert}
-              className="text-gray-500 hover:text-black cursor-pointer"
+              className="text-gray-500 hover:text-black cursor-pointer p-1"
               title="Salin Nomor Sertifikat"
             >
               {copied ? <Check size={13} className="text-green-600" /> : <Copy size={13} />}
@@ -65,25 +65,25 @@ export default function DashboardESG() {
         </div>
 
         {/* 4 Verified Metric Columns */}
-        <div className="py-6 grid grid-cols-2 md:grid-cols-4 gap-4">
-          <div className="p-3.5 bg-[#f8f7f2] border border-gray-200">
+        <div className="py-5 sm:py-6 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="p-3 sm:p-3.5 bg-[#f8f7f2] border border-gray-200">
             <span className="text-[10px] font-mono text-gray-500 block">Reduksi Emisi (Scope 3)</span>
-            <h4 className="text-lg font-black text-[#1a3626] mt-0.5">3.420 kg CO₂e</h4>
+            <h4 className="text-base sm:text-lg font-black text-[#1a3626] mt-0.5">3.420 kg CO₂e</h4>
           </div>
 
-          <div className="p-3.5 bg-[#f8f7f2] border border-gray-200">
+          <div className="p-3 sm:p-3.5 bg-[#f8f7f2] border border-gray-200">
             <span className="text-[10px] font-mono text-gray-500 block">Limbah Terdiversi</span>
-            <h4 className="text-lg font-black text-[#1a3626] mt-0.5">1.250 kg</h4>
+            <h4 className="text-base sm:text-lg font-black text-[#1a3626] mt-0.5">1.250 kg</h4>
           </div>
 
-          <div className="p-3.5 bg-[#f8f7f2] border border-gray-200">
+          <div className="p-3 sm:p-3.5 bg-[#f8f7f2] border border-gray-200">
             <span className="text-[10px] font-mono text-gray-500 block">Jam Kerja Fair-Wage</span>
-            <h4 className="text-lg font-black text-[#1a3626] mt-0.5">480 Jam</h4>
+            <h4 className="text-base sm:text-lg font-black text-[#1a3626] mt-0.5">480 Jam</h4>
           </div>
 
-          <div className="p-3.5 bg-[#f8f7f2] border border-gray-200">
+          <div className="p-3 sm:p-3.5 bg-[#f8f7f2] border border-gray-200">
             <span className="text-[10px] font-mono text-gray-500 block">Status Audit</span>
-            <h4 className="text-sm font-bold text-[#5c8770] mt-1 flex items-center gap-1">
+            <h4 className="text-xs sm:text-sm font-bold text-[#5c8770] mt-1 flex items-center gap-1">
               <ShieldCheck size={14} /> Terverifikasi
             </h4>
           </div>
