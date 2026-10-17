@@ -170,7 +170,7 @@ export default function ImpactDossierSection() {
             {/* Quick Action Button */}
             <div className="pt-2">
               <Link
-                href="/dashboard"
+                href="/dashboard#esg"
                 className="w-full py-3.5 bg-[#1a3626] hover:bg-[#12261b] text-white text-xs font-bold flex items-center justify-center gap-2 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
               >
                 Lihat Contoh Dokumen di Dashboard <ArrowRight size={14} />
