@@ -5,7 +5,8 @@ import { ArrowRight, ChevronDown, ShieldCheck, Users, LineChart, Recycle, Box, S
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
+import { PRODUCTS_DATA, PRODUCT_CATEGORIES, Product } from '@/data/products';
+import { ProductCustomizationModal } from '@/components/modals';
 import {
   CorporateTrustBar,
   ImpactCalculatorSection,
@@ -29,6 +30,7 @@ export default function LandingPage() {
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const [selectedMaterialIdx, setSelectedMaterialIdx] = useState<number | null>(null);
   const [selectedStepIdx, setSelectedStepIdx] = useState<number | null>(null);
+  const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
 
   const filteredProducts = activeCategory === 'Semua' 
     ? PRODUCTS_DATA 
@@ -669,12 +671,16 @@ export default function LandingPage() {
                         <span className="text-[10px] font-mono uppercase text-gray-400 block">Jejak Dampak ESG</span>
                         <span className="text-xs font-bold text-[#1a3626]">{product.impactMetric}</span>
                       </div>
-                      <Link 
-                        href="/dashboard"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-white hover:bg-[#1a3626] group/btn px-3.5 py-1.5 bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                      <button 
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCustomizingProduct(product);
+                        }}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#1a3626] hover:text-white hover:bg-[#1a3626] group/btn px-3.5 py-1.5 bg-[#f8f7f2] border-2 border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[3px_3px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all cursor-pointer"
                       >
                         Kustomisasi <ArrowRight size={13} className="group-hover/btn:translate-x-0.5 transition-transform" />
-                      </Link>
+                      </button>
                    </div>
                  </div>
                );
@@ -689,12 +695,13 @@ export default function LandingPage() {
                  <h4 className="text-lg font-bold mb-1">Butuh Katalog PDF Lengkap atau Pesanan Khusus?</h4>
                  <p className="text-xs text-white/70">Tim konsultan keberlanjutan kami siap membantu penyesuaian warna Pantone & sertifikasi audit ESG perusahaan Anda.</p>
                </div>
-               <Link 
-                 href="/dashboard" 
-                 className="shrink-0 bg-[#f3c44c] hover:bg-[#e3b43c] text-[#1a3626] font-extrabold text-xs px-6 py-3.5 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2"
+               <button 
+                 type="button"
+                 onClick={() => setCustomizingProduct(PRODUCTS_DATA[0])}
+                 className="shrink-0 bg-[#f3c44c] hover:bg-[#e3b43c] text-[#1a3626] font-extrabold text-xs px-6 py-3.5 border-2 border-[#1a3626] shadow-none hover:shadow-[5px_5px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer"
                >
                  Ajukan Penawaran Korporat <ArrowRight size={15} />
-               </Link>
+               </button>
              </div>
            </div>
         </section>
@@ -710,6 +717,13 @@ export default function LandingPage() {
 
       {/* Corporate B2B Footer */}
       <Footer />
+
+      {/* Product Customization & Quotation Modal */}
+      <ProductCustomizationModal
+        product={customizingProduct}
+        isOpen={!!customizingProduct}
+        onClose={() => setCustomizingProduct(null)}
+      />
 
     </div>
   );

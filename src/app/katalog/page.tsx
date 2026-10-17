@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '@/data/products';
+import { PRODUCTS_DATA, PRODUCT_CATEGORIES, Product } from '@/data/products';
+import { ProductCustomizationModal } from '@/components/modals';
 import { ArrowRight, Search, SlidersHorizontal, ArrowLeft, Recycle, FileCheck, CheckCircle2 } from 'lucide-react';
 
 export default function KatalogPage() {
   const [activeCategory, setActiveCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [customizingProduct, setCustomizingProduct] = useState<Product | null>(null);
 
   const filteredProducts = PRODUCTS_DATA.filter((product) => {
     const matchesCategory = activeCategory === 'Semua' || product.category === activeCategory;
@@ -181,12 +183,13 @@ export default function KatalogPage() {
                       <span className="text-[10px] font-mono uppercase text-gray-400">Jejak Dampak ESG</span>
                       <span className="font-bold text-[#1a3626] text-[11px]">{product.impactMetric}</span>
                     </div>
-                    <Link 
-                      href="/dashboard"
-                      className="w-full py-2 bg-[#f8f7f2] hover:bg-[#1a3626] text-[#1a3626] hover:text-white border border-[#1a3626]/20 hover:border-[#1a3626] text-xs font-bold flex items-center justify-center gap-1.5 transition-all text-center"
+                    <button 
+                      type="button"
+                      onClick={() => setCustomizingProduct(product)}
+                      className="w-full py-2 bg-[#f8f7f2] hover:bg-[#1a3626] text-[#1a3626] hover:text-white border border-[#1a3626]/20 hover:border-[#1a3626] text-xs font-bold flex items-center justify-center gap-1.5 transition-all text-center cursor-pointer"
                     >
                       Kustomisasi & Pesan <ArrowRight size={13} />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               ))}
@@ -227,6 +230,13 @@ export default function KatalogPage() {
 
       {/* Corporate B2B Footer */}
       <Footer />
+
+      {/* Product Customization & Quotation Modal */}
+      <ProductCustomizationModal
+        product={customizingProduct}
+        isOpen={!!customizingProduct}
+        onClose={() => setCustomizingProduct(null)}
+      />
 
     </div>
   );
