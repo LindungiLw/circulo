@@ -142,6 +142,9 @@ export default function KatalogPage() {
                     {/* Metadata */}
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[10px] font-mono text-[#f3c44c] font-bold uppercase bg-[#1a3626] px-1.5 py-0.5">
+                          {product.sku}
+                        </span>
                         <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
                           {product.category}
                         </span>
@@ -158,9 +161,18 @@ export default function KatalogPage() {
                     <h3 className="text-base font-extrabold text-[#1a3626] mb-1.5 group-hover:text-[#5c8770] transition-colors leading-snug">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-[#4a5f52] mb-4 leading-relaxed line-clamp-2">
+                    <p className="text-xs text-[#4a5f52] mb-3 leading-relaxed line-clamp-2">
                       {product.description}
                     </p>
+
+                    <div className="flex items-baseline justify-between text-xs py-1.5 px-2 bg-[#f8f7f2] border border-[#1a3626]/10 mb-2">
+                      <span className="font-extrabold text-[#1a3626]">
+                        Rp {product.priceTier4.toLocaleString('id-ID')} <span className="text-[10px] text-gray-500 font-normal">– Rp {product.priceTier1.toLocaleString('id-ID')}</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-emerald-800 font-bold">
+                        Upah: Rp {(product.artisanWage / 1000).toFixed(0)}k
+                      </span>
+                    </div>
                   </div>
 
                   {/* Footer Card */}

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Calculator, ArrowRight, Sparkles, Recycle, Users, Sprout, Droplets, Check, FileText } from 'lucide-react';
+import { Calculator, ArrowRight, Sparkles, Recycle, Users, Sprout, Droplets, Check, FileText, Coins, Landmark } from 'lucide-react';
 import Link from 'next/link';
 import { PRODUCT_IMPACT_RATES } from '@/data/navigation';
 
@@ -10,11 +10,32 @@ export default function ImpactCalculatorSection() {
   const [quantity, setQuantity] = useState<number>(500);
 
   const currentRate = PRODUCT_IMPACT_RATES[selectedProduct];
+
+  // Tier pricing calculation based on quantity
+  let unitPrice = currentRate.tier1Price;
+  let currentTierName = 'Tier 1 (<500)';
+  if (quantity >= 5000) {
+    unitPrice = currentRate.tier4Price;
+    currentTierName = 'Tier 4 (≥5.000)';
+  } else if (quantity >= 2000) {
+    unitPrice = currentRate.tier3Price;
+    currentTierName = 'Tier 3 (2.000–4.999)';
+  } else if (quantity >= 500) {
+    unitPrice = currentRate.tier2Price;
+    currentTierName = 'Tier 2 (500–1.999)';
+  }
+
+  const totalCost = unitPrice * quantity;
+  const discountPercent = Math.round(((currentRate.tier1Price - unitPrice) / currentRate.tier1Price) * 100);
+
+  // ESG Social & Environmental Calculations
   const bottles = currentRate.bottlesPerUnit * quantity;
   const plastic = (currentRate.plasticKg * quantity).toFixed(1);
   const co2 = (currentRate.co2Kg * quantity).toFixed(1);
   const water = (currentRate.waterL * quantity).toLocaleString('id-ID');
   const artisanHours = Math.round(quantity * 0.4);
+  const totalArtisanWage = currentRate.artisanWage * quantity;
+  const totalWasteBankShare = currentRate.wasteBankShare * quantity;
 
   const quickPills = [100, 250, 500, 1000, 2500, 5000];
 
@@ -28,23 +49,29 @@ export default function ImpactCalculatorSection() {
             Hitung Estimasi Kontribusi <span className="text-[#5c8770]">ESG Perusahaan Anda</span>
           </h2>
           <p className="text-sm sm:text-base text-[#4a5f52] leading-relaxed">
-            Sesuaikan volume pengadaan merchandise perusahaan Anda dan lihat langsung estimasi reduksi jejak karbon, pengalihan limbah, serta jam kerja layak pengrajin lokal (SDG 8).
+            Sesuaikan volume pengadaan merchandise perusahaan Anda dan lihat langsung estimasi reduksi jejak karbon, pengalihan limbah, struktur anggaran volume, serta upah layak pengrajin lokal (SDG 8).
           </p>
         </div>
 
         {/* Calculator Main Box */}
         <div className="bg-white border-2 border-[#1a3626] shadow-none hover:shadow-[8px_8px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all duration-300 p-6 sm:p-10 max-w-5xl mx-auto">
           
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 items-stretch">
             
             {/* Left Column: Interactive Controls (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
               
               {/* Product Selector */}
               <div>
-                <label className="block text-xs font-mono font-bold text-[#1a3626] uppercase tracking-wider mb-3">
-                  1. Pilih Kategori Eco-Merchandise:
-                </label>
+                <div className="flex items-center justify-between mb-3">
+                  <label className="block text-xs font-mono font-bold text-[#1a3626] uppercase tracking-wider">
+                    1. Pilih Kategori Eco-Merchandise:
+                  </label>
+                  <span className="text-[11px] font-mono text-[#5c8770] font-bold">
+                    {currentRate.sku} • {currentRate.materialTag}
+                  </span>
+                </div>
+
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                   {(Object.keys(PRODUCT_IMPACT_RATES) as Array<keyof typeof PRODUCT_IMPACT_RATES>).map((key) => {
                     const prod = PRODUCT_IMPACT_RATES[key];
@@ -60,10 +87,11 @@ export default function ImpactCalculatorSection() {
                             : 'border-[#1a3626]/20 bg-[#fcfbf7] text-[#1a3626] hover:border-[#1a3626] hover:bg-white hover:shadow-[4px_4px_0px_#1a3626] hover:-translate-x-0.5 hover:-translate-y-0.5'
                         }`}
                       >
-                        <span className="leading-snug">{prod.name.split(' (')[0]}</span>
-                        <span className={`text-[10px] font-mono ${active ? 'text-[#f3c44c]' : 'text-gray-500'}`}>
-                          {key === 'totebag' ? 'Serat rPET' : key === 'notebook' ? 'Daur Kertas' : key === 'lanyard' ? 'Anyam rPET' : 'Multi-Item'}
-                        </span>
+                        <span className="leading-snug text-[11px] sm:text-xs">{prod.name.split(' (')[0]}</span>
+                        <div className="flex items-center justify-between text-[10px] font-mono">
+                          <span className={active ? 'text-[#f3c44c]' : 'text-[#5c8770]'}>{prod.sku}</span>
+                          <span className={active ? 'text-white/70' : 'text-gray-400'}>Mulai Rp{(prod.tier4Price / 1000).toFixed(0)}k</span>
+                        </div>
                       </button>
                     );
                   })}
@@ -76,9 +104,14 @@ export default function ImpactCalculatorSection() {
                   <label className="text-xs font-mono font-bold text-[#1a3626] uppercase tracking-wider">
                     2. Estimasi Jumlah Pesanan:
                   </label>
-                  <span className="text-base sm:text-lg font-black text-[#1a3626] bg-[#f8f7f2] px-4 py-1 border border-[#1a3626]/20">
-                    {quantity.toLocaleString('id-ID')} <span className="text-xs font-semibold text-gray-500">Unit</span>
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#e8efe9] text-[#1a3626] border border-[#5c8770]/30">
+                      {currentTierName}
+                    </span>
+                    <span className="text-base sm:text-lg font-black text-[#1a3626] bg-[#f8f7f2] px-4 py-1 border border-[#1a3626]/20">
+                      {quantity.toLocaleString('id-ID')} <span className="text-xs font-semibold text-gray-500">Unit</span>
+                    </span>
+                  </div>
                 </div>
 
                 <input 
@@ -94,7 +127,7 @@ export default function ImpactCalculatorSection() {
 
                 {/* Quick Presets */}
                 <div className="flex flex-wrap gap-1.5 mt-3 pt-2">
-                  <span className="text-[11px] text-gray-400 font-mono self-center mr-1">Preset:</span>
+                  <span className="text-[11px] text-gray-400 font-mono self-center mr-1">Preset Cepat:</span>
                   {quickPills.map((pill) => (
                     <button
                       key={pill}
@@ -106,17 +139,17 @@ export default function ImpactCalculatorSection() {
                           : 'bg-white text-[#1a3626] border-[#1a3626]/20 hover:border-[#1a3626] hover:shadow-[2px_2px_0px_#1a3626]'
                       }`}
                     >
-                      {pill.toLocaleString('id-ID')}
+                      {pill.toLocaleString('id-ID')} unit
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Note on Traceability */}
-              <div className="p-3 bg-[#e8efe9] border border-[#5c8770]/30 text-xs text-[#1a3626] flex items-center gap-3">
-                <FileText size={18} className="text-[#5c8770] shrink-0" />
+              {/* Note on Traceability & Fair Wage */}
+              <div className="p-3.5 bg-[#e8efe9]/60 border border-[#5c8770]/30 text-xs text-[#1a3626] flex items-center gap-3">
+                <FileText size={20} className="text-[#5c8770] shrink-0" />
                 <p className="leading-relaxed">
-                  Setiap pesanan di atas <strong>100 unit</strong> otomatis disertai sertifikat <strong>Impact Dossier resmi</strong> yang dapat dilampirkan langsung pada Sustainability Report (SR) OJK perusahaan Anda.
+                  Setiap pesanan di atas <strong>100 unit</strong> otomatis dilengkapi sertifikat <strong>Impact Dossier resmi</strong> audit-ready OJK (POJK 51) serta bukti pembayaran <strong>Fair-Wage</strong> pengrajin lokal (SDG 8).
                 </p>
               </div>
 
@@ -126,63 +159,103 @@ export default function ImpactCalculatorSection() {
             <div className="lg:col-span-5 bg-[#1a3626] text-white p-6 sm:p-7 border border-[#1a3626] flex flex-col justify-between">
               
               <div>
-                <div className="flex items-center justify-between pb-3 border-b border-white/15 mb-5">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-[#f3c44c] font-bold">
-                    HASIL ESTIMASI AUDIT-READY
-                  </span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#f3c44c] animate-pulse"></span>
+                {/* Header with Pricing Result */}
+                <div className="pb-4 border-b border-white/15 mb-4">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-[#f3c44c] font-bold">
+                      ESTIMASI B2B & IMPACT DOSSIER
+                    </span>
+                    <span className="text-[10px] font-mono bg-white/10 text-white px-2 py-0.5">
+                      {currentTierName}
+                    </span>
+                  </div>
+
+                  <div className="flex items-baseline justify-between mt-2">
+                    <div>
+                      <span className="text-[11px] text-white/60 block font-mono">Estimasi Investasi Pengadaan:</span>
+                      <p className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                        Rp {totalCost.toLocaleString('id-ID')}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[11px] text-white/60 block font-mono">Harga Satuan:</span>
+                      <p className="text-sm font-bold text-[#f3c44c]">
+                        Rp {unitPrice.toLocaleString('id-ID')}
+                        {discountPercent > 0 && (
+                          <span className="ml-1 text-[10px] font-normal text-emerald-300">(-{discountPercent}%)</span>
+                        )}
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                {/* 4 Environmental & Social Metrics */}
+                <div className="grid grid-cols-2 gap-3 mb-4">
                   
                   {/* Metric 1 */}
-                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#f3c44c] mb-1">
-                      <Recycle size={15} />
+                      <Recycle size={14} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Botol Terdiversi</span>
                     </div>
-                    <p className="text-2xl font-black text-white">{bottles.toLocaleString('id-ID')}</p>
-                    <p className="text-[10px] text-white/50">Botol PET dari laut/TPA</p>
+                    <p className="text-xl font-black text-white">{bottles.toLocaleString('id-ID')}</p>
+                    <p className="text-[9px] text-white/50">Botol rPET dari TPA/laut</p>
                   </div>
 
                   {/* Metric 2 */}
-                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#5c8770] mb-1">
-                      <Sprout size={15} />
+                      <Sprout size={14} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Limbah Padat</span>
                     </div>
-                    <p className="text-2xl font-black text-white">{plastic} <span className="text-xs font-semibold">kg</span></p>
-                    <p className="text-[10px] text-white/50">Residu lokal terkelola</p>
+                    <p className="text-xl font-black text-white">{plastic} <span className="text-xs font-semibold">kg</span></p>
+                    <p className="text-[9px] text-white/50">Residu lokal terkelola</p>
                   </div>
 
                   {/* Metric 3 */}
-                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#f3c44c] mb-1">
-                      <Sparkles size={15} />
+                      <Sparkles size={14} />
                       <span className="text-[10px] font-mono uppercase text-white/70">Reduksi Karbon</span>
                     </div>
-                    <p className="text-2xl font-black text-white">{co2} <span className="text-xs font-semibold">kg</span></p>
-                    <p className="text-[10px] text-white/50">Emisi CO₂ terhindarkan</p>
+                    <p className="text-xl font-black text-white">{co2} <span className="text-xs font-semibold">kg</span></p>
+                    <p className="text-[9px] text-white/50">Emisi CO₂ terhindarkan</p>
                   </div>
 
                   {/* Metric 4 */}
-                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3.5 cursor-pointer">
+                  <div className="bg-white/5 border border-white/10 hover:border-[#f3c44c] hover:shadow-[3px_3px_0px_#f3c44c] hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all p-3 cursor-pointer">
                     <div className="flex items-center gap-1.5 text-[#5c8770] mb-1">
-                      <Users size={15} />
-                      <span className="text-[10px] font-mono uppercase text-white/70">Dampak SDG 8</span>
+                      <Users size={14} />
+                      <span className="text-[10px] font-mono uppercase text-white/70">Jam Kerja Layak</span>
                     </div>
-                    <p className="text-2xl font-black text-white">{artisanHours} <span className="text-xs font-semibold">Jam</span></p>
-                    <p className="text-[10px] text-white/50">Upah layak bagi maker</p>
+                    <p className="text-xl font-black text-white">{artisanHours} <span className="text-xs font-semibold">Jam</span></p>
+                    <p className="text-[9px] text-white/50">Pemberdayaan SDG 8</p>
                   </div>
 
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-white/70 pb-4 border-b border-white/10 mb-5">
-                  <span className="flex items-center gap-1.5 font-mono text-[11px]">
-                    <Droplets size={14} className="text-blue-400" /> Air Bersih Terhemat:
-                  </span>
-                  <span className="font-bold text-white">{water} Liter</span>
+                {/* SDG 8 Fair Wage & Bank Sampah Economic Flow Breakdown */}
+                <div className="space-y-1.5 p-3 bg-white/5 border border-white/10 text-xs mb-5 font-mono">
+                  <div className="flex items-center justify-between text-emerald-300">
+                    <span className="flex items-center gap-1.5 text-[11px]">
+                      <Coins size={13} className="text-[#f3c44c]" /> Upah Langsung Pengrajin (SDG 8):
+                    </span>
+                    <span className="font-bold">Rp {totalArtisanWage.toLocaleString('id-ID')}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-white/80">
+                    <span className="flex items-center gap-1.5 text-[11px]">
+                      <Landmark size={13} className="text-[#5c8770]" /> Serapan ke Bank Sampah:
+                    </span>
+                    <span className="font-bold">Rp {totalWasteBankShare.toLocaleString('id-ID')}</span>
+                  </div>
+                  <div className="flex items-center justify-between text-white/60 pt-1 border-t border-white/10">
+                    <span className="flex items-center gap-1.5 text-[10px]">
+                      <Droplets size={12} className="text-blue-400" /> Air Bersih Terhemat:
+                    </span>
+                    <span className="text-[11px] font-bold text-white">{water} Liter</span>
+                  </div>
                 </div>
+
               </div>
 
               {/* Action Button */}

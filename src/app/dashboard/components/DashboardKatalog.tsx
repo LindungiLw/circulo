@@ -9,7 +9,7 @@ import {
   Boxes,
   Leaf
 } from 'lucide-react';
-import { PRODUCTS_DATA, PRODUCT_CATEGORIES, Product } from '@/data/products';
+import { PRODUCTS_DATA, PRODUCT_CATEGORIES, Product, getProductPriceByQty, getTierLabel } from '@/data/products';
 import { submitQuotationRequest } from '@/services/quotationService';
 
 export default function DashboardKatalog() {
@@ -45,13 +45,14 @@ export default function DashboardKatalog() {
     setRequestSubmitted(true);
 
     try {
+      const unitPrice = getProductPriceByQty(selectedProduct, quotationQty);
       const res = await submitQuotationRequest({
         productId: selectedProduct.id,
-        productName: selectedProduct.name,
+        productName: `${selectedProduct.sku} - ${selectedProduct.name}`,
         category: selectedProduct.category,
         quantity: quotationQty,
         brandingOption,
-        estimatedCO2Reduction: parseFloat((quotationQty * 0.45).toFixed(1)),
+        estimatedCO2Reduction: parseFloat((quotationQty * selectedProduct.co2ReductionKg).toFixed(1)),
         companyName: 'PT Danareksa (Persero)',
         contactEmail: 'procurement@danareksa.co.id',
       });
@@ -157,16 +158,31 @@ export default function DashboardKatalog() {
                 {/* Details */}
                 <div className="p-4 space-y-2">
                   <div className="flex items-center justify-between gap-2">
-                    <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
-                      {product.category}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-[10px] font-mono text-[#f3c44c] font-bold uppercase bg-[#1a3626] px-1.5 py-0.5">
+                        {product.sku}
+                      </span>
+                      <span className="text-[10px] font-mono text-[#1a3626] font-bold uppercase tracking-wider bg-[#1a3626]/5 px-2 py-0.5 border border-[#1a3626]/10">
+                        {product.category}
+                      </span>
+                    </div>
                     <span className="text-[10px] font-mono text-[#1a3626] font-bold bg-[#f8f7f2] px-2 py-0.5 border border-[#1a3626]/15 whitespace-nowrap">
                       Min. {product.minOrder}
                     </span>
                   </div>
+
                   <h3 className="text-sm font-bold text-[#1a3626] mt-0.5 group-hover:text-[#5c8770] transition-colors">
                     {product.name}
                   </h3>
+
+                  <div className="flex items-baseline justify-between text-xs pt-1">
+                    <span className="font-bold text-[#1a3626]">
+                      Rp {product.priceTier4.toLocaleString('id-ID')} <span className="text-[10px] text-gray-500 font-normal">– Rp {product.priceTier1.toLocaleString('id-ID')}</span>
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-800 bg-emerald-50 px-1.5 py-0.5 border border-emerald-200">
+                      Upah: Rp {(product.artisanWage / 1000).toFixed(0)}k
+                    </span>
+                  </div>
 
                   <div className="pt-2 border-t border-gray-100 flex items-center justify-between text-[11px]">
                     <span className="text-gray-500 truncate max-w-[55%]">{product.material}</span>
@@ -282,11 +298,28 @@ export default function DashboardKatalog() {
                 </div>
               </div>
 
-              <div className="p-3 bg-[#f8f7f2] border border-gray-200 text-xs flex items-center justify-between">
-                <span className="text-gray-500">Estimasi Reduksi Emisi:</span>
-                <span className="font-bold text-[#1a3626]">
-                  {(quotationQty * 0.45).toFixed(1)} kg CO₂e
-                </span>
+              <div className="p-3 bg-[#f8f7f2] border border-gray-200 text-xs space-y-1.5 font-mono">
+                <div className="flex items-center justify-between text-[#1a3626]">
+                  <span className="text-gray-500 font-sans">Estimasi Investasi ({getTierLabel(quotationQty)}):</span>
+                  <span className="font-bold">
+                    Rp {(getProductPriceByQty(selectedProduct, quotationQty) * quotationQty).toLocaleString('id-ID')}
+                    <span className="text-[10px] text-gray-500 font-normal ml-1">
+                      (@Rp {getProductPriceByQty(selectedProduct, quotationQty).toLocaleString('id-ID')})
+                    </span>
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-emerald-800 pt-1 border-t border-gray-200">
+                  <span className="text-gray-500 font-sans">Reduksi Emisi Karbon:</span>
+                  <span className="font-bold">
+                    {(quotationQty * selectedProduct.co2ReductionKg).toFixed(1)} kg CO₂e
+                  </span>
+                </div>
+                <div className="flex items-center justify-between text-emerald-700">
+                  <span className="text-gray-500 font-sans">Upah Layak Pengrajin (SDG 8):</span>
+                  <span className="font-bold">
+                    Rp {(quotationQty * selectedProduct.artisanWage).toLocaleString('id-ID')}
+                  </span>
+                </div>
               </div>
 
               <div className="flex justify-end gap-2 pt-2 border-t border-gray-200">
