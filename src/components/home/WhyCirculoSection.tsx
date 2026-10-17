@@ -57,7 +57,7 @@ export default function WhyCirculoSection() {
           
           {/* Header Row on Desktop */}
           <div className="hidden lg:grid grid-cols-12 bg-[#1a3626] text-white p-5 font-mono text-xs uppercase font-bold tracking-wider">
-            <div className="col-span-3 text-[#f3c44c]">Parameter Penilaian</div>
+            <div className="col-span-3 text-[#f3c44c]">Standar Pengadaan B2B</div>
             <div className="col-span-4 text-red-300 flex items-center gap-2">
               <ShieldAlert size={14} /> Vendor Percetakan Konvensional
             </div>
@@ -76,7 +76,7 @@ export default function WhyCirculoSection() {
                 {/* Parameter Column */}
                 <div className="lg:col-span-3">
                   <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider block mb-1">
-                    Kriteria 0{idx + 1}
+                    Keunggulan 0{idx + 1}
                   </span>
                   <h4 className="text-base font-extrabold text-[#1a3626] leading-snug">
                     {row.aspect}

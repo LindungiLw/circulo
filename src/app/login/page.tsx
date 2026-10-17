@@ -98,7 +98,7 @@ export default function LoginPage() {
               className="w-full py-2.5 px-3 bg-[#e8efe9] hover:bg-[#d8e6da] text-[#1a3626] border border-[#5c8770] text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer"
             >
               <CirculoPassIcon size={16} className="text-[#1a3626]" />
-              {isLoading ? 'Mengautentikasi Demo...' : 'Masuk Demo Juri (PT Lestari Hijau)'}
+              {isLoading ? 'Mengautentikasi Demo...' : 'Masuk Demo Klien Korporat (PT Danareksa)'}
             </button>
           </div>
 
