@@ -405,7 +405,7 @@ export default function LandingPage() {
 
                   <div className="w-full h-44 rounded-none overflow-hidden relative mb-4 bg-gray-100 border border-gray-100">
                     <img 
-                      src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600" 
+                      src="/kain.png" 
                       alt="Kain Perca Tekstil" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
                     />
